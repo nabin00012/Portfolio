@@ -826,136 +826,163 @@ body {
   padding: 120px 60px;
   background: linear-gradient(180deg, rgba(10, 10, 26, 0.8) 0%, rgba(26, 10, 46, 0.9) 100%);
   perspective: 1000px;
+  overflow-x: hidden;
 }
 
 .skills-crazy-grid {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Default to 2 columns, override for desktop */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 40px;
+  width: 100%;
 }
 
 .skill-crazy-card {
-  min-width: 0 !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 400px;
 }
 
 /* Desktop override - auto-fit for larger screens */
 @media (min-width: 769px) {
   .skills-crazy-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 40px !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+  
+  .skill-crazy-card {
+    height: 420px;
   }
 }
 
 /* Mobile - keep 2 columns */
 @media (max-width: 768px) {
+  .skills-crazy-section {
+    padding: 80px 30px;
+  }
+  
   .skills-crazy-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-    max-width: 100% !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 100%;
   }
 
   .skill-crazy-card {
-    height: 300px !important;
-    min-width: 0 !important;
+    height: 280px;
+    min-width: 0;
   }
 
   .skill-crazy-front,
   .skill-crazy-back {
-    padding: 20px !important;
+    padding: 15px;
   }
 
   .skill-icon-large {
-    font-size: 3rem !important;
-    margin-bottom: 10px !important;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
   }
 
   .skill-crazy-name {
-    font-size: 0.9rem !important;
-    margin-bottom: 8px !important;
-    text-align: center !important;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    text-align: center;
   }
 
   .skill-level-circle {
-    width: 70px !important;
-    height: 70px !important;
+    width: 70px;
+    height: 70px;
   }
 
   .skill-level-inner {
-    width: 55px !important;
-    height: 55px !important;
+    width: 55px;
+    height: 55px;
   }
 
   .skill-level-number {
-    font-size: 0.9rem !important;
+    font-size: 0.9rem;
   }
 
   .skill-description {
-    font-size: 0.75rem !important;
-    line-height: 1.3 !important;
-    text-align: center !important;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .skill-stars {
-    margin-top: 8px !important;
-    justify-content: center !important;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  
+  .star {
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 480px) {
+  .skills-crazy-section {
+    padding: 80px 20px;
+  }
+  
   .skills-crazy-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 15px !important;
-    max-width: 100% !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
   }
 
   .skill-crazy-card {
-    height: 260px !important;
-    min-width: 0 !important;
+    height: 240px;
+    min-width: 0;
   }
 
   .skill-crazy-front,
   .skill-crazy-back {
-    padding: 15px !important;
+    padding: 12px;
+    border-radius: 15px;
   }
 
   .skill-icon-large {
-    font-size: 2.5rem !important;
-    margin-bottom: 8px !important;
+    font-size: 2rem;
+    margin-bottom: 6px;
   }
 
   .skill-crazy-name {
-    font-size: 0.8rem !important;
-    margin-bottom: 6px !important;
-    text-align: center !important;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.2;
   }
 
   .skill-level-circle {
-    width: 60px !important;
-    height: 60px !important;
+    width: 55px;
+    height: 55px;
   }
 
   .skill-level-inner {
-    width: 45px !important;
-    height: 45px !important;
+    width: 42px;
+    height: 42px;
   }
 
   .skill-level-number {
-    font-size: 0.8rem !important;
+    font-size: 0.75rem;
   }
 
   .skill-description {
-    font-size: 0.7rem !important;
-    line-height: 1.2 !important;
-    text-align: center !important;
+    font-size: 0.65rem;
+    line-height: 1.3;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
   .skill-stars {
-    margin-top: 6px !important;
-    justify-content: center !important;
+    margin-top: 8px;
+    justify-content: center;
+    gap: 4px;
+  }
+  
+  .star {
+    font-size: 1rem;
   }
 }
 
