@@ -832,11 +832,19 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Default to 2 columns, override for desktop */
   gap: 40px;
 }
 
-/* Force 2 columns on mobile - override auto-fit */
+/* Desktop override - auto-fit for larger screens */
+@media (min-width: 769px) {
+  .skills-crazy-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 40px !important;
+  }
+}
+
+/* Mobile - keep 2 columns */
 @media (max-width: 768px) {
   .skills-crazy-grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -1683,11 +1691,7 @@ body {
     align-items: flex-start;
   }
   
-  /* Skills - 2 columns on mobile */
-  .skills-crazy-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
+  /* Skills grid handled by new media queries above */
   
   .skill-crazy-card {
     height: 320px;
@@ -1921,11 +1925,7 @@ body {
     font-size: 0.95rem;
   }
   
-  /* Keep 2 columns but make them smaller */
-  .skills-crazy-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 15px !important;
-  }
+  /* Skills grid handled by new media queries above */
   
   .skill-crazy-card {
     height: 280px;
@@ -2058,21 +2058,4 @@ body {
   }
 }
 
-/* FINAL OVERRIDE - Force 2 columns on mobile */
-@media (max-width: 768px) {
-  .skills-crazy-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-    max-width: 100% !important;
-    display: grid !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .skills-crazy-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 15px !important;
-    max-width: 100% !important;
-    display: grid !important;
-  }
-}
+/* Skills grid media queries are defined above */
