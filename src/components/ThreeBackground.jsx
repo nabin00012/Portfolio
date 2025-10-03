@@ -12,6 +12,14 @@ const ThreeBackground = ({ currentSection = 0 }) => {
 
   useEffect(() => {
     if (!containerRef.current) return;
+    
+    // Disable 3D on mobile for performance
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      // Show gradient background only on mobile
+      containerRef.current.style.background = 'radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 50%), #000000';
+      return;
+    }
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -204,6 +212,16 @@ const ThreeBackground = ({ currentSection = 0 }) => {
 
     // Handle resize
     const handleResize = () => {
+      const newIsMobile = window.innerWidth < 768;
+      if (newIsMobile && renderer.domElement.parentNode) {
+        // Switch to gradient on mobile
+        renderer.domElement.style.display = 'none';
+        containerRef.current.style.background = 'radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 50%), #000000';
+      } else if (!newIsMobile && renderer.domElement.parentNode) {
+        renderer.domElement.style.display = 'block';
+        containerRef.current.style.background = 'radial-gradient(circle at center, #0a0a0a 0%, #000000 100%)';
+      }
+      
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
