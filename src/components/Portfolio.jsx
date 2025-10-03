@@ -4,13 +4,20 @@ import 'lenis/dist/lenis.css';
 import './Portfolio.css';
 
 const Portfolio = () => {
-    const [scrollY, setScrollY] = useState(0);
-    const heroRef = useRef(null);
-    const aboutRef = useRef(null);
-    const projectsRef = useRef(null);
-    const skillsRef = useRef(null);
-    const contactRef = useRef(null);
-    const lenisRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [cursorVariant, setCursorVariant] = useState('default');
+  const [activeFilter, setActiveFilter] = useState('all');
+  
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const projectsRef = useRef(null);
+  const skillsRef = useRef(null);
+  const contactRef = useRef(null);
+  const lenisRef = useRef(null);
+  const cursorRef = useRef(null);
+  const cursorDotRef = useRef(null);
 
     // Initialize Lenis smooth scroll with enhanced settings
     useEffect(() => {
@@ -37,14 +44,54 @@ const Portfolio = () => {
 
         requestAnimationFrame(raf);
 
-        lenis.on('scroll', ({ scroll }) => {
-            setScrollY(scroll);
-        });
+    lenis.on('scroll', ({ scroll }) => {
+      setScrollY(scroll);
+      // Calculate scroll progress
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableHeight = documentHeight - windowHeight;
+      const progress = (scroll / scrollableHeight) * 100;
+      setScrollProgress(Math.min(progress, 100));
+    });
 
-        return () => {
-            lenis.destroy();
-        };
-    }, []);
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  // Custom cursor
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+      
+      if (cursorRef.current && cursorDotRef.current) {
+        cursorRef.current.style.left = `${e.clientX}px`;
+        cursorRef.current.style.top = `${e.clientY}px`;
+        cursorDotRef.current.style.left = `${e.clientX}px`;
+        cursorDotRef.current.style.top = `${e.clientY}px`;
+      }
+    };
+
+    const handleMouseEnter = () => setCursorVariant('hover');
+    const handleMouseLeave = () => setCursorVariant('default');
+
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    // Add cursor hover effects to interactive elements
+    const interactiveElements = document.querySelectorAll('button, a, .project-card, .skill-card');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', handleMouseEnter);
+      el.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      interactiveElements.forEach(el => {
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
+      });
+    };
+  }, []);
 
     // Intersection Observer for fade-in animations
     useEffect(() => {
@@ -67,37 +114,67 @@ const Portfolio = () => {
         return () => observer.disconnect();
     }, []);
 
-    // Projects data
-    const projects = [
-        {
-            id: 1,
-            title: 'E-Commerce Platform',
-            description: 'A full-stack e-commerce solution with real-time inventory and payment processing',
-            image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80',
-            tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-        },
-        {
-            id: 2,
-            title: 'AI Analytics Dashboard',
-            description: 'Machine learning powered analytics with predictive insights and data visualization',
-            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-            tags: ['Python', 'TensorFlow', 'React', 'D3.js'],
-        },
-        {
-            id: 3,
-            title: 'Social Media App',
-            description: 'Real-time social platform with messaging, stories, and AI-powered content moderation',
-            image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
-            tags: ['React Native', 'Firebase', 'WebRTC'],
-        },
-        {
-            id: 4,
-            title: 'Blockchain Wallet',
-            description: 'Secure cryptocurrency wallet with multi-chain support and DeFi integration',
-            image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80',
-            tags: ['Web3', 'Solidity', 'React', 'Ethers.js'],
-        },
-    ];
+  // Projects data with categories
+  const projects = [
+    {
+      id: 1,
+      title: 'E-Commerce Platform',
+      description: 'A full-stack e-commerce solution with real-time inventory and payment processing',
+      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80',
+      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      category: 'web',
+      year: '2024',
+    },
+    {
+      id: 2,
+      title: 'AI Analytics Dashboard',
+      description: 'Machine learning powered analytics with predictive insights and data visualization',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+      tags: ['Python', 'TensorFlow', 'React', 'D3.js'],
+      category: 'ai',
+      year: '2024',
+    },
+    {
+      id: 3,
+      title: 'Social Media App',
+      description: 'Real-time social platform with messaging, stories, and AI-powered content moderation',
+      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
+      tags: ['React Native', 'Firebase', 'WebRTC'],
+      category: 'mobile',
+      year: '2023',
+    },
+    {
+      id: 4,
+      title: 'Blockchain Wallet',
+      description: 'Secure cryptocurrency wallet with multi-chain support and DeFi integration',
+      image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80',
+      tags: ['Web3', 'Solidity', 'React', 'Ethers.js'],
+      category: 'web3',
+      year: '2023',
+    },
+    {
+      id: 5,
+      title: 'Design System',
+      description: 'Comprehensive UI component library with documentation and Figma integration',
+      image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
+      tags: ['React', 'Storybook', 'TypeScript', 'Figma'],
+      category: 'design',
+      year: '2024',
+    },
+    {
+      id: 6,
+      title: 'Real-time Collaboration Tool',
+      description: 'Multiplayer workspace with live cursors, comments, and version control',
+      image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80',
+      tags: ['WebSocket', 'React', 'Node.js', 'Redis'],
+      category: 'web',
+      year: '2023',
+    },
+  ];
+
+  const filteredProjects = activeFilter === 'all' 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
 
     // Skills data
     const skills = [
@@ -111,10 +188,65 @@ const Portfolio = () => {
         { icon: '🤖', name: 'AI/ML', level: 80 },
     ];
 
-    return (
-        <div className="portfolio">
-            {/* Hero Section */}
-            <section className="hero-section" ref={heroRef}>
+  // Text scramble effect
+  const scrambleText = (element, finalText) => {
+    const chars = '!<>-_\\/[]{}—=+*^?#________';
+    let iteration = 0;
+    
+    const interval = setInterval(() => {
+      element.innerText = finalText
+        .split('')
+        .map((char, index) => {
+          if (index < iteration) {
+            return finalText[index];
+          }
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      
+      if (iteration >= finalText.length) {
+        clearInterval(interval);
+      }
+      
+      iteration += 1 / 3;
+    }, 30);
+  };
+
+  return (
+    <div className="portfolio">
+      {/* Custom Cursor */}
+      <div 
+        ref={cursorRef}
+        className={`custom-cursor ${cursorVariant}`}
+      ></div>
+      <div 
+        ref={cursorDotRef}
+        className="custom-cursor-dot"
+      ></div>
+
+      {/* Scroll Progress */}
+      <div className="scroll-progress">
+        <div 
+          className="scroll-progress-bar" 
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
+
+      {/* Animated Navigation */}
+      <nav className="main-nav">
+        <div className="nav-logo">
+          <span className="logo-text">NC</span>
+        </div>
+        <div className="nav-links">
+          <a href="#about" className="nav-link">About</a>
+          <a href="#work" className="nav-link">Work</a>
+          <a href="#contact" className="nav-link">Contact</a>
+        </div>
+        <button className="nav-cta magnetic-btn">Let's Talk</button>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="hero-section" ref={heroRef}>
                 <div className="hero-background">
                     <div
                         className="gradient-orb orb-1"
@@ -136,38 +268,75 @@ const Portfolio = () => {
                     />
                     <div className="noise-overlay"></div>
                 </div>
-                <div className="hero-content">
-                    <h1
-                        className="hero-title"
-                        style={{
-                            transform: `translateY(${scrollY * 0.4}px)`,
-                            opacity: Math.max(0, 1 - scrollY / 600),
-                        }}
-                    >
-                        Creative
-                        <br />
-                        <span className="gradient-text">Developer</span>
-                    </h1>
-                    <p
-                        className="hero-subtitle"
-                        style={{
-                            transform: `translateY(${scrollY * 0.3}px)`,
-                            opacity: Math.max(0, 1 - scrollY / 500),
-                        }}
-                    >
-                        Crafting digital experiences that inspire and engage
-                    </p>
-                    <div
-                        className="hero-cta"
-                        style={{
-                            transform: `translateY(${scrollY * 0.25}px)`,
-                            opacity: Math.max(0, 1 - scrollY / 450),
-                        }}
-                    >
-                        <button className="cta-button primary">View Work</button>
-                        <button className="cta-button secondary">Get in Touch</button>
-                    </div>
-                </div>
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span className="badge-dot"></span>
+            Available for Freelance
+          </div>
+          <h1 
+            className="hero-title"
+            style={{
+              transform: `translateY(${scrollY * 0.4}px)`,
+              opacity: Math.max(0, 1 - scrollY / 600),
+            }}
+          >
+            Building Digital
+            <br />
+            <span className="gradient-text typing-effect">Experiences</span>
+          </h1>
+          <p 
+            className="hero-subtitle"
+            style={{
+              transform: `translateY(${scrollY * 0.3}px)`,
+              opacity: Math.max(0, 1 - scrollY / 500),
+            }}
+          >
+            Award-winning developer & designer crafting
+            <br />
+            immersive web experiences that captivate
+          </p>
+          <div 
+            className="hero-cta"
+            style={{
+              transform: `translateY(${scrollY * 0.25}px)`,
+              opacity: Math.max(0, 1 - scrollY / 450),
+            }}
+          >
+            <button className="cta-button primary magnetic-btn">
+              <span>Explore Work</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </button>
+            <button className="cta-button secondary magnetic-btn">
+              <span>Get in Touch</span>
+            </button>
+          </div>
+          
+          {/* Hero Stats */}
+          <div 
+            className="hero-stats"
+            style={{
+              transform: `translateY(${scrollY * 0.2}px)`,
+              opacity: Math.max(0, 1 - scrollY / 400),
+            }}
+          >
+            <div className="stat-box">
+              <h3 className="stat-number">50+</h3>
+              <p className="stat-text">Projects Delivered</p>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-box">
+              <h3 className="stat-number">5+</h3>
+              <p className="stat-text">Years Experience</p>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-box">
+              <h3 className="stat-number">15+</h3>
+              <p className="stat-text">Awards Won</p>
+            </div>
+          </div>
+        </div>
                 <div
                     className="scroll-indicator"
                     style={{
@@ -227,43 +396,86 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Projects Section */}
-            <section className="projects-section fade-in-section" ref={projectsRef}>
-                <div className="container">
-                    <h2 className="section-title">
-                        Featured <span className="gradient-text">Projects</span>
-                    </h2>
-                    <div className="projects-grid">
-                        {projects.map((project, index) => (
-                            <div
-                                key={project.id}
-                                className="project-card"
-                                style={{
-                                    animationDelay: `${index * 0.1}s`,
-                                }}
-                            >
-                                <div className="project-image-wrapper">
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="project-image"
-                                        loading="lazy"
-                                    />
-                                    <div className="project-overlay"></div>
-                                </div>
-                                <div className="project-content">
-                                    <h3 className="project-title">{project.title}</h3>
-                                    <p className="project-description">{project.description}</p>
-                                    <div className="project-tags">
-                                        {project.tags.map((tag, idx) => (
-                                            <span key={idx} className="project-tag">{tag}</span>
-                                        ))}
-                                    </div>
-                                    <button className="project-link">
-                                        View Project →
-                                    </button>
-                                </div>
-                            </div>
+      {/* Projects Section */}
+      <section className="projects-section fade-in-section" id="work" ref={projectsRef}>
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">
+              Selected <span className="gradient-text">Works</span>
+            </h2>
+            <div className="project-filters">
+              <button 
+                className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+                onClick={() => setActiveFilter('all')}
+              >
+                All Work
+              </button>
+              <button 
+                className={`filter-btn ${activeFilter === 'web' ? 'active' : ''}`}
+                onClick={() => setActiveFilter('web')}
+              >
+                Web Apps
+              </button>
+              <button 
+                className={`filter-btn ${activeFilter === 'mobile' ? 'active' : ''}`}
+                onClick={() => setActiveFilter('mobile')}
+              >
+                Mobile
+              </button>
+              <button 
+                className={`filter-btn ${activeFilter === 'web3' ? 'active' : ''}`}
+                onClick={() => setActiveFilter('web3')}
+              >
+                Web3
+              </button>
+              <button 
+                className={`filter-btn ${activeFilter === 'design' ? 'active' : ''}`}
+                onClick={() => setActiveFilter('design')}
+              >
+                Design
+              </button>
+            </div>
+          </div>
+          <div className="projects-grid">
+            {filteredProjects.map((project, index) => (
+              <div 
+                key={project.id} 
+                className="project-card tilt-card"
+                style={{
+                  animationDelay: `${index * 0.1}s`,
+                }}
+              >
+                <div className="project-number">0{index + 1}</div>
+                <div className="project-year">{project.year}</div>
+                <div className="project-image-wrapper">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="project-image"
+                    loading="lazy"
+                  />
+                  <div className="project-overlay">
+                    <button className="project-view-btn magnetic-btn">
+                      <span>View Project</span>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div className="project-content">
+                  <div className="project-meta">
+                    <span className="project-category">{project.category}</span>
+                  </div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-tags">
+                    {project.tags.map((tag, idx) => (
+                      <span key={idx} className="project-tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
                         ))}
                     </div>
                 </div>
