@@ -836,6 +836,21 @@ body {
   gap: 40px;
 }
 
+/* Force 2 columns on mobile - override auto-fit */
+@media (max-width: 768px) {
+  .skills-crazy-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-crazy-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+}
+
 .skill-crazy-card {
   height: 380px;
   perspective: 1000px;
@@ -1018,11 +1033,17 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.cert-thumbnail,
-.cert-thumbnail-pdf {
+.cert-thumbnail {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border: none;
+  transition: transform 0.5s ease;
+}
+
+.cert-thumbnail-pdf {
+  width: 100%;
+  height: 100%;
   border: none;
   transition: transform 0.5s ease;
 }
@@ -1665,8 +1686,8 @@ body {
   
   /* Skills - 2 columns on mobile */
   .skills-crazy-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
   }
   
   .skill-crazy-card {
@@ -1903,7 +1924,8 @@ body {
   
   /* Keep 2 columns but make them smaller */
   .skills-crazy-grid {
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
   }
   
   .skill-crazy-card {
