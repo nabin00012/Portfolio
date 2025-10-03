@@ -1,13 +1,14 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-const ThreeBackground = () => {
+const ThreeBackground = ({ currentSection = 0 }) => {
   const containerRef = useRef(null);
   const mousePosition = useRef({ x: 0, y: 0 });
   const targetRotation = useRef({ x: 0, y: 0 });
   const currentRotation = useRef({ x: 0, y: 0 });
   const targetPosition = useRef({ x: 0, y: 0 });
   const currentPosition = useRef({ x: 0, y: 0 });
+  const morphProgress = useRef(0);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -30,78 +31,86 @@ const ThreeBackground = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    // Create "Hand" - using multiple geometric shapes
+    // Create morphing organic shape - like Lenis hand
     const handGroup = new THREE.Group();
 
-    // Palm (main part)
-    const palmGeometry = new THREE.BoxGeometry(1.5, 2, 0.5);
-    const palmMaterial = new THREE.MeshStandardMaterial({
-      color: 0x8b5cf6,
-      metalness: 0.7,
-      roughness: 0.2,
-      emissive: 0x8b5cf6,
-      emissiveIntensity: 0.2,
-    });
-    const palm = new THREE.Mesh(palmGeometry, palmMaterial);
-    handGroup.add(palm);
-
-    // Fingers
-    const fingerGeometry = new THREE.BoxGeometry(0.3, 1, 0.3);
-    const fingerMaterial = new THREE.MeshStandardMaterial({
-      color: 0xec4899,
-      metalness: 0.7,
-      roughness: 0.2,
-      emissive: 0xec4899,
-      emissiveIntensity: 0.2,
-    });
-
-    const fingerPositions = [
-      [-0.6, 1.2, 0],
-      [-0.3, 1.3, 0],
-      [0, 1.3, 0],
-      [0.3, 1.2, 0],
-      [0.6, 1, 0],
-    ];
-
-    fingerPositions.forEach(pos => {
-      const finger = new THREE.Mesh(fingerGeometry, fingerMaterial);
-      finger.position.set(...pos);
-      handGroup.add(finger);
-    });
-
-    // Add glow spheres around hand
-    const glowGeometry = new THREE.SphereGeometry(0.15, 32, 32);
-    const glowMaterial = new THREE.MeshBasicMaterial({
-      color: 0x06b6d4,
-      transparent: true,
-      opacity: 0.6,
-    });
-
-    for (let i = 0; i < 20; i++) {
-      const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-      const angle = (i / 20) * Math.PI * 2;
-      const radius = 3 + Math.random() * 2;
-      glow.position.set(
-        Math.cos(angle) * radius,
-        Math.sin(angle) * radius,
-        -2 + Math.random() * 4
-      );
-      scene.add(glow);
+    // Create fluid organic shape using sphere with displacement
+    const handGeometry = new THREE.SphereGeometry(2, 64, 64);
+    
+    // Add random displacement for organic feel
+    const positions = handGeometry.attributes.position;
+    const vertex = new THREE.Vector3();
+    for (let i = 0; i < positions.count; i++) {
+      vertex.fromBufferAttribute(positions, i);
+      const noise = Math.sin(vertex.x * 2) * Math.cos(vertex.y * 2) * 0.3;
+      vertex.normalize().multiplyScalar(2 + noise);
+      positions.setXYZ(i, vertex.x, vertex.y, vertex.z);
     }
+    handGeometry.computeVertexNormals();
 
+    const handMaterial = new THREE.MeshStandardMaterial({
+      color: 0x8b5cf6,
+      metalness: 0.9,
+      roughness: 0.1,
+      emissive: 0x8b5cf6,
+      emissiveIntensity: 0.3,
+      wireframe: false,
+    });
+    
+    const hand = new THREE.Mesh(handGeometry, handMaterial);
+    handGroup.add(hand);
+
+    // Add inner glow sphere
+    const glowGeometry = new THREE.SphereGeometry(1.8, 32, 32);
+    const glowMaterial = new THREE.MeshBasicMaterial({
+      color: 0xec4899,
+      transparent: true,
+      opacity: 0.4,
+      side: THREE.BackSide,
+    });
+    const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+    handGroup.add(glow);
+
+    // Add orbiting elements around hand
+    const orbitGroup = new THREE.Group();
+    const orbitGeometry = new THREE.TorusGeometry(0.2, 0.08, 16, 32);
+    
+    for (let i = 0; i < 3; i++) {
+      const orbitMaterial = new THREE.MeshStandardMaterial({
+        color: i === 0 ? 0x00ff88 : i === 1 ? 0x00d4ff : 0xff0080,
+        metalness: 0.8,
+        roughness: 0.2,
+        emissive: i === 0 ? 0x00ff88 : i === 1 ? 0x00d4ff : 0xff0080,
+        emissiveIntensity: 0.5,
+      });
+      const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
+      const angle = (i / 3) * Math.PI * 2;
+      const radius = 3 + i * 0.5;
+      orbit.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius, 0);
+      orbitGroup.add(orbit);
+    }
+    scene.add(orbitGroup);
     scene.add(handGroup);
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    // Enhanced lighting setup
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0x8b5cf6, 2, 100);
-    pointLight.position.set(0, 0, 5);
-    scene.add(pointLight);
+    const mainLight = new THREE.PointLight(0x00ff88, 3, 100);
+    mainLight.position.set(0, 0, 8);
+    scene.add(mainLight);
 
-    const spotLight = new THREE.SpotLight(0xec4899, 1.5);
-    spotLight.position.set(5, 5, 5);
-    spotLight.castShadow = true;
+    const accentLight1 = new THREE.PointLight(0x00d4ff, 2, 50);
+    accentLight1.position.set(-5, 3, 3);
+    scene.add(accentLight1);
+
+    const accentLight2 = new THREE.PointLight(0xff0080, 2, 50);
+    accentLight2.position.set(5, -3, 3);
+    scene.add(accentLight2);
+
+    const spotLight = new THREE.SpotLight(0xffffff, 1);
+    spotLight.position.set(0, 10, 10);
+    spotLight.angle = Math.PI / 6;
     scene.add(spotLight);
 
     // Particles
@@ -134,12 +143,14 @@ const ThreeBackground = () => {
       targetRotation.current.y = mousePosition.current.x * Math.PI * 0.3;
       targetRotation.current.x = mousePosition.current.y * Math.PI * 0.3;
       
-      targetPosition.current.x = mousePosition.current.x * 2;
-      targetPosition.current.y = mousePosition.current.y * 2;
+      targetPosition.current.x = mousePosition.current.x * 1.5;
+      targetPosition.current.y = mousePosition.current.y * 1.5;
 
-      // Move lights
-      pointLight.position.x = mousePosition.current.x * 5;
-      pointLight.position.y = mousePosition.current.y * 5;
+      // Move lights dynamically
+      mainLight.position.x = mousePosition.current.x * 4;
+      mainLight.position.y = mousePosition.current.y * 4;
+      accentLight1.position.x = -5 + mousePosition.current.x * 2;
+      accentLight2.position.x = 5 - mousePosition.current.x * 2;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -150,30 +161,41 @@ const ThreeBackground = () => {
       requestAnimationFrame(animate);
       time += 0.01;
 
-      // Smooth lerp for rotation
-      currentRotation.current.x += (targetRotation.current.x - currentRotation.current.x) * 0.08;
-      currentRotation.current.y += (targetRotation.current.y - currentRotation.current.y) * 0.08;
+      // Ultra smooth lerp for rotation
+      currentRotation.current.x += (targetRotation.current.x - currentRotation.current.x) * 0.05;
+      currentRotation.current.y += (targetRotation.current.y - currentRotation.current.y) * 0.05;
 
-      // Smooth lerp for position
-      currentPosition.current.x += (targetPosition.current.x - currentPosition.current.x) * 0.05;
-      currentPosition.current.y += (targetPosition.current.y - currentPosition.current.y) * 0.05;
+      // Smooth lerp for position with lag
+      currentPosition.current.x += (targetPosition.current.x - currentPosition.current.x) * 0.03;
+      currentPosition.current.y += (targetPosition.current.y - currentPosition.current.y) * 0.03;
 
-      // Apply to hand
-      handGroup.rotation.x = currentRotation.current.x + Math.sin(time) * 0.1;
-      handGroup.rotation.y = currentRotation.current.y + Math.cos(time * 0.7) * 0.1;
-      handGroup.rotation.z = Math.sin(time * 0.5) * 0.05;
+      // Organic morphing effect
+      morphProgress.current = (Math.sin(time * 0.5) + 1) * 0.5;
       
-      handGroup.position.x = currentPosition.current.x;
-      handGroup.position.y = currentPosition.current.y;
-      handGroup.position.z = Math.sin(time * 0.3) * 0.3;
+      // Apply to hand with creative movement
+      handGroup.rotation.x = currentRotation.current.x + Math.sin(time * 0.8) * 0.15;
+      handGroup.rotation.y = currentRotation.current.y + Math.cos(time * 0.6) * 0.15;
+      handGroup.rotation.z = Math.sin(time * 0.4) * 0.1 + morphProgress.current * 0.2;
+      
+      handGroup.position.x = currentPosition.current.x + Math.sin(time * 0.3) * 0.2;
+      handGroup.position.y = currentPosition.current.y + Math.cos(time * 0.4) * 0.2;
+      handGroup.position.z = Math.sin(time * 0.5) * 0.5;
+
+      // Organic breathing scale
+      const scale = 1 + Math.sin(time * 1.5) * 0.08 + morphProgress.current * 0.1;
+      handGroup.scale.set(scale, scale, scale);
+
+      // Animate orbiting elements
+      orbitGroup.rotation.y = time * 0.3;
+      orbitGroup.rotation.x = Math.sin(time * 0.2) * 0.3;
 
       // Animate particles
-      particlesMesh.rotation.y = time * 0.05;
-      particlesMesh.rotation.x = time * 0.03;
+      particlesMesh.rotation.y = time * 0.08;
+      particlesMesh.rotation.x = time * 0.05;
 
-      // Pulse effect
-      const scale = 1 + Math.sin(time * 2) * 0.05;
-      handGroup.scale.set(scale, scale, scale);
+      // Color shift based on section
+      const colorShift = currentSection * 0.2;
+      handMaterial.emissiveIntensity = 0.3 + Math.sin(time + colorShift) * 0.2;
 
       renderer.render(scene, camera);
     };

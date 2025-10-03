@@ -1,0 +1,14 @@
+{
+  "git": {
+    "deploymentEnabled": true
+  },
+  "github": {
+    "silent": false,
+    "autoAlias": true
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "vite"
+}
+

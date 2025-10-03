@@ -1,44 +1,82 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSmoothScroll } from '../hooks/useSmoothScroll';
 import ThreeBackground from './ThreeBackground';
 import './Portfolio.css';
 
 const Portfolio = () => {
-  const scrollY = useSmoothScroll(0.1); // Custom smooth scroll with momentum
-  const [scrollProgress, setScrollProgress] = useState(0);
-  
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const sectionsRef = useRef([]);
+  const totalSections = 5; // Hero, About, Projects, Skills, Contact
+
+  // Snap scroll to section
+  const scrollToSection = (index) => {
+    if (index < 0 || index >= totalSections || isScrolling) return;
+    
+    setIsScrolling(true);
+    setCurrentSection(index);
+    
+    const section = sectionsRef.current[index];
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => setIsScrolling(false), 1000);
+    }
+  };
+
+  // Wheel event for snap scrolling
   useEffect(() => {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollableHeight = documentHeight - windowHeight;
-    const progress = (scrollY / scrollableHeight) * 100;
-    setScrollProgress(Math.min(progress, 100));
-  }, [scrollY]);
+    let timeout;
+    const handleWheel = (e) => {
+      if (isScrolling) return;
+      
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        if (e.deltaY > 0 && currentSection < totalSections - 1) {
+          scrollToSection(currentSection + 1);
+        } else if (e.deltaY < 0 && currentSection > 0) {
+          scrollToSection(currentSection - 1);
+        }
+      }, 50);
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      clearTimeout(timeout);
+    };
+  }, [currentSection, isScrolling]);
 
   // Projects data
   const projects = [
     {
       id: 1,
-      title: 'Neural Network Dashboard',
-      description: 'Real-time AI monitoring system with predictive analytics and deep learning visualization',
+      title: 'Neural AI Platform',
+      description: 'Real-time machine learning dashboard with predictive analytics',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
       tags: ['AI', 'Python', 'TensorFlow', 'React'],
       year: '2024',
     },
     {
       id: 2,
-      title: 'Metaverse Platform',
-      description: 'Immersive 3D virtual world with blockchain integration and real-time multiplayer',
+      title: 'Metaverse Hub',
+      description: 'Immersive 3D virtual world with blockchain integration',
       image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&q=80',
       tags: ['Web3', 'Three.js', 'Solidity', 'WebRTC'],
       year: '2024',
     },
     {
       id: 3,
-      title: 'Quantum Computing UI',
-      description: 'Interface for quantum algorithm development with real-time qubit visualization',
+      title: 'Quantum Interface',
+      description: 'Next-gen quantum computing visualization platform',
       image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80',
       tags: ['Quantum', 'React', 'D3.js', 'WebGL'],
+      year: '2023',
+    },
+    {
+      id: 4,
+      title: 'DeFi Exchange',
+      description: 'Decentralized trading platform with automated market making',
+      image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=1200&q=80',
+      tags: ['DeFi', 'Ethereum', 'Smart Contracts', 'React'],
       year: '2023',
     },
   ];
@@ -54,15 +92,29 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="portfolio-container">
+    <div className="portfolio-wrapper">
       {/* Three.js 3D Background */}
-      <ThreeBackground />
+      <ThreeBackground currentSection={currentSection} />
 
-      {/* Scroll Progress */}
+      {/* Section Progress Indicator */}
+      <div className="section-progress">
+        {Array.from({ length: totalSections }).map((_, index) => (
+          <button
+            key={index}
+            className={`progress-dot ${currentSection === index ? 'active' : ''}`}
+            onClick={() => scrollToSection(index)}
+            aria-label={`Go to section ${index + 1}`}
+          >
+            <span className="dot-inner"></span>
+          </button>
+        ))}
+      </div>
+
+      {/* Scroll Progress Bar */}
       <div className="scroll-progress-bar">
         <div 
           className="scroll-progress-fill" 
-          style={{ width: `${scrollProgress}%` }}
+          style={{ width: `${(currentSection / (totalSections - 1)) * 100}%` }}
         />
       </div>
 
@@ -73,11 +125,11 @@ const Portfolio = () => {
           <span className="brand-dot"></span>
         </div>
         <div className="nav-menu">
-          <a href="#work" className="nav-item">Work</a>
-          <a href="#about" className="nav-item">About</a>
-          <a href="#contact" className="nav-item">Contact</a>
+          <button onClick={() => scrollToSection(1)} className="nav-item">About</button>
+          <button onClick={() => scrollToSection(2)} className="nav-item">Work</button>
+          <button onClick={() => scrollToSection(4)} className="nav-item">Contact</button>
         </div>
-        <button className="nav-cta-button">
+        <button className="nav-cta-button" onClick={() => scrollToSection(4)}>
           <span>Let's Talk</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -85,15 +137,12 @@ const Portfolio = () => {
         </button>
       </nav>
 
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div 
-          className="hero-content"
-          style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
-            opacity: Math.max(0, 1 - scrollY / 700),
-          }}
-        >
+      {/* Section 0: Hero */}
+      <section 
+        className="section hero-section" 
+        ref={(el) => (sectionsRef.current[0] = el)}
+      >
+        <div className="hero-content">
           <div className="hero-label">
             <span className="status-indicator"></span>
             <span>Available for select projects</span>
@@ -112,11 +161,11 @@ const Portfolio = () => {
           </p>
 
           <div className="hero-cta">
-            <button className="primary-button">
+            <button className="primary-button" onClick={() => scrollToSection(2)}>
               <span>View Selected Work</span>
               <div className="button-glow"></div>
             </button>
-            <button className="secondary-button">
+            <button className="secondary-button" onClick={() => scrollToSection(4)}>
               <span>Get In Touch</span>
             </button>
           </div>
@@ -139,12 +188,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        <div 
-          className="scroll-hint"
-          style={{
-            opacity: Math.max(0, 1 - scrollY / 400),
-          }}
-        >
+        <div className="scroll-hint">
           <div className="scroll-line-wrapper">
             <div className="scroll-line"></div>
           </div>
@@ -152,14 +196,12 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="about-section" id="about">
-        <div 
-          className="section-header"
-          style={{
-            transform: `translateY(${(scrollY - 600) * 0.2}px)`,
-          }}
-        >
+      {/* Section 1: About */}
+      <section 
+        className="section about-section" 
+        ref={(el) => (sectionsRef.current[1] = el)}
+      >
+        <div className="section-header">
           <h2 className="section-title">
             Building the
             <span className="gradient-title"> Future</span>
@@ -170,12 +212,7 @@ const Portfolio = () => {
         </div>
 
         <div className="about-content">
-          <div 
-            className="about-text"
-            style={{
-              transform: `translateY(${(scrollY - 700) * 0.15}px)`,
-            }}
-          >
+          <div className="about-text">
             <p className="about-paragraph">
               I'm a full-stack developer and creative technologist with a passion for building 
               immersive digital experiences. My work spans 3D web applications, blockchain platforms, 
@@ -189,14 +226,7 @@ const Portfolio = () => {
 
           <div className="skills-grid">
             {skills.map((skill, index) => (
-              <div 
-                key={index} 
-                className="skill-item"
-                style={{
-                  transform: `translateY(${(scrollY - 900) * 0.1}px)`,
-                  transitionDelay: `${index * 0.1}s`,
-                }}
-              >
+              <div key={index} className="skill-item">
                 <div className="skill-header">
                   <span className="skill-icon">{skill.icon}</span>
                   <span className="skill-name">{skill.name}</span>
@@ -215,27 +245,27 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="projects-section" id="work">
-        <div className="section-header">
+      {/* Section 2: Projects - Horizontal Scroll */}
+      <section 
+        className="section projects-section" 
+        ref={(el) => (sectionsRef.current[2] = el)}
+      >
+        <div className="projects-header">
           <h2 className="section-title">
             Selected
             <span className="gradient-title"> Work</span>
           </h2>
-          <p className="section-subtitle">
-            A curated collection of my most impactful projects
+          <p className="projects-hint">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+            Scroll horizontally
           </p>
         </div>
 
-        <div className="projects-grid">
+        <div className="projects-horizontal-scroll">
           {projects.map((project, index) => (
-            <div 
-              key={project.id} 
-              className="project-card"
-              style={{
-                transform: `translateY(${(scrollY - 1400 - index * 200) * 0.08}px)`,
-              }}
-            >
+            <div key={project.id} className="project-card-horizontal">
               <div className="project-number">0{index + 1}</div>
               <div className="project-year">{project.year}</div>
               
@@ -270,8 +300,46 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="contact-section" id="contact">
+      {/* Section 3: Skills Grid */}
+      <section 
+        className="section skills-section" 
+        ref={(el) => (sectionsRef.current[3] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Expertise &
+            <span className="gradient-title"> Mastery</span>
+          </h2>
+          <p className="section-subtitle">
+            Technologies and tools I use to bring ideas to life
+          </p>
+        </div>
+
+        <div className="expertise-grid">
+          <div className="expertise-card">
+            <h3 className="expertise-title">Frontend</h3>
+            <p className="expertise-desc">React, Next.js, Three.js, WebGL, GSAP</p>
+          </div>
+          <div className="expertise-card">
+            <h3 className="expertise-title">Backend</h3>
+            <p className="expertise-desc">Node.js, Python, GraphQL, PostgreSQL</p>
+          </div>
+          <div className="expertise-card">
+            <h3 className="expertise-title">Web3</h3>
+            <p className="expertise-desc">Solidity, Ethers.js, IPFS, Smart Contracts</p>
+          </div>
+          <div className="expertise-card">
+            <h3 className="expertise-title">AI/ML</h3>
+            <p className="expertise-desc">TensorFlow, PyTorch, OpenAI, Computer Vision</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Contact */}
+      <section 
+        className="section contact-section" 
+        ref={(el) => (sectionsRef.current[4] = el)}
+      >
         <div className="contact-container">
           <h2 className="section-title">
             Let's Create
