@@ -62,7 +62,7 @@ const Portfolio = () => {
       id: 1,
       title: 'CodeCommons',
       description: 'A modern collaborative platform for managing and tracking academic projects with cosmic-themed interface. Recognized by Jain University for innovation.',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
+      image: '/images/codecommons.png',
       tags: ['Next.js', 'MongoDB', 'Express.js', 'TypeScript', 'Socket.IO'],
       year: '2025',
       github: 'https://github.com/nabin00012/codecommons',
@@ -204,7 +204,8 @@ const Portfolio = () => {
       icon: '🌐',
       color: '#76B900',
       skills: 'Networking Fundamentals',
-      pdfLink: '/certificates/nvidia-networking.pdf'
+      pdfLink: '/images/nvidia-cert.png',
+      isImage: true
     },
     {
       id: 9,
@@ -214,7 +215,8 @@ const Portfolio = () => {
       icon: '💻',
       color: '#FF6B35',
       skills: 'OS, Virtualization',
-      pdfLink: '/certificates/os-virtualization.pdf'
+      pdfLink: '/images/codio-cert.png',
+      isImage: true
     },
   ];
 
@@ -508,12 +510,22 @@ const Portfolio = () => {
               <p className="cert-issuer">{cert.issuer}</p>
               <p className="cert-skills">{cert.skills}</p>
               <span className="cert-date">{cert.date}</span>
-              <a href={cert.pdfLink} download className="cert-download-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15M7 10L12 15M12 15L17 10M12 15V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Download PDF
-              </a>
+              {cert.isImage ? (
+                <a href={cert.pdfLink} target="_blank" rel="noopener noreferrer" className="cert-download-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                  View Certificate
+                </a>
+              ) : (
+                <a href={cert.pdfLink} download className="cert-download-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15M7 10L12 15M12 15L17 10M12 15V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  Download PDF
+                </a>
+              )}
               <div className="cert-shine"></div>
             </div>
           ))}
