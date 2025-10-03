@@ -1663,14 +1663,36 @@ body {
     align-items: flex-start;
   }
   
-  /* Skills */
+  /* Skills - 2 columns on mobile */
   .skills-crazy-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   
   .skill-crazy-card {
-    height: 350px;
+    height: 320px;
+  }
+  
+  .skill-icon-large {
+    font-size: 3.5rem;
+  }
+  
+  .skill-crazy-name {
+    font-size: 1.1rem;
+  }
+  
+  .skill-level-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .skill-level-inner {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .skill-level-number {
+    font-size: 1.4rem;
   }
   
   /* Disable flip on mobile for better UX */
@@ -1678,10 +1700,49 @@ body {
     transform: rotateY(180deg);
   }
   
-  /* Certifications */
+  /* Certifications - 2 columns on mobile */
   .certifications-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .cert-card {
+    font-size: 0.9rem;
+  }
+  
+  .cert-thumbnail-wrapper {
+    height: 150px;
+  }
+  
+  .cert-content {
+    padding: 20px 15px;
+  }
+  
+  .cert-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .cert-icon {
+    font-size: 2rem;
+  }
+  
+  .cert-title {
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+  
+  .cert-issuer {
+    font-size: 0.8rem;
+  }
+  
+  .cert-skills {
+    font-size: 0.75rem;
+  }
+  
+  .cert-view-btn {
+    padding: 8px 16px;
+    font-size: 0.75rem;
   }
   
   .cert-thumbnail-wrapper {
@@ -1758,15 +1819,24 @@ body {
   .skills-crazy-section,
   .certifications-section,
   .contact-section {
-    padding: 60px 20px;
+    padding: 60px 15px;
   }
   
   .projects-section {
-    padding: 60px 0 60px 20px;
+    padding: 60px 0 60px 15px;
   }
   
   .main-navigation {
-    padding: 15px 20px;
+    padding: 15px 15px;
+  }
+  
+  .nav-brand {
+    font-size: 1.3rem;
+  }
+  
+  .nav-resume-button {
+    font-size: 0.75rem;
+    padding: 8px 16px;
   }
   
   .hero-title {
@@ -1775,7 +1845,7 @@ body {
   }
   
   .section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .metric-value {
@@ -1784,8 +1854,8 @@ body {
   
   .primary-button,
   .secondary-button {
-    padding: 16px 32px;
-    font-size: 0.95rem;
+    padding: 16px 28px;
+    font-size: 0.9rem;
   }
   
   .project-card-horizontal {
@@ -1794,25 +1864,21 @@ body {
   }
   
   .project-number {
-    font-size: 3rem;
-    top: 20px;
-    left: 20px;
+    font-size: 2.5rem;
+    top: 15px;
+    left: 15px;
   }
   
   .project-info {
     padding: 20px;
   }
   
-  .cert-thumbnail-wrapper {
-    height: 180px;
-  }
-  
   .timeline-content {
-    padding: 25px;
+    padding: 20px;
   }
   
-  .skill-crazy-card {
-    height: 320px;
+  .job-role {
+    font-size: 1.2rem;
   }
   
   .form-group input,
@@ -1820,6 +1886,78 @@ body {
   .form-group select {
     padding: 14px 18px;
     font-size: 0.95rem;
+  }
+  
+  /* Keep 2 columns but make them smaller */
+  .skills-crazy-grid {
+    gap: 15px;
+  }
+  
+  .skill-crazy-card {
+    height: 280px;
+  }
+  
+  .skill-icon-large {
+    font-size: 3rem;
+  }
+  
+  .skill-crazy-name {
+    font-size: 0.95rem;
+  }
+  
+  .skill-level-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .skill-level-inner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .skill-level-number {
+    font-size: 1.1rem;
+  }
+  
+  /* Certifications also 2 columns */
+  .certifications-grid {
+    gap: 15px;
+  }
+  
+  .cert-thumbnail-wrapper {
+    height: 130px;
+  }
+  
+  .cert-content {
+    padding: 15px 10px;
+  }
+  
+  .cert-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .cert-icon {
+    font-size: 1.6rem;
+  }
+  
+  .cert-title {
+    font-size: 0.85rem;
+  }
+  
+  .cert-issuer {
+    font-size: 0.75rem;
+  }
+  
+  .cert-skills {
+    font-size: 0.7rem;
+    margin-bottom: 12px;
+  }
+  
+  .cert-view-btn {
+    padding: 6px 12px;
+    font-size: 0.7rem;
   }
 }
 
