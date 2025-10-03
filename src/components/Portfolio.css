@@ -6,9 +6,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Let Lenis handle this */
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -23,17 +22,6 @@ body {
   min-height: 100vh;
 }
 
-/* ==================== SECTION SNAP SCROLLING ==================== */
-.section {
-  min-height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 /* ==================== SECTION PROGRESS DOTS ==================== */
 .section-progress {
   position: fixed;
@@ -43,7 +31,7 @@ body {
   z-index: 9998;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .progress-dot {
@@ -59,11 +47,25 @@ body {
 }
 
 .progress-dot::before {
-  content: '';
+  content: attr(title);
   position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: transparent;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.progress-dot:hover::before {
+  opacity: 1;
 }
 
 .progress-dot .dot-inner {
@@ -93,12 +95,16 @@ body {
 @media (max-width: 768px) {
   .section-progress {
     right: 20px;
-    gap: 15px;
+    gap: 12px;
   }
   
   .progress-dot {
     width: 10px;
     height: 10px;
+  }
+  
+  .progress-dot::before {
+    display: none;
   }
 }
 
@@ -116,7 +122,7 @@ body {
 .scroll-progress-fill {
   height: 100%;
   background: linear-gradient(90deg, #00ff88 0%, #00d4ff 50%, #ff0080 100%);
-  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.3s ease-out;
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
 
@@ -255,8 +261,14 @@ body {
 
 /* ==================== HERO SECTION ==================== */
 .hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 120px 60px 80px;
   text-align: center;
+  position: relative;
 }
 
 .hero-content {
@@ -496,7 +508,11 @@ body {
 
 /* ==================== ABOUT SECTION ==================== */
 .about-section {
-  padding: 100px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px;
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -528,7 +544,7 @@ body {
 
 .about-text {
   max-width: 800px;
-  margin: 0 auto 60px;
+  margin: 0 auto;
 }
 
 .about-paragraph {
@@ -539,76 +555,398 @@ body {
   font-weight: 300;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* ==================== EXPERIENCE TIMELINE ==================== */
+.experience-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(10, 10, 26, 0.8) 100%);
 }
 
-.skill-item {
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.02);
+.timeline-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 60px;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #00ff88 0%, #00d4ff 50%, #ff0080 100%);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 60px;
+  animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.timeline-item[data-index="0"] { animation-delay: 0.2s; }
+.timeline-item[data-index="1"] { animation-delay: 0.4s; }
+.timeline-item[data-index="2"] { animation-delay: 0.6s; }
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -48px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  background: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 255, 136, 0.4);
+  z-index: 2;
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
+  padding: 35px;
   backdrop-filter: blur(20px);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skill-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(0, 255, 136, 0.5);
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(0, 255, 136, 0.2);
+.timeline-content:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 255, 136, 0.4);
+  transform: translateX(10px);
+  box-shadow: 0 20px 60px rgba(0, 255, 136, 0.15);
 }
 
-.skill-header {
+.timeline-header {
   display: flex;
-  align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.job-role {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.job-period {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  padding: 6px 16px;
+  background: rgba(0, 255, 136, 0.1);
+  border-radius: 20px;
+}
+
+.job-company {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 15px;
+}
+
+.job-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
 }
 
-.skill-icon {
-  font-size: 2.5rem;
+.job-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.skill-name {
-  font-size: 1.2rem;
-  font-weight: 700;
+.tech-badge {
+  padding: 6px 16px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #00d4ff;
+  font-weight: 600;
 }
 
-.skill-bar-container {
+/* ==================== CRAZY SKILLS SECTION ==================== */
+.skills-crazy-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px;
+  background: linear-gradient(180deg, rgba(10, 10, 26, 0.8) 0%, rgba(26, 10, 46, 0.9) 100%);
+  perspective: 1000px;
+}
+
+.skills-crazy-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.skill-crazy-card {
+  height: 380px;
+  perspective: 1000px;
+  animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.skill-crazy-inner {
+  position: relative;
   width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.skill-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #00ff88 0%, #00d4ff 100%);
-  border-radius: 10px;
-  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-  position: relative;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
 }
 
-.skill-percentage {
+.skill-crazy-card:hover .skill-crazy-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-crazy-front,
+.skill-crazy-back {
   position: absolute;
-  right: -40px;
-  top: -35px;
-  font-size: 0.9rem;
-  font-weight: 700;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.skill-crazy-front {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+}
+
+.skill-crazy-back {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid;
+  transform: rotateY(180deg);
+  backdrop-filter: blur(30px);
+}
+
+.skill-icon-large {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 30px currentColor);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.skill-crazy-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+.skill-level-display {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.skill-level-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
+}
+
+.skill-level-inner {
+  width: 90px;
+  height: 90px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-level-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skill-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.skill-stars {
+  display: flex;
+  gap: 8px;
+}
+
+.star {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.star.filled {
   color: #00ff88;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+}
+
+/* ==================== CERTIFICATIONS SECTION ==================== */
+.certifications-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px;
+  background: linear-gradient(180deg, rgba(26, 10, 46, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.certifications-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+}
+
+.cert-card {
+  position: relative;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(30px);
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cert-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0, 255, 136, 0.2);
+}
+
+.cert-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.cert-card:hover .cert-icon-wrapper {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.cert-icon {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+.cert-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.cert-issuer {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 15px;
+}
+
+.cert-date {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(0, 255, 136, 0.1);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #00ff88;
+  font-weight: 700;
+}
+
+.cert-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.cert-card:hover .cert-shine {
+  transform: translateX(100%);
 }
 
 /* ==================== PROJECTS HORIZONTAL SCROLL ==================== */
 .projects-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 80px 0 80px 60px;
   background: rgba(0, 0, 0, 0.8);
-  overflow: hidden;
 }
 
 .projects-header {
@@ -632,7 +970,6 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 20px 60px 40px 0;
-  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -661,7 +998,6 @@ body {
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(30px);
-  scroll-snap-align: start;
 }
 
 .project-card-horizontal:hover {
@@ -790,56 +1126,13 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* ==================== SKILLS SECTION ==================== */
-.skills-section {
-  padding: 100px 60px;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.expertise-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.expertise-card {
-  padding: 50px 40px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 25px;
-  backdrop-filter: blur(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  text-align: center;
-}
-
-.expertise-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(0, 255, 136, 0.5);
-  transform: translateY(-15px);
-  box-shadow: 0 30px 60px rgba(0, 255, 136, 0.2);
-}
-
-.expertise-title {
-  font-size: 2rem;
-  font-weight: 900;
-  margin-bottom: 15px;
-  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.expertise-desc {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
-}
-
 /* ==================== CONTACT SECTION ==================== */
 .contact-section {
-  padding: 100px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px;
   background: rgba(0, 0, 0, 0.9);
 }
 
@@ -968,21 +1261,14 @@ body {
 
 /* ==================== MOBILE ==================== */
 @media (max-width: 768px) {
-  .section {
-    scroll-snap-align: none;
-  }
-  
-  html {
-    scroll-snap-type: none;
-  }
-  
   .hero-section,
   .about-section,
+  .experience-section,
+  .skills-crazy-section,
+  .certifications-section,
   .projects-section,
-  .skills-section,
   .contact-section {
     padding: 80px 30px;
-    min-height: auto;
   }
   
   .hero-metrics {
@@ -994,8 +1280,8 @@ body {
     display: none;
   }
   
-  .skills-grid,
-  .expertise-grid {
+  .skills-crazy-grid,
+  .certifications-grid {
     grid-template-columns: 1fr;
   }
   
@@ -1010,5 +1296,9 @@ body {
   .project-card-horizontal {
     min-width: 320px;
     max-width: 320px;
+  }
+  
+  .timeline-container {
+    padding-left: 40px;
   }
 }

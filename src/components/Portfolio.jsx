@@ -1,49 +1,60 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import ThreeBackground from './ThreeBackground';
 import './Portfolio.css';
 
 const Portfolio = () => {
+  const [scrollY, setScrollY] = useState(0);
   const [currentSection, setCurrentSection] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
   const sectionsRef = useRef([]);
-  const totalSections = 5; // Hero, About, Projects, Skills, Contact
+  const lenisRef = useRef(null);
 
-  // Snap scroll to section
+  // Initialize Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.08,
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    lenisRef.current = lenis;
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    lenis.on('scroll', ({ scroll }) => {
+      setScrollY(scroll);
+      
+      // Determine current section based on scroll position
+      const windowHeight = window.innerHeight;
+      const sectionIndex = Math.floor(scroll / (windowHeight * 0.8));
+      setCurrentSection(Math.min(sectionIndex, sectionsRef.current.length - 1));
+    });
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  // Smooth scroll to section
   const scrollToSection = (index) => {
-    if (index < 0 || index >= totalSections || isScrolling) return;
-    
-    setIsScrolling(true);
-    setCurrentSection(index);
-    
     const section = sectionsRef.current[index];
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => setIsScrolling(false), 1000);
+    if (section && lenisRef.current) {
+      lenisRef.current.scrollTo(section, { duration: 1.5 });
     }
   };
-
-  // Wheel event for snap scrolling
-  useEffect(() => {
-    let timeout;
-    const handleWheel = (e) => {
-      if (isScrolling) return;
-      
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        if (e.deltaY > 0 && currentSection < totalSections - 1) {
-          scrollToSection(currentSection + 1);
-        } else if (e.deltaY < 0 && currentSection > 0) {
-          scrollToSection(currentSection - 1);
-        }
-      }, 50);
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: true });
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      clearTimeout(timeout);
-    };
-  }, [currentSection, isScrolling]);
 
   // Projects data
   const projects = [
@@ -81,14 +92,96 @@ const Portfolio = () => {
     },
   ];
 
-  // Skills data
+  // Skills data - CRAZY version
   const skills = [
-    { name: 'React & Next.js', level: 98, icon: '⚛️' },
-    { name: 'Three.js & WebGL', level: 95, icon: '🎨' },
-    { name: 'Node.js & Python', level: 92, icon: '⚡' },
-    { name: 'Blockchain & Web3', level: 88, icon: '🔗' },
-    { name: 'AI/ML & TensorFlow', level: 85, icon: '🤖' },
-    { name: 'Cloud & DevOps', level: 90, icon: '☁️' },
+    { name: 'React & Next.js', level: 98, icon: '⚛️', color: '#61DAFB', description: 'Building scalable web apps' },
+    { name: 'Three.js & WebGL', level: 95, icon: '🎨', color: '#000000', description: '3D experiences & graphics' },
+    { name: 'Node.js & Python', level: 92, icon: '⚡', color: '#339933', description: 'Backend architecture' },
+    { name: 'Blockchain & Web3', level: 88, icon: '🔗', color: '#F7931A', description: 'Smart contracts & DeFi' },
+    { name: 'AI/ML & TensorFlow', level: 85, icon: '🤖', color: '#FF6F00', description: 'Neural networks & ML' },
+    { name: 'Cloud & DevOps', level: 90, icon: '☁️', color: '#FF9900', description: 'AWS, Docker, K8s' },
+    { name: 'TypeScript', level: 96, icon: '📘', color: '#3178C6', description: 'Type-safe development' },
+    { name: 'GraphQL & REST', level: 91, icon: '🔌', color: '#E10098', description: 'API design & development' },
+  ];
+
+  // Experience data
+  const experience = [
+    {
+      id: 1,
+      role: 'Senior Full-Stack Developer',
+      company: 'Tech Innovators Inc.',
+      period: '2022 - Present',
+      description: 'Leading development of cutting-edge web applications and 3D experiences',
+      technologies: ['React', 'Node.js', 'Three.js', 'AWS'],
+    },
+    {
+      id: 2,
+      role: 'Blockchain Developer',
+      company: 'CryptoSolutions',
+      period: '2021 - 2022',
+      description: 'Built DeFi protocols and NFT marketplaces on Ethereum',
+      technologies: ['Solidity', 'Web3', 'React', 'Ethers.js'],
+    },
+    {
+      id: 3,
+      role: 'Frontend Developer',
+      company: 'Digital Agency Co.',
+      period: '2020 - 2021',
+      description: 'Created award-winning websites and interactive experiences',
+      technologies: ['React', 'GSAP', 'WebGL', 'Next.js'],
+    },
+  ];
+
+  // Certifications data
+  const certifications = [
+    {
+      id: 1,
+      title: 'AWS Certified Solutions Architect',
+      issuer: 'Amazon Web Services',
+      date: '2023',
+      icon: '☁️',
+      color: '#FF9900',
+    },
+    {
+      id: 2,
+      title: 'TensorFlow Developer Certificate',
+      issuer: 'Google',
+      date: '2023',
+      icon: '🤖',
+      color: '#FF6F00',
+    },
+    {
+      id: 3,
+      title: 'Certified Kubernetes Administrator',
+      issuer: 'CNCF',
+      date: '2022',
+      icon: '⚙️',
+      color: '#326CE5',
+    },
+    {
+      id: 4,
+      title: 'Blockchain Developer Certification',
+      issuer: 'Blockchain Council',
+      date: '2022',
+      icon: '🔗',
+      color: '#F7931A',
+    },
+    {
+      id: 5,
+      title: 'React Advanced Certification',
+      issuer: 'Meta',
+      date: '2021',
+      icon: '⚛️',
+      color: '#61DAFB',
+    },
+    {
+      id: 6,
+      title: 'Three.js Journey Completion',
+      issuer: 'Three.js',
+      date: '2021',
+      icon: '🎨',
+      color: '#000000',
+    },
   ];
 
   return (
@@ -98,12 +191,13 @@ const Portfolio = () => {
 
       {/* Section Progress Indicator */}
       <div className="section-progress">
-        {Array.from({ length: totalSections }).map((_, index) => (
+        {['Hero', 'About', 'Experience', 'Skills', 'Certs', 'Projects', 'Contact'].map((label, index) => (
           <button
             key={index}
             className={`progress-dot ${currentSection === index ? 'active' : ''}`}
             onClick={() => scrollToSection(index)}
-            aria-label={`Go to section ${index + 1}`}
+            aria-label={label}
+            title={label}
           >
             <span className="dot-inner"></span>
           </button>
@@ -114,7 +208,9 @@ const Portfolio = () => {
       <div className="scroll-progress-bar">
         <div 
           className="scroll-progress-fill" 
-          style={{ width: `${(currentSection / (totalSections - 1)) * 100}%` }}
+          style={{ 
+            width: `${(scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%` 
+          }}
         />
       </div>
 
@@ -139,7 +235,7 @@ const Portfolio = () => {
 
       {/* Section 0: Hero */}
       <section 
-        className="section hero-section" 
+        className="hero-section" 
         ref={(el) => (sectionsRef.current[0] = el)}
       >
         <div className="hero-content">
@@ -198,7 +294,7 @@ const Portfolio = () => {
 
       {/* Section 1: About */}
       <section 
-        className="section about-section" 
+        className="about-section" 
         ref={(el) => (sectionsRef.current[1] = el)}
       >
         <div className="section-header">
@@ -224,31 +320,138 @@ const Portfolio = () => {
             </p>
           </div>
 
-          <div className="skills-grid">
-            {skills.map((skill, index) => (
-              <div key={index} className="skill-item">
-                <div className="skill-header">
-                  <span className="skill-icon">{skill.icon}</span>
-                  <span className="skill-name">{skill.name}</span>
-                </div>
-                <div className="skill-bar-container">
-                  <div 
-                    className="skill-bar-fill" 
-                    style={{ width: `${skill.level}%` }}
-                  >
-                    <span className="skill-percentage">{skill.level}%</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Section 2: Projects - Horizontal Scroll */}
+      {/* Section 2: Experience Timeline */}
       <section 
-        className="section projects-section" 
+        className="experience-section" 
         ref={(el) => (sectionsRef.current[2] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Career
+            <span className="gradient-title"> Journey</span>
+          </h2>
+          <p className="section-subtitle">
+            My professional path in building digital products
+          </p>
+        </div>
+
+        <div className="timeline-container">
+          {experience.map((job, index) => (
+            <div key={job.id} className="timeline-item" data-index={index}>
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-header">
+                  <h3 className="job-role">{job.role}</h3>
+                  <span className="job-period">{job.period}</span>
+                </div>
+                <h4 className="job-company">{job.company}</h4>
+                <p className="job-description">{job.description}</p>
+                <div className="job-tech">
+                  {job.technologies.map((tech, idx) => (
+                    <span key={idx} className="tech-badge">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 3: CRAZY Skills Section */}
+      <section 
+        className="skills-crazy-section" 
+        ref={(el) => (sectionsRef.current[3] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Technical
+            <span className="gradient-title"> Arsenal</span>
+          </h2>
+          <p className="section-subtitle">
+            Cutting-edge technologies I wield to build the future
+          </p>
+        </div>
+
+        <div className="skills-crazy-grid">
+          {skills.map((skill, index) => (
+            <div 
+              key={index} 
+              className="skill-crazy-card"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="skill-crazy-inner">
+                <div className="skill-crazy-front">
+                  <div className="skill-icon-large" style={{ color: skill.color }}>
+                    {skill.icon}
+                  </div>
+                  <h3 className="skill-crazy-name">{skill.name}</h3>
+                  <div className="skill-level-display">
+                    <div className="skill-level-circle" style={{ 
+                      background: `conic-gradient(${skill.color} ${skill.level * 3.6}deg, rgba(255,255,255,0.1) 0deg)` 
+                    }}>
+                      <div className="skill-level-inner">
+                        <span className="skill-level-number">{skill.level}%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="skill-crazy-back" style={{ borderColor: skill.color }}>
+                  <p className="skill-description">{skill.description}</p>
+                  <div className="skill-stars">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className={`star ${i < Math.floor(skill.level / 20) ? 'filled' : ''}`}>
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 4: Certifications */}
+      <section 
+        className="certifications-section" 
+        ref={(el) => (sectionsRef.current[4] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Awards &
+            <span className="gradient-title"> Certifications</span>
+          </h2>
+          <p className="section-subtitle">
+            Industry-recognized credentials and achievements
+          </p>
+        </div>
+
+        <div className="certifications-grid">
+          {certifications.map((cert, index) => (
+            <div 
+              key={cert.id} 
+              className="cert-card"
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              <div className="cert-icon-wrapper" style={{ background: `${cert.color}20`, borderColor: cert.color }}>
+                <span className="cert-icon" style={{ color: cert.color }}>{cert.icon}</span>
+              </div>
+              <h3 className="cert-title">{cert.title}</h3>
+              <p className="cert-issuer">{cert.issuer}</p>
+              <span className="cert-date">{cert.date}</span>
+              <div className="cert-shine"></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 5: Projects - Horizontal Scroll */}
+      <section 
+        className="projects-section" 
+        ref={(el) => (sectionsRef.current[5] = el)}
       >
         <div className="projects-header">
           <h2 className="section-title">
@@ -300,45 +503,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 3: Skills Grid */}
+      {/* Section 6: Contact */}
       <section 
-        className="section skills-section" 
-        ref={(el) => (sectionsRef.current[3] = el)}
-      >
-        <div className="section-header">
-          <h2 className="section-title">
-            Expertise &
-            <span className="gradient-title"> Mastery</span>
-          </h2>
-          <p className="section-subtitle">
-            Technologies and tools I use to bring ideas to life
-          </p>
-        </div>
-
-        <div className="expertise-grid">
-          <div className="expertise-card">
-            <h3 className="expertise-title">Frontend</h3>
-            <p className="expertise-desc">React, Next.js, Three.js, WebGL, GSAP</p>
-          </div>
-          <div className="expertise-card">
-            <h3 className="expertise-title">Backend</h3>
-            <p className="expertise-desc">Node.js, Python, GraphQL, PostgreSQL</p>
-          </div>
-          <div className="expertise-card">
-            <h3 className="expertise-title">Web3</h3>
-            <p className="expertise-desc">Solidity, Ethers.js, IPFS, Smart Contracts</p>
-          </div>
-          <div className="expertise-card">
-            <h3 className="expertise-title">AI/ML</h3>
-            <p className="expertise-desc">TensorFlow, PyTorch, OpenAI, Computer Vision</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Contact */}
-      <section 
-        className="section contact-section" 
-        ref={(el) => (sectionsRef.current[4] = el)}
+        className="contact-section" 
+        ref={(el) => (sectionsRef.current[6] = el)}
       >
         <div className="contact-container">
           <h2 className="section-title">
