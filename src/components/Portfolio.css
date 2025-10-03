@@ -841,6 +841,7 @@ body {
   .skills-crazy-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 20px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -848,6 +849,7 @@ body {
   .skills-crazy-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 15px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -1556,10 +1558,7 @@ body {
     font-size: clamp(3rem, 8vw, 5rem);
   }
   
-  .skills-crazy-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 30px;
-  }
+  /* Skills grid handled by mobile-specific media queries below */
   
   .certifications-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2056,5 +2055,24 @@ body {
   
   .scroll-hint {
     display: none;
+  }
+}
+
+/* FINAL OVERRIDE - Force 2 columns on mobile */
+@media (max-width: 768px) {
+  .skills-crazy-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    max-width: 100% !important;
+    display: grid !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-crazy-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+    max-width: 100% !important;
+    display: grid !important;
   }
 }
