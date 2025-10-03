@@ -8,6 +8,8 @@
 html {
   scroll-behavior: auto; /* Let Lenis handle this */
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -15,6 +17,18 @@ body {
   color: #ffffff;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .skill-crazy-card:hover .skill-crazy-inner {
+    transform: none;
+  }
+  
+  .skill-crazy-card:active .skill-crazy-inner {
+    transform: rotateY(180deg);
+  }
 }
 
 .portfolio-wrapper {
