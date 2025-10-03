@@ -785,6 +785,24 @@ body {
   box-shadow: 0 10px 30px rgba(255, 0, 128, 0.3);
 }
 
+.project-overlay-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-view-button.live-btn {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+}
+
+.project-view-button.live-btn:hover {
+  background: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+}
+
 /* ==================== CRAZY SKILLS SECTION ==================== */
 .skills-crazy-section {
   min-height: 100vh;
@@ -951,35 +969,89 @@ body {
 }
 
 .certifications-grid {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
 }
 
 .cert-card {
   position: relative;
-  padding: 40px 30px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 25px;
   backdrop-filter: blur(30px);
-  text-align: center;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  cursor: pointer;
 }
 
 .cert-card:hover {
-  transform: translateY(-15px) scale(1.02);
+  transform: translateY(-15px);
   box-shadow: 0 30px 80px rgba(0, 255, 136, 0.2);
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+/* Certificate Thumbnail */
+.cert-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cert-thumbnail,
+.cert-thumbnail-pdf {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  transition: transform 0.5s ease;
+}
+
+.cert-card:hover .cert-thumbnail,
+.cert-card:hover .cert-thumbnail-pdf {
+  transform: scale(1.05);
+}
+
+.cert-thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-card:hover .cert-thumbnail-overlay {
+  opacity: 1;
+}
+
+.view-full-text {
+  color: #00ff88;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Certificate Content */
+.cert-content {
+  padding: 30px 25px;
+  text-align: center;
 }
 
 .cert-icon-wrapper {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 25px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
   border-radius: 50%;
   border: 3px solid;
   display: flex;
@@ -993,31 +1065,23 @@ body {
 }
 
 .cert-icon {
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   filter: drop-shadow(0 0 20px currentColor);
 }
 
 .cert-title {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 800;
   margin-bottom: 10px;
   color: #fff;
+  line-height: 1.3;
 }
 
 .cert-issuer {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 15px;
-}
-
-.cert-date {
-  display: inline-block;
-  padding: 6px 16px;
-  background: rgba(0, 255, 136, 0.1);
-  border-radius: 20px;
-  font-size: 0.85rem;
-  color: #00ff88;
-  font-weight: 700;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .cert-shine {
@@ -1036,33 +1100,34 @@ body {
 }
 
 .cert-skills {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   line-height: 1.5;
 }
 
-.cert-download-btn {
+.cert-view-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
+  gap: 8px;
+  padding: 10px 24px;
   background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 25px;
   color: #00ff88;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 10px;
 }
 
-.cert-download-btn:hover {
+.cert-view-btn:hover {
   background: rgba(0, 255, 136, 0.2);
   transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
 }
 
 /* ==================== PROJECTS HORIZONTAL SCROLL ==================== */

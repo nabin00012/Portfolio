@@ -130,92 +130,92 @@ const Portfolio = () => {
       id: 1,
       title: 'Microsoft Azure AI Essentials Professional Certificate',
       issuer: 'Microsoft & LinkedIn',
-      date: 'Sep 2025',
       icon: '☁️',
       color: '#0078D4',
       skills: 'Machine Learning, Azure, NLP, Generative AI',
-      pdfLink: '/certificates/azure-ai-essentials.pdf'
+      pdfLink: '/certificates/azure-ai-essentials.pdf',
+      thumbnail: '/certificates/azure-ai-essentials.pdf'
     },
     {
       id: 2,
       title: 'Microsoft Azure AI Essentials: Workloads and ML',
       issuer: 'LinkedIn',
-      date: 'Sep 2025',
       icon: '🤖',
       color: '#0A66C2',
       skills: 'Azure AI Foundry',
-      pdfLink: '/certificates/azure-ml-workloads.pdf'
+      pdfLink: '/certificates/azure-ml-workloads.pdf',
+      thumbnail: '/certificates/azure-ml-workloads.pdf'
     },
     {
       id: 3,
       title: 'Practical GitHub Actions',
       issuer: 'LinkedIn',
-      date: 'Sep 2025',
       icon: '⚙️',
       color: '#2088FF',
       skills: 'GitHub, CI/CD',
-      pdfLink: '/certificates/github-actions.pdf'
+      pdfLink: '/certificates/github-actions.pdf',
+      thumbnail: '/certificates/github-actions.pdf'
     },
     {
       id: 4,
       title: 'Practical GitHub Code Search',
       issuer: 'LinkedIn',
-      date: 'Sep 2025',
       icon: '🔍',
       color: '#2088FF',
       skills: 'GitHub',
-      pdfLink: '/certificates/github-code-search.pdf'
+      pdfLink: '/certificates/github-code-search.pdf',
+      thumbnail: '/certificates/github-code-search.pdf'
     },
     {
       id: 5,
       title: 'Practical GitHub Copilot',
       issuer: 'LinkedIn',
-      date: 'Sep 2025',
       icon: '🤖',
       color: '#2088FF',
       skills: 'GitHub Copilot, AI Coding',
-      pdfLink: '/certificates/github-copilot.pdf'
+      pdfLink: '/certificates/github-copilot.pdf',
+      thumbnail: '/certificates/github-copilot.pdf'
     },
     {
       id: 6,
       title: 'Practical GitHub Project Management',
       issuer: 'LinkedIn',
-      date: 'Sep 2025',
       icon: '📊',
       color: '#0A66C2',
       skills: 'GitHub, Project Management',
-      pdfLink: '/certificates/github-project-mgmt.pdf'
+      pdfLink: '/certificates/github-project-mgmt.pdf',
+      thumbnail: '/certificates/github-project-mgmt.pdf'
     },
     {
       id: 7,
       title: 'SEO Foundations',
       issuer: 'LinkedIn',
-      date: 'Sep 2025',
       icon: '🔍',
       color: '#0A66C2',
       skills: 'SEO, Web Optimization',
-      pdfLink: '/certificates/seo-foundations.pdf'
+      pdfLink: '/certificates/seo-foundations.pdf',
+      thumbnail: '/certificates/seo-foundations.pdf'
     },
     {
       id: 8,
       title: 'Introduction to Networking',
       issuer: 'NVIDIA',
-      date: 'Aug 2025',
       icon: '🌐',
       color: '#76B900',
       skills: 'Networking Fundamentals',
       pdfLink: '/images/nvidia-cert.png',
+      thumbnail: '/images/nvidia-cert.png',
       isImage: true
     },
     {
       id: 9,
       title: 'Intro to Operating Systems: Virtualization',
       issuer: 'Codio',
-      date: 'Nov 2024',
       icon: '💻',
       color: '#FF6B35',
       skills: 'OS, Virtualization',
       pdfLink: '/images/codio-cert.png',
+      thumbnail: '/images/codio-cert.png',
       isImage: true
     },
   ];
@@ -414,9 +414,10 @@ const Portfolio = () => {
                   ))}
                 </div>
                 {job.offerLetter && (
-                  <a href="/offer-letter-octanet.pdf" download className="offer-letter-btn">
+                  <a href="/offer-letter-octanet.pdf" target="_blank" rel="noopener noreferrer" className="offer-letter-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M7 18H17V16H7V18ZM7 14H17V12H7V14ZM5 22C4.45 22 3.979 21.8043 3.587 21.413C3.19567 21.021 3 20.55 3 20V4C3 3.45 3.19567 2.979 3.587 2.587C3.979 2.19567 4.45 2 5 2H14L21 9V20C21 20.55 20.8043 21.021 20.413 21.413C20.021 21.8043 19.55 22 19 22H5ZM13 10V4H5V20H19V10H13Z" fill="currentColor"/>
+                      <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2"/>
                     </svg>
                     View Offer Letter
                   </a>
@@ -503,29 +504,38 @@ const Portfolio = () => {
               className="cert-card"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <div className="cert-icon-wrapper" style={{ background: `${cert.color}20`, borderColor: cert.color }}>
-                <span className="cert-icon" style={{ color: cert.color }}>{cert.icon}</span>
+              {/* Certificate Thumbnail Preview */}
+              <div className="cert-thumbnail-wrapper">
+                {cert.isImage ? (
+                  <img src={cert.thumbnail} alt={cert.title} className="cert-thumbnail" />
+                ) : (
+                  <iframe 
+                    src={`${cert.thumbnail}#toolbar=0&navpanes=0&scrollbar=0`} 
+                    className="cert-thumbnail-pdf"
+                    title={cert.title}
+                  />
+                )}
+                <div className="cert-thumbnail-overlay">
+                  <span className="view-full-text">Click to view full certificate</span>
+                </div>
               </div>
-              <h3 className="cert-title">{cert.title}</h3>
-              <p className="cert-issuer">{cert.issuer}</p>
-              <p className="cert-skills">{cert.skills}</p>
-              <span className="cert-date">{cert.date}</span>
-              {cert.isImage ? (
-                <a href={cert.pdfLink} target="_blank" rel="noopener noreferrer" className="cert-download-btn">
+
+              <div className="cert-content">
+                <div className="cert-icon-wrapper" style={{ background: `${cert.color}20`, borderColor: cert.color }}>
+                  <span className="cert-icon" style={{ color: cert.color }}>{cert.icon}</span>
+                </div>
+                <h3 className="cert-title">{cert.title}</h3>
+                <p className="cert-issuer">{cert.issuer}</p>
+                <p className="cert-skills">{cert.skills}</p>
+                
+                <a href={cert.pdfLink} target="_blank" rel="noopener noreferrer" className="cert-view-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                     <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2"/>
                     <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2"/>
                   </svg>
                   View Certificate
                 </a>
-              ) : (
-                <a href={cert.pdfLink} download className="cert-download-btn">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15M7 10L12 15M12 15L17 10M12 15V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  Download PDF
-                </a>
-              )}
+              </div>
               <div className="cert-shine"></div>
             </div>
           ))}
