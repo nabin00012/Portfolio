@@ -836,6 +836,12 @@ body {
   gap: 40px;
 }
 
+.skill-crazy-card {
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 /* Desktop override - auto-fit for larger screens */
 @media (min-width: 769px) {
   .skills-crazy-grid {
@@ -851,6 +857,52 @@ body {
     gap: 20px !important;
     max-width: 100% !important;
   }
+
+  .skill-crazy-card {
+    height: 300px !important;
+    min-width: 0 !important;
+  }
+
+  .skill-crazy-front,
+  .skill-crazy-back {
+    padding: 20px !important;
+  }
+
+  .skill-icon-large {
+    font-size: 3rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .skill-crazy-name {
+    font-size: 0.9rem !important;
+    margin-bottom: 8px !important;
+    text-align: center !important;
+  }
+
+  .skill-level-circle {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .skill-level-inner {
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+  .skill-level-number {
+    font-size: 0.9rem !important;
+  }
+
+  .skill-description {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+  }
+
+  .skill-stars {
+    margin-top: 8px !important;
+    justify-content: center !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -859,13 +911,55 @@ body {
     gap: 15px !important;
     max-width: 100% !important;
   }
+
+  .skill-crazy-card {
+    height: 260px !important;
+    min-width: 0 !important;
+  }
+
+  .skill-crazy-front,
+  .skill-crazy-back {
+    padding: 15px !important;
+  }
+
+  .skill-icon-large {
+    font-size: 2.5rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .skill-crazy-name {
+    font-size: 0.8rem !important;
+    margin-bottom: 6px !important;
+    text-align: center !important;
+  }
+
+  .skill-level-circle {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .skill-level-inner {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .skill-level-number {
+    font-size: 0.8rem !important;
+  }
+
+  .skill-description {
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  .skill-stars {
+    margin-top: 6px !important;
+    justify-content: center !important;
+  }
 }
 
-.skill-crazy-card {
-  height: 380px;
-  perspective: 1000px;
-  animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+/* Skill card base styling handled by media queries above */
 
 @keyframes fadeInScale {
   from {
