@@ -1860,6 +1860,10 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .cert-thumbnail {
@@ -1867,6 +1871,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
+    display: block;
   }
   
   .cert-thumbnail-pdf {
@@ -1874,6 +1879,8 @@ body {
     height: 100%;
     border: none;
     border-radius: 12px;
+    pointer-events: none;
+    display: block;
   }
   
   .cert-content {
@@ -2084,6 +2091,10 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .cert-thumbnail {
@@ -2091,6 +2102,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    display: block;
   }
   
   .cert-thumbnail-pdf {
@@ -2098,6 +2110,8 @@ body {
     height: 100%;
     border: none;
     border-radius: 10px;
+    pointer-events: none;
+    display: block;
   }
   
   .cert-content {

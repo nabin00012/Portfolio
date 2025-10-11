@@ -71,22 +71,22 @@ const Portfolio = () => {
     },
     {
       id: 2,
-      title: 'ChapChat',
-      description: 'Real-time chat application allowing users to connect and communicate instantly with modern UI/UX and seamless messaging experience.',
+      title: 'MERN-CI-CD-Kube',
+      description: 'A production-grade real-time chat application built with the MERN stack, featuring automated CI/CD pipelines via GitHub Actions and containerized Kubernetes deployment. Demonstrates enterprise-level DevOps practices with seamless scaling and zero-downtime deployments.',
       image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80',
-      tags: ['React', 'Node.js', 'Socket.IO', 'MongoDB', 'Real-time'],
+      tags: ['MERN Stack', 'Kubernetes', 'Docker', 'GitHub Actions', 'CI/CD'],
       year: '2024',
-      github: 'https://github.com/nabin00012/Chap-Chat',
+      github: 'https://github.com/nabin00012/mern-ci-cd-kube',
       live: '#',
     },
     {
       id: 3,
-      title: 'LocalMart',
-      description: 'Hyperlocal marketplace where users within same pin code can rent or sell items to their neighbors, promoting sustainable local commerce.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
-      tags: ['Next.js', 'MongoDB', 'Geolocation', 'REST API', 'Tailwind'],
+      title: 'SecureFinData',
+      description: '🔒 Military-grade financial data security platform featuring AES-256-GCM encryption with RSA-OAEP envelope encryption. Built on zero-trust architecture with role-based access control, comprehensive audit trails, and intelligent analytics for extracting financial metrics from Excel/PDF files. Production-ready with real-time processing and modern Material-UI design.',
+      image: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?w=1200&q=80',
+      tags: ['React', 'Node.js', 'AES-256', 'RSA', 'Material-UI', 'Security'],
       year: '2024',
-      github: 'https://github.com/nabin00012/local-mart',
+      github: 'https://github.com/nabin00012/secure-fin-data',
       live: '#',
     },
   ];
@@ -113,13 +113,6 @@ const Portfolio = () => {
       color: '#339933',
       description: 'Backend API development',
       svgIcon: '<svg viewBox="0 0 128 128" width="60" height="60"><path fill="#339933" d="M112.678 30.334L68.535 4.729c-2.781-1.584-6.424-1.584-9.227 0L14.82 30.334C11.951 31.985 10 35.088 10 38.407v51.142c0 3.319 1.951 6.423 4.82 8.073l11.321 6.551c6.127 3.087 8.32 3.087 11.145 3.087 9.13 0 14.365-5.538 14.365-15.183V42.93c0-.457-.365-.822-.822-.822h-3.555c-.456 0-.822.365-.822.822v49.147c0 3.753-3.896 7.548-10.247 4.36l-11.866-6.838c-.309-.182-.511-.513-.511-.87V37.585c0-.356.202-.688.511-.87l44.245-25.533c.304-.176.667-.176.971 0l44.245 25.533c.309.182.511.514.511.87v51.142c0 .357-.202.689-.511.87l-44.245 25.534c-.304.176-.667.176-.971 0l-11.301-6.673c-.287-.17-.637-.23-.992-.14-2.533.722-3.04.864-5.422 1.314-.569.108-1.428.268.305 1.244l14.751 8.778c1.39.804 2.95 1.213 4.531 1.213 1.581 0 3.141-.409 4.531-1.213l44.143-25.533c2.869-1.65 4.82-4.754 4.82-8.073V38.407c0-3.319-1.951-6.422-4.82-8.073zM77.727 81.445c-11.726 0-14.309-3.235-15.17-9.066-.102-.628-.598-1.102-1.228-1.102h-3.652c-.678 0-1.228.55-1.228 1.228 0 7.187 3.917 15.745 21.278 15.745 12.772 0 20.186-5.041 20.186-13.766 0-8.664-5.837-10.966-18.019-12.584-12.27-1.628-13.38-2.439-13.38-5.307 0-2.347 1.045-5.475 10.053-5.475 7.928 0 10.858 1.718 12.052 7.098.106.538.569.94 1.113.94h3.662c.337 0 .658-.139.887-.388.229-.249.337-.585.288-.907-.931-11.037-8.054-16.195-21.002-16.195-12.018 0-19.168 5.082-19.168 13.602 0 8.757 6.782 11.177 17.592 12.273 12.916 1.313 13.807 3.274 13.807 5.704 0 4.423-3.558 6.281-11.932 6.281z"/></svg>'
-    },
-    {
-      name: 'React & Next.js',
-      level: 98,
-      color: '#61DAFB',
-      description: 'Building scalable web apps',
-      svgIcon: '<svg viewBox="0 0 128 128" width="60" height="60"><g fill="#61DAFB"><circle cx="64" cy="64" r="11.4"/><path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 16-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.4-.7 4.7-1.4 6.9-2.3 12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3-.3 2.1-.8 4.3-1.4 6.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13 7.4-7.3 14.9-12.3 21-12.3 1.3 0 2.5.3 3.5.9z"/></g></svg>'
     },
     {
       name: 'MongoDB',
@@ -287,6 +280,16 @@ const Portfolio = () => {
       thumbnail: '/images/codio-cert.png',
       isImage: true
     },
+    {
+      id: 10,
+      title: 'Node.js Essential Training',
+      issuer: 'LinkedIn',
+      icon: '🟢',
+      color: '#339933',
+      skills: 'Node.js, Server-side JavaScript',
+      pdfLink: '/certificates/nodejs-essential-training.pdf',
+      thumbnail: '/certificates/nodejs-essential-training.pdf'
+    },
   ];
 
   return (
@@ -382,7 +385,7 @@ const Portfolio = () => {
             </div>
             <div className="metric-divider"></div>
             <div className="metric-item">
-              <div className="metric-value">10+</div>
+              <div className="metric-value">11+</div>
               <div className="metric-label">Certifications</div>
             </div>
             <div className="metric-divider"></div>
