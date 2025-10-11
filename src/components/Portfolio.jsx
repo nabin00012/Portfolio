@@ -196,7 +196,8 @@ const Portfolio = () => {
       color: '#0078D4',
       skills: 'Machine Learning, Azure, NLP, Generative AI',
       pdfLink: '/certificates/azure-ai-essentials.pdf',
-      thumbnail: '/certificates/azure-ai-essentials.pdf'
+      thumbnail: '/images/azure-ai-essentials-cert.png',
+      isImage: true
     },
     {
       id: 2,
@@ -206,7 +207,8 @@ const Portfolio = () => {
       color: '#0A66C2',
       skills: 'Azure AI Foundry',
       pdfLink: '/certificates/azure-ml-workloads.pdf',
-      thumbnail: '/certificates/azure-ml-workloads.pdf'
+      thumbnail: '/images/azure-ml-workloads-cert.png',
+      isImage: true
     },
     {
       id: 3,
@@ -216,7 +218,8 @@ const Portfolio = () => {
       color: '#2088FF',
       skills: 'GitHub, CI/CD',
       pdfLink: '/certificates/github-actions.pdf',
-      thumbnail: '/certificates/github-actions.pdf'
+      thumbnail: '/images/github-actions-cert.png',
+      isImage: true
     },
     {
       id: 4,
@@ -226,7 +229,8 @@ const Portfolio = () => {
       color: '#2088FF',
       skills: 'GitHub',
       pdfLink: '/certificates/github-code-search.pdf',
-      thumbnail: '/certificates/github-code-search.pdf'
+      thumbnail: '/images/github-code-search-cert.png',
+      isImage: true
     },
     {
       id: 5,
@@ -236,7 +240,8 @@ const Portfolio = () => {
       color: '#2088FF',
       skills: 'GitHub Copilot, AI Coding',
       pdfLink: '/certificates/github-copilot.pdf',
-      thumbnail: '/certificates/github-copilot.pdf'
+      thumbnail: '/images/github-copilot-cert.png',
+      isImage: true
     },
     {
       id: 6,
@@ -246,7 +251,8 @@ const Portfolio = () => {
       color: '#0A66C2',
       skills: 'GitHub, Project Management',
       pdfLink: '/certificates/github-project-mgmt.pdf',
-      thumbnail: '/certificates/github-project-mgmt.pdf'
+      thumbnail: '/images/github-project-mgmt-cert.png',
+      isImage: true
     },
     {
       id: 7,
@@ -256,7 +262,8 @@ const Portfolio = () => {
       color: '#0A66C2',
       skills: 'SEO, Web Optimization',
       pdfLink: '/certificates/seo-foundations.pdf',
-      thumbnail: '/certificates/seo-foundations.pdf'
+      thumbnail: '/images/seo-foundations-cert.png',
+      isImage: true
     },
     {
       id: 8,
@@ -288,7 +295,8 @@ const Portfolio = () => {
       color: '#339933',
       skills: 'Node.js, Server-side JavaScript',
       pdfLink: '/certificates/nodejs-essential-training.pdf',
-      thumbnail: '/certificates/nodejs-essential-training.pdf'
+      thumbnail: '/images/nodejs-essential-training-cert.png',
+      isImage: true
     },
   ];
 
