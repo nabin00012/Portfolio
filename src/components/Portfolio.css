@@ -1877,7 +1877,7 @@ body {
     border: none;
     pointer-events: none;
     display: block;
-    transform: scale(1.5);
+    transform: scale(2.2);
   }
   
   .cert-content {
@@ -2105,7 +2105,7 @@ body {
     border: none;
     pointer-events: none;
     display: block;
-    transform: scale(1.8);
+    transform: scale(2.5);
   }
   
   .cert-content {
