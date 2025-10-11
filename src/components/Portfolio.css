@@ -1885,7 +1885,7 @@ body {
     pointer-events: none;
     display: block;
     object-fit: contain;
-    transform: scale(1.35);
+    transform: scale(1.35) translateY(8%);
   }
   
   .cert-content {
@@ -2117,7 +2117,7 @@ body {
     pointer-events: none;
     display: block;
     object-fit: contain;
-    transform: scale(1.45);
+    transform: scale(1.45) translateY(8%);
   }
   
   .cert-content {
