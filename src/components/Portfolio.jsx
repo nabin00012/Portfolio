@@ -74,7 +74,7 @@ const Portfolio = () => {
       title: 'MERN-CI-CD-Kube',
       description: 'A production-grade real-time chat application built with the MERN stack, featuring automated CI/CD pipelines via GitHub Actions and containerized Kubernetes deployment. Demonstrates enterprise-level DevOps practices with seamless scaling and zero-downtime deployments.',
   // Use provided project thumbnail image
-  image: '/images/Mern-thumbnail.png',
+  image: '/images/Mern-thumbnail.png?v=2',
       tags: ['MERN Stack', 'Kubernetes', 'Docker', 'GitHub Actions', 'CI/CD'],
       year: '2024',
   github: 'https://github.com/nabin00012/mern-ci-cd-kube',
@@ -94,7 +94,7 @@ const Portfolio = () => {
       id: 4,
       title: 'FluxTrade',
       description: 'A decentralized crypto trading platform built with MERN + Solidity. Peer-to-peer token swaps with on-chain smart contracts, real-time prices, and wallet integration. Trustless, no middlemen.',
-      image: '/images/fluxtrade.png',
+  image: '/images/fluxtrade.png?v=2',
       tags: ['MERN', 'Solidity', 'Web3', 'Smart Contracts', 'Real-time'],
       year: '2025',
       github: 'https://github.com/nabin00012/fluxtrade',
