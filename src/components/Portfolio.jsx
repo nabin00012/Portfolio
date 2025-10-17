@@ -90,6 +90,16 @@ const Portfolio = () => {
       github: 'https://github.com/nabin00012/secure-fin-data',
       live: '#',
     },
+    {
+      id: 4,
+      title: 'FluxTrade',
+      description: 'A decentralized crypto trading platform built with MERN + Solidity. Peer-to-peer token swaps with on-chain smart contracts, real-time prices, and wallet integration. Trustless, no middlemen.',
+      image: '/images/fluxtrade.png',
+      tags: ['MERN', 'Solidity', 'Web3', 'Smart Contracts', 'Real-time'],
+      year: '2025',
+      github: 'https://github.com/nabin00012/fluxtrade',
+      live: 'https://flux-trade-nine.vercel.app/',
+    },
   ];
 
   // Skills data with SVG icons
