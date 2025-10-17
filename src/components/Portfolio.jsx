@@ -76,8 +76,8 @@ const Portfolio = () => {
       image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80',
       tags: ['MERN Stack', 'Kubernetes', 'Docker', 'GitHub Actions', 'CI/CD'],
       year: '2024',
-      github: 'https://github.com/nabin00012/mern-ci-cd-kube',
-      live: '#',
+  github: 'https://github.com/nabin00012/mern-ci-cd-kube',
+  live: 'https://mern-ci-cd-kube.vercel.app/',
     },
     {
       id: 3,
