@@ -555,27 +555,53 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 4: Certifications */}
+      {/* Section 4: Certificates & Achievements */}
       <section
         className="certifications-section"
         ref={(el) => (sectionsRef.current[4] = el)}
       >
         <div className="section-header">
           <h2 className="section-title">
-            Awards &
-            <span className="gradient-title"> Certifications</span>
+            Certificates &
+            <span className="gradient-title"> Achievements</span>
           </h2>
           <p className="section-subtitle">
-            Industry-recognized credentials and achievements
+            Industry-recognized credentials and leaderboard highlights
           </p>
         </div>
 
         <div className="certifications-grid">
+          {/* Coding Ninjas Leaderboard Achievement Card */}
+          <div className="cert-card" style={{ animationDelay: `0s` }}>
+            <div className="cert-thumbnail-wrapper">
+              <img src="/images/codingninjas-leaderboard.png" alt="Coding Ninjas Leaderboard" className="cert-thumbnail" style={{objectFit: 'cover', background: '#fff'}} />
+              <div className="cert-thumbnail-overlay">
+                <span className="view-full-text">View Leaderboard</span>
+              </div>
+            </div>
+            <div className="cert-content">
+              <div className="cert-icon-wrapper" style={{ background: '#FF660020', borderColor: '#FF6600' }}>
+                <span className="cert-icon" style={{ color: '#FF6600' }}>🏆</span>
+              </div>
+              <h3 className="cert-title">Coding Ninjas Code360 Leaderboard</h3>
+              <p className="cert-issuer">Ranked 1st • Code360 Weekly Challenge</p>
+              <p className="cert-skills">Competitive Programming, Problem Solving, Consistency</p>
+              <a href="/images/codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
+                  <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
+                </svg>
+                View Leaderboard
+              </a>
+            </div>
+            <div className="cert-shine"></div>
+          </div>
+          {/* Existing certificates */}
           {certifications.map((cert, index) => (
             <div
               key={cert.id}
               className="cert-card"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              style={{ animationDelay: `${(index + 1) * 0.15}s` }}
             >
               {/* Certificate Thumbnail Preview */}
               <div className="cert-thumbnail-wrapper">
