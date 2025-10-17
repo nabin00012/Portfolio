@@ -382,9 +382,7 @@ const Portfolio = () => {
           </h1>
 
           <p className="hero-subtitle">
-            BTech CS Student at Jain University
-            <br />
-            Full-Stack Developer | 3D Web Enthusiast
+            Building cool web apps — MERN Stack Developer
           </p>
 
           <div className="hero-cta">
@@ -788,7 +786,7 @@ const Portfolio = () => {
 
       {/* Footer */}
       <footer className="footer-section">
-        <p>© 2025 Nabin Chapagain | BTech CS @ Jain University | Built with React, Three.js & ❤️</p>
+        <p>© 2025 Nabin Chapagain | Building fast, delightful web experiences — MERN & Web3</p>
         <div className="footer-links">
           <a href="https://github.com/nabin00012" target="_blank" rel="noopener noreferrer">GitHub</a>
           <span>•</span>
