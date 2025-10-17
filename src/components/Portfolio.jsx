@@ -73,7 +73,8 @@ const Portfolio = () => {
       id: 2,
       title: 'MERN-CI-CD-Kube',
       description: 'A production-grade real-time chat application built with the MERN stack, featuring automated CI/CD pipelines via GitHub Actions and containerized Kubernetes deployment. Demonstrates enterprise-level DevOps practices with seamless scaling and zero-downtime deployments.',
-      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80',
+  // Use live site's favicon/thumbnail so it always reflects the deployed app
+  image: 'https://s2.googleusercontent.com/s2/favicons?domain=mern-ci-cd-kube.vercel.app',
       tags: ['MERN Stack', 'Kubernetes', 'Docker', 'GitHub Actions', 'CI/CD'],
       year: '2024',
   github: 'https://github.com/nabin00012/mern-ci-cd-kube',
