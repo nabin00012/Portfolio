@@ -373,7 +373,7 @@ const Portfolio = () => {
           <p className="hero-subtitle">
             BTech CS Student at Jain University
             <br />
-            Full-Stack Developer | 3D Web Enthusiast | #1 on Coding Ninjas
+            Full-Stack Developer | 3D Web Enthusiast
           </p>
 
           <div className="hero-cta">
@@ -387,11 +387,6 @@ const Portfolio = () => {
           </div>
 
           <div className="hero-metrics">
-            <div className="metric-item">
-              <div className="metric-value">#1</div>
-              <div className="metric-label">Coding Ninjas Rank</div>
-            </div>
-            <div className="metric-divider"></div>
             <div className="metric-item">
               <div className="metric-value">11+</div>
               <div className="metric-label">Certifications</div>
@@ -749,12 +744,7 @@ const Portfolio = () => {
               </svg>
               LinkedIn
             </a>
-            <a href="https://www.codingninjas.com/studio/profile/nabin00012" target="_blank" rel="noopener noreferrer" className="social-link">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" />
-              </svg>
-              Coding Ninjas #1
-            </a>
+            {/* Coding Ninjas link removed as requested */}
           </div>
         </div>
       </section>
