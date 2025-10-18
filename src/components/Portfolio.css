@@ -863,7 +863,7 @@ body {
 .about-photo-wrapper {
   flex-shrink: 0;
   position: relative;
-  margin-top: -80px; /* POSITIONED HIGHER! */
+  margin-top: -40px; /* POSITIONED SLIGHTLY HIGHER - PERFECT! */
   animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 

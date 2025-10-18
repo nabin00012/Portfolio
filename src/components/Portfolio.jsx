@@ -547,7 +547,7 @@ const Portfolio = () => {
             <div className="about-photo-container">
               {/* Animated Hexagon Border */}
               <div className="hexagon-border"></div>
-              
+
               {/* Orbiting Dots */}
               <div className="orbit-container">
                 {[...Array(8)].map((_, i) => (
@@ -558,7 +558,7 @@ const Portfolio = () => {
                   ></div>
                 ))}
               </div>
-              
+
               {/* Photo with Effects */}
               <div className="about-photo-inner">
                 <div className="about-photo-glow-1"></div>
@@ -570,14 +570,14 @@ const Portfolio = () => {
                 />
                 <div className="photo-shine"></div>
               </div>
-              
+
               {/* CREATIVE Animated SVG Geometric Shapes */}
               <div className="floating-shapes">
                 {/* Morphing Triangle with Dash Animation */}
                 <div className="float-shape shape-1">
                   <svg viewBox="0 0 100 100" className="shape-svg">
                     <polygon points="50,10 90,90 10,90" fill="none" stroke="#00ff88" strokeWidth="3" strokeDasharray="5 5">
-                      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite"/>
+                      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite" />
                     </polygon>
                   </svg>
                 </div>
@@ -585,7 +585,7 @@ const Portfolio = () => {
                 <div className="float-shape shape-2">
                   <svg viewBox="0 0 100 100" className="shape-svg">
                     <circle cx="50" cy="50" r="35" fill="none" stroke="#00d4ff" strokeWidth="3">
-                      <animate attributeName="r" values="30;38;30" dur="3s" repeatCount="indefinite"/>
+                      <animate attributeName="r" values="30;38;30" dur="3s" repeatCount="indefinite" />
                     </circle>
                   </svg>
                 </div>
@@ -593,7 +593,7 @@ const Portfolio = () => {
                 <div className="float-shape shape-3">
                   <svg viewBox="0 0 100 100" className="shape-svg">
                     <rect x="15" y="15" width="70" height="70" fill="none" stroke="#ff0080" strokeWidth="3" strokeDasharray="10 5">
-                      <animate attributeName="stroke-dashoffset" from="0" to="30" dur="2.5s" repeatCount="indefinite"/>
+                      <animate attributeName="stroke-dashoffset" from="0" to="30" dur="2.5s" repeatCount="indefinite" />
                     </rect>
                   </svg>
                 </div>
@@ -601,12 +601,12 @@ const Portfolio = () => {
                 <div className="float-shape shape-4">
                   <svg viewBox="0 0 100 100" className="shape-svg">
                     <polygon points="50,10 90,40 75,85 25,85 10,40" fill="none" stroke="#00d4ff" strokeWidth="3" strokeDasharray="8 4">
-                      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite"/>
+                      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite" />
                     </polygon>
                   </svg>
                 </div>
               </div>
-              
+
               {/* Floating Code Symbols - CREATIVE! */}
               <div className="code-symbols">
                 <span className="code-symbol symbol-1">&lt;/&gt;</span>
