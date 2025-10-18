@@ -339,6 +339,48 @@ const Portfolio = () => {
     },
   ];
 
+  // Education data - REAL EDUCATION
+  const education = [
+    {
+      id: 1,
+      institution: 'Jain (Deemed-to-be University), Bangalore',
+      degree: 'Bachelor of Technology (B.Tech)',
+      field: 'Computer Science and Engineering',
+      period: 'Sep 2023 - Present',
+      grade: '8.4/10 CGPA',
+      logo: '/images/jain.png',
+      description: 'Currently pursuing a B.Tech in Computer Science, focusing on core programming, data structures, and software engineering principles. I am blending advanced theoretical knowledge with extensive hands-on MERN stack development experience.',
+      color: '#FF6B00',
+      achievements: [
+        'CodeCommons project recognized by Jain University',
+        'Focus on Full-Stack Development & DevOps',
+        'Active participation in tech communities'
+      ]
+    },
+    {
+      id: 2,
+      institution: 'Deep Boarding High School, Nepal',
+      degree: 'Higher Secondary Education',
+      field: 'Science (10+2)',
+      period: '2021 - 2023',
+      grade: '3.34/4.0 CGPA',
+      logo: '/images/deep.png',
+      description: 'Completed my higher secondary education in Science, building a strong foundation in core sciences and developing initial analytical and critical thinking skills.',
+      color: '#4CAF50'
+    },
+    {
+      id: 3,
+      institution: 'Deep Boarding High School, Nepal',
+      degree: 'Secondary School Certificate',
+      field: 'SLC/SEE',
+      period: '2008 - 2021',
+      grade: '3.5/4.0 CGPA',
+      logo: '/images/deep.png',
+      description: 'Successfully achieved my secondary education certificate, demonstrating strong performance across all subjects.',
+      color: '#2196F3'
+    }
+  ];
+
   return (
     <div className="portfolio-wrapper">
       {/* Three.js 3D Background */}
@@ -346,7 +388,7 @@ const Portfolio = () => {
 
       {/* Section Progress Indicator */}
       <div className="section-progress">
-        {['Hero', 'About', 'Experience', 'Skills', 'Certs', 'Projects', 'Contact'].map((label, index) => (
+        {['Hero', 'About', 'Education', 'Experience', 'Skills', 'Certs', 'Projects', 'Contact'].map((label, index) => (
           <button
             key={index}
             className={`progress-dot ${currentSection === index ? 'active' : ''}`}
@@ -377,9 +419,10 @@ const Portfolio = () => {
         </div>
         <div className="nav-menu">
           <button onClick={() => scrollToSection(1)} className="nav-item">About</button>
-          <button onClick={() => scrollToSection(2)} className="nav-item">Experience</button>
-          <button onClick={() => scrollToSection(5)} className="nav-item">Projects</button>
-          <button onClick={() => scrollToSection(6)} className="nav-item">Contact</button>
+          <button onClick={() => scrollToSection(2)} className="nav-item">Education</button>
+          <button onClick={() => scrollToSection(3)} className="nav-item">Experience</button>
+          <button onClick={() => scrollToSection(6)} className="nav-item">Projects</button>
+          <button onClick={() => scrollToSection(7)} className="nav-item">Contact</button>
         </div>
         <a
           href="/resume-nabin-chapagain.pdf"
@@ -481,10 +524,133 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 2: Experience Timeline */}
+      {/* Section 2: Education */}
+      <section
+        className="education-section"
+        ref={(el) => (sectionsRef.current[2] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Education
+          </h2>
+          <p className="section-subtitle">
+            My education has been a journey of self-discovery and growth. My educational details are as follows.
+          </p>
+        </div>
+
+        <div className="education-timeline">
+          {education.map((edu, index) => (
+            <div
+              key={edu.id}
+              className="education-card"
+              data-index={index}
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <div className="education-card-inner">
+                {/* Animated Border Gradient */}
+                <div className="education-card-border" style={{ '--border-color': edu.color }}></div>
+                
+                {/* Floating Particles Effect */}
+                <div className="education-particles">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="particle" style={{ 
+                      animationDelay: `${i * 0.3}s`,
+                      '--particle-color': edu.color 
+                    }}></div>
+                  ))}
+                </div>
+
+                {/* Content */}
+                <div className="education-content">
+                  {/* Logo Section with Glow */}
+                  <div className="education-logo-wrapper">
+                    <div className="education-logo-glow" style={{ background: edu.color }}></div>
+                    <div className="education-logo-container">
+                      <img 
+                        src={edu.logo} 
+                        alt={edu.institution}
+                        className="education-logo"
+                      />
+                    </div>
+                    {/* Animated Ring */}
+                    <svg className="education-ring" viewBox="0 0 100 100">
+                      <circle 
+                        cx="50" 
+                        cy="50" 
+                        r="48" 
+                        fill="none" 
+                        stroke={edu.color}
+                        strokeWidth="2"
+                        strokeDasharray="301.593"
+                        className="ring-circle"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Details Section */}
+                  <div className="education-details">
+                    <div className="education-header">
+                      <h3 className="education-institution">{edu.institution}</h3>
+                      <span className="education-period">{edu.period}</span>
+                    </div>
+                    
+                    <div className="education-degree-wrapper">
+                      <h4 className="education-degree">{edu.degree}</h4>
+                      <p className="education-field">{edu.field}</p>
+                    </div>
+
+                    {/* Grade Badge with Animation */}
+                    <div className="education-grade-badge" style={{ borderColor: edu.color }}>
+                      <div className="grade-icon">🎓</div>
+                      <div className="grade-details">
+                        <span className="grade-label">Grade</span>
+                        <span className="grade-value" style={{ color: edu.color }}>{edu.grade}</span>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="education-description">{edu.description}</p>
+
+                    {/* Achievements (if any) */}
+                    {edu.achievements && (
+                      <div className="education-achievements">
+                        <h5 className="achievements-title">Key Highlights:</h5>
+                        <ul className="achievements-list">
+                          {edu.achievements.map((achievement, idx) => (
+                            <li key={idx} className="achievement-item">
+                              <div className="achievement-bullet" style={{ background: edu.color }}></div>
+                              <span>{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Decorative Corner Elements */}
+                <div className="corner-decoration top-left" style={{ borderColor: edu.color }}></div>
+                <div className="corner-decoration top-right" style={{ borderColor: edu.color }}></div>
+                <div className="corner-decoration bottom-left" style={{ borderColor: edu.color }}></div>
+                <div className="corner-decoration bottom-right" style={{ borderColor: edu.color }}></div>
+              </div>
+
+              {/* Connecting Line for Timeline */}
+              {index < education.length - 1 && (
+                <div className="timeline-connector">
+                  <div className="connector-line" style={{ background: `linear-gradient(180deg, ${edu.color} 0%, ${education[index + 1].color} 100%)` }}></div>
+                  <div className="connector-dot" style={{ background: edu.color }}></div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 3: Experience Timeline */}
       <section
         className="experience-section"
-        ref={(el) => (sectionsRef.current[2] = el)}
+        ref={(el) => (sectionsRef.current[3] = el)}
       >
         <div className="section-header">
           <h2 className="section-title">
@@ -540,10 +706,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 3: NEW Skills Section - 4 Category Grid */}
+      {/* Section 4: NEW Skills Section - 4 Category Grid */}
       <section
         className="skills-modern-section"
-        ref={(el) => (sectionsRef.current[3] = el)}
+        ref={(el) => (sectionsRef.current[4] = el)}
       >
         <div className="section-header">
           <h2 className="section-title">
@@ -587,10 +753,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 4: Certificates & Achievements */}
+      {/* Section 5: Certificates & Achievements */}
       <section
         className="certifications-section"
-        ref={(el) => (sectionsRef.current[4] = el)}
+        ref={(el) => (sectionsRef.current[5] = el)}
       >
         <div className="section-header">
           <h2 className="section-title">
@@ -673,10 +839,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 5: Projects - Horizontal Scroll */}
+      {/* Section 6: Projects - Horizontal Scroll */}
       <section
         className="projects-section"
-        ref={(el) => (sectionsRef.current[5] = el)}
+        ref={(el) => (sectionsRef.current[6] = el)}
       >
         <div className="projects-header">
           <h2 className="section-title">
@@ -741,10 +907,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 6: Contact */}
+      {/* Section 7: Contact */}
       <section
         className="contact-section"
-        ref={(el) => (sectionsRef.current[6] = el)}
+        ref={(el) => (sectionsRef.current[7] = el)}
       >
         <div className="contact-container">
           <h2 className="section-title">
