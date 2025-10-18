@@ -1,109 +1,88 @@
 import React, { useEffect, useState } from 'react';
 
 const GitHubActivity = ({ username = 'nabin00012' }) => {
-    const [contributions, setContributions] = useState([]);
-    const [totalContributions, setTotalContributions] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const [currentStreak, setCurrentStreak] = useState(0);
-    const [longestStreak, setLongestStreak] = useState(0);
+  const [contributions, setContributions] = useState([]);
+  const [totalContributions, setTotalContributions] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetchGitHubContributions();
-    }, []);
+  useEffect(() => {
+    fetchGitHubContributions();
+  }, []);
 
-    const fetchGitHubContributions = async () => {
-        try {
-            // Fetch contribution data by scraping GitHub's contribution graph
-            // This is a workaround since GitHub doesn't provide a public API for full contribution history
-            const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
-            const data = await response.json();
+  const fetchGitHubContributions = async () => {
+    try {
+      // Get current year
+      const currentYear = new Date().getFullYear();
+      
+      // Fetch contribution data for current year only (Jan-Dec)
+      // Add cache-busting parameter to force fresh data
+      const cacheBuster = new Date().getTime();
+      const response = await fetch(
+        `https://github-contributions-api.jogruber.de/v4/${username}?y=${currentYear}&_=${cacheBuster}`,
+        { cache: 'no-store' }
+      );
+      const data = await response.json();
 
-            if (!data || !data.contributions) {
-                throw new Error('Failed to fetch contributions');
-            }
+      if (!data || !data.contributions) {
+        throw new Error('Failed to fetch contributions');
+      }
 
-            // Process contribution data
-            const contributionData = [];
-            let total = 0;
-
-            data.contributions.forEach(contribution => {
-                const date = new Date(contribution.date);
-                contributionData.push({
-                    date: contribution.date,
-                    count: contribution.count,
-                    day: date.getDay(),
-                    month: date.getMonth(),
-                });
-                total += contribution.count;
-            });
-
-            // Calculate streaks
-            let current = 0;
-            let longest = 0;
-            let temp = 0;
-
-            // Reverse to count from today backwards
-            const reversedData = [...contributionData].reverse();
-
-            reversedData.forEach((day, index) => {
-                if (day.count > 0) {
-                    temp++;
-                    if (index === 0 || (index > 0 && reversedData[index - 1].count > 0)) {
-                        if (temp > longest) longest = temp;
-                    }
-                } else {
-                    if (index === 0) {
-                        current = 0;
-                    } else if (temp > 0 && index > 0) {
-                        if (current === 0) current = temp;
-                    }
-                    temp = 0;
-                }
-            });
-
-            // Set current streak (consecutive days from today going back)
-            let streakCount = 0;
-            for (let i = reversedData.length - 1; i >= 0; i--) {
-                if (reversedData[i].count > 0) {
-                    streakCount++;
-                } else if (i !== reversedData.length - 1) { // Allow today to be 0
-                    break;
-                }
-            }
-
-            setContributions(contributionData);
-            setTotalContributions(total);
-            setCurrentStreak(streakCount);
-            setLongestStreak(longest);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching GitHub contributions:', error);
-            // Fallback to mock data for demo
-            generateMockData();
+      // Filter to only show Jan 1 - Dec 31 of current year
+      const yearStart = new Date(currentYear, 0, 1);
+      const yearEnd = new Date(currentYear, 11, 31);
+      
+      const contributionData = [];
+      let total = 0;
+      
+      data.contributions.forEach(contribution => {
+        const date = new Date(contribution.date);
+        
+        // Only include dates from current year
+        if (date >= yearStart && date <= yearEnd) {
+          contributionData.push({
+            date: contribution.date,
+            count: contribution.count,
+            day: date.getDay(),
+            month: date.getMonth(),
+          });
+          total += contribution.count;
         }
-    };
+      });
 
-    const generateMockData = () => {
-        const mockData = [];
-        let total = 0;
-        for (let i = 364; i >= 0; i--) {
-            const date = new Date();
-            date.setDate(date.getDate() - i);
-            const count = Math.random() > 0.7 ? Math.floor(Math.random() * 10) : 0;
-            total += count;
-            mockData.push({
-                date: date.toISOString().split('T')[0],
-                count,
-                day: date.getDay(),
-                month: date.getMonth(),
-            });
-        }
-        setContributions(mockData);
-        setTotalContributions(total);
-        setCurrentStreak(5);
-        setLongestStreak(21);
-        setLoading(false);
-    };
+      setContributions(contributionData);
+      setTotalContributions(total);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching GitHub contributions:', error);
+      // Fallback to mock data for demo
+      generateMockData();
+    }
+  };
+
+  const generateMockData = () => {
+    const currentYear = new Date().getFullYear();
+    const mockData = [];
+    let total = 0;
+    
+    // Generate data for current year only (Jan 1 - today)
+    const yearStart = new Date(currentYear, 0, 1);
+    const today = new Date();
+    
+    for (let d = new Date(yearStart); d <= today; d.setDate(d.getDate() + 1)) {
+      const count = Math.random() > 0.7 ? Math.floor(Math.random() * 10) : 0;
+      total += count;
+      mockData.push({
+        date: d.toISOString().split('T')[0],
+        count,
+        day: d.getDay(),
+        month: d.getMonth(),
+      });
+    }
+    
+    setContributions(mockData);
+    setTotalContributions(total);
+    setLoading(false);
+  };
 
     const getContributionLevel = (count) => {
         if (count === 0) return 0;
@@ -164,35 +143,21 @@ const GitHubActivity = ({ username = 'nabin00012' }) => {
                     <span className="activity-icon">📊</span>
                     Days I Code
                 </h3>
-                <p className="github-activity-subtitle">
-                    My GitHub contribution activity over the past year
-                </p>
+        <p className="github-activity-subtitle">
+          My GitHub contribution activity for {new Date().getFullYear()}
+        </p>
             </div>
 
-            {/* Stats Cards */}
-            <div className="github-stats-grid">
-                <div className="stat-card">
-                    <div className="stat-icon">🔥</div>
-                    <div className="stat-content">
-                        <div className="stat-value">{currentStreak}</div>
-                        <div className="stat-label">Current Streak</div>
-                    </div>
-                </div>
-                <div className="stat-card">
-                    <div className="stat-icon">⚡</div>
-                    <div className="stat-content">
-                        <div className="stat-value">{longestStreak}</div>
-                        <div className="stat-label">Longest Streak</div>
-                    </div>
-                </div>
-                <div className="stat-card">
-                    <div className="stat-icon">💻</div>
-                    <div className="stat-content">
-                        <div className="stat-value">{totalContributions}</div>
-                        <div className="stat-label">Total Contributions</div>
-                    </div>
-                </div>
-            </div>
+      {/* Stats Cards */}
+      <div className="github-stats-grid github-stats-single">
+        <div className="stat-card stat-card-large">
+          <div className="stat-icon">💻</div>
+          <div className="stat-content">
+            <div className="stat-value">{totalContributions}</div>
+            <div className="stat-label">Total Contributions in {new Date().getFullYear()}</div>
+          </div>
+        </div>
+      </div>
 
             {/* Contribution Graph */}
             <div className="contribution-graph-wrapper">

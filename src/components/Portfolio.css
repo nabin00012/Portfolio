@@ -3815,6 +3815,13 @@ body {
   margin-bottom: 50px;
 }
 
+.github-stats-single {
+  grid-template-columns: 1fr;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .stat-card {
   display: flex;
   align-items: center;
@@ -3848,6 +3855,23 @@ body {
 
 .stat-card:hover::before {
   opacity: 1;
+}
+
+.stat-card-large {
+  padding: 40px;
+  justify-content: center;
+}
+
+.stat-card-large .stat-icon {
+  font-size: 4rem;
+}
+
+.stat-card-large .stat-value {
+  font-size: 3.5rem;
+}
+
+.stat-card-large .stat-label {
+  font-size: 1.1rem;
 }
 
 .stat-icon {
