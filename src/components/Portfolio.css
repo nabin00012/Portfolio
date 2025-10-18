@@ -817,7 +817,312 @@ body {
   box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
 }
 
-/* ==================== CRAZY SKILLS SECTION ==================== */
+/* ==================== NEW MODERN SKILLS SECTION ==================== */
+.skills-modern-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 60px;
+  background: linear-gradient(180deg, rgba(10, 10, 26, 0.8) 0%, rgba(26, 10, 46, 0.9) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-modern-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  animation: pulse-bg 8s ease-in-out infinite;
+}
+
+@keyframes pulse-bg {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.skills-category-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-category-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 40px;
+  backdrop-filter: blur(30px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.05), transparent);
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  transition: transform 0.8s ease;
+}
+
+.skill-category-card:hover::before {
+  transform: translateX(100%) translateY(100%) rotate(45deg);
+}
+
+.skill-category-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 255, 136, 0.4);
+  transform: translateY(-10px);
+  box-shadow: 0 30px 80px rgba(0, 255, 136, 0.2),
+              0 0 100px rgba(0, 212, 255, 0.1);
+}
+
+.category-header {
+  margin-bottom: 35px;
+  text-align: center;
+  position: relative;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  border-radius: 10px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.tech-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 160px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.tech-badge-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    rgba(0, 255, 136, 0) 0%, 
+    var(--tech-color, #00ff88) 50%, 
+    rgba(0, 255, 136, 0) 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.tech-badge-item:hover::before {
+  transform: scaleX(1);
+}
+
+.tech-badge-item:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15),
+              0 0 40px rgba(0, 212, 255, 0.1);
+}
+
+.tech-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.3));
+}
+
+.tech-icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tech-badge-item:hover .tech-icon {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 25px rgba(0, 255, 136, 0.6));
+  animation: float-tech 2s ease-in-out infinite;
+}
+
+@keyframes float-tech {
+  0%, 100% { transform: scale(1.2) translateY(0) rotate(5deg); }
+  50% { transform: scale(1.2) translateY(-10px) rotate(5deg); }
+}
+
+.tech-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.tech-badge-item:hover .tech-name {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Mobile Responsive for New Skills */
+@media (max-width: 1024px) {
+  .skills-category-grid {
+    gap: 25px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .skill-category-card {
+    padding: 30px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-modern-section {
+    padding: 80px 30px;
+  }
+
+  .skills-category-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+  }
+
+  .skill-category-card {
+    padding: 25px 20px;
+  }
+
+  .category-title {
+    font-size: 1.4rem;
+  }
+
+  .tech-badge-item {
+    padding: 20px 15px;
+    max-width: none;
+  }
+
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tech-name {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-modern-section {
+    padding: 60px 20px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .skill-category-card {
+    padding: 20px 15px;
+    border-radius: 18px;
+  }
+
+  .category-title {
+    font-size: 1.2rem;
+  }
+
+  .category-header {
+    margin-bottom: 25px;
+  }
+
+  .tech-badge-item {
+    padding: 15px 10px;
+    gap: 10px;
+  }
+
+  .tech-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .tech-name {
+    font-size: 0.75rem;
+  }
+}
+
+/* ==================== LEGACY CRAZY SKILLS SECTION (KEEP FOR BACKUP) ==================== */
 .skills-crazy-section {
   min-height: 100vh;
   display: flex;
