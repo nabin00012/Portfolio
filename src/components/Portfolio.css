@@ -854,14 +854,15 @@ body {
 .about-content {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  gap: 80px;
-  align-items: center;
+  text-align: center;
 }
 
-/* ==================== ABOUT PHOTO WITH CRAZY EFFECTS ==================== */
-.about-photo-wrapper {
-  flex-shrink: 0;
+/* ==================== ABOUT PHOTO WITH CRAZY EFFECTS - MOVED UP ==================== */
+.about-photo-hero-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
 .about-photo-container {
@@ -1008,57 +1009,74 @@ body {
   transform: translateX(100%) translateY(100%) rotate(45deg);
 }
 
-/* Floating Tech Icons */
-.floating-icons {
+/* Floating Geometric Shapes - WAY COOLER! */
+.floating-shapes {
   position: absolute;
   inset: 0;
   z-index: 11;
   pointer-events: none;
 }
 
-.float-icon {
+.float-shape {
   position: absolute;
-  font-size: 2rem;
-  animation: floatIcon 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.6));
+  width: 50px;
+  height: 50px;
+  animation: floatShape 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.8));
 }
 
-.icon-1 { 
-  top: 10%; 
-  left: -10%; 
+.shape-svg {
+  width: 100%;
+  height: 100%;
+  animation: rotateShape 6s linear infinite;
+}
+
+.shape-1 { 
+  top: -5%; 
+  left: -8%; 
   animation-delay: 0s;
 }
 
-.icon-2 { 
-  top: 80%; 
-  left: -15%; 
-  animation-delay: 0.75s;
+.shape-2 { 
+  top: 75%; 
+  left: -12%; 
+  animation-delay: 1s;
 }
 
-.icon-3 { 
-  top: 10%; 
-  right: -10%; 
-  animation-delay: 1.5s;
+.shape-3 { 
+  top: -5%; 
+  right: -8%; 
+  animation-delay: 2s;
 }
 
-.icon-4 { 
-  top: 80%; 
-  right: -15%; 
-  animation-delay: 2.25s;
+.shape-4 { 
+  top: 75%; 
+  right: -12%; 
+  animation-delay: 3s;
 }
 
-@keyframes floatIcon {
-  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-  50% { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+@keyframes floatShape {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: translateY(-30px) scale(1.2); 
+    opacity: 1; 
+  }
+}
+
+@keyframes rotateShape {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.float-shape:hover {
+  animation-play-state: paused;
 }
 
 /* Mobile Responsive for About Photo */
 @media (max-width: 1024px) {
-  .about-content {
-    flex-direction: column;
-    gap: 50px;
-  }
-  
   .about-photo-container {
     width: 280px;
     height: 280px;
@@ -1095,8 +1113,9 @@ body {
     transform: rotate(var(--orbit-angle)) translateX(130px) translateY(-50%);
   }
   
-  .float-icon {
-    font-size: 1.5rem;
+  .float-shape {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -1112,14 +1131,15 @@ body {
     transform: rotate(var(--orbit-angle)) translateX(110px) translateY(-50%);
   }
   
-  .float-icon {
-    font-size: 1.2rem;
+  .float-shape {
+    width: 35px;
+    height: 35px;
   }
 }
 
 .about-text {
-  flex: 1;
-  max-width: 700px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .about-paragraph {

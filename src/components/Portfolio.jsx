@@ -531,6 +531,65 @@ const Portfolio = () => {
         className="about-section"
         ref={(el) => (sectionsRef.current[1] = el)}
       >
+        {/* About Photo with Crazy Effects - MOVED UP */}
+        <div className="about-photo-hero-wrapper">
+          <div className="about-photo-container">
+            {/* Animated Hexagon Border */}
+            <div className="hexagon-border"></div>
+            
+            {/* Orbiting Dots */}
+            <div className="orbit-container">
+              {[...Array(8)].map((_, i) => (
+                <div 
+                  key={i} 
+                  className="orbit-dot" 
+                  style={{ '--orbit-angle': `${i * 45}deg`, '--orbit-delay': `${i * 0.3}s` }}
+                ></div>
+              ))}
+            </div>
+            
+            {/* Photo with Effects */}
+            <div className="about-photo-inner">
+              <div className="about-photo-glow-1"></div>
+              <div className="about-photo-glow-2"></div>
+              <img 
+                src="/images/nabin.png" 
+                alt="Nabin Chapagain" 
+                className="about-photo"
+              />
+              <div className="photo-shine"></div>
+            </div>
+            
+            {/* Animated Geometric Shapes Instead of Emojis */}
+            <div className="floating-shapes">
+              {/* Triangle */}
+              <div className="float-shape shape-1">
+                <svg viewBox="0 0 100 100" className="shape-svg">
+                  <polygon points="50,10 90,90 10,90" fill="none" stroke="#00ff88" strokeWidth="3"/>
+                </svg>
+              </div>
+              {/* Circle */}
+              <div className="float-shape shape-2">
+                <svg viewBox="0 0 100 100" className="shape-svg">
+                  <circle cx="50" cy="50" r="35" fill="none" stroke="#00d4ff" strokeWidth="3"/>
+                </svg>
+              </div>
+              {/* Square */}
+              <div className="float-shape shape-3">
+                <svg viewBox="0 0 100 100" className="shape-svg">
+                  <rect x="15" y="15" width="70" height="70" fill="none" stroke="#ff0080" strokeWidth="3"/>
+                </svg>
+              </div>
+              {/* Pentagon */}
+              <div className="float-shape shape-4">
+                <svg viewBox="0 0 100 100" className="shape-svg">
+                  <polygon points="50,10 90,40 75,85 25,85 10,40" fill="none" stroke="#00ff88" strokeWidth="3"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="section-header">
           <h2 className="section-title">
             About
@@ -542,45 +601,6 @@ const Portfolio = () => {
         </div>
 
         <div className="about-content">
-          {/* About Photo with Crazy Effects */}
-          <div className="about-photo-wrapper">
-            <div className="about-photo-container">
-              {/* Animated Hexagon Border */}
-              <div className="hexagon-border"></div>
-
-              {/* Orbiting Dots */}
-              <div className="orbit-container">
-                {[...Array(8)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="orbit-dot"
-                    style={{ '--orbit-angle': `${i * 45}deg`, '--orbit-delay': `${i * 0.3}s` }}
-                  ></div>
-                ))}
-              </div>
-
-              {/* Photo with Effects */}
-              <div className="about-photo-inner">
-                <div className="about-photo-glow-1"></div>
-                <div className="about-photo-glow-2"></div>
-                <img
-                  src="/images/nabin.png"
-                  alt="Nabin Chapagain"
-                  className="about-photo"
-                />
-                <div className="photo-shine"></div>
-              </div>
-
-              {/* Tech Stack Icons Floating Around */}
-              <div className="floating-icons">
-                <div className="float-icon icon-1">⚛️</div>
-                <div className="float-icon icon-2">💚</div>
-                <div className="float-icon icon-3">🔷</div>
-                <div className="float-icon icon-4">⚡</div>
-              </div>
-            </div>
-          </div>
-
           <div className="about-text">
             <p className="about-paragraph">
               Hi there! I'm a web enthusiast who loves turning ideas into real, working applications.
