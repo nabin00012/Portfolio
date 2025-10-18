@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import ThreeBackground from './ThreeBackground';
+import GitHubActivity from './GitHubActivity';
 import './Portfolio.css';
 
 const Portfolio = () => {
@@ -428,7 +429,7 @@ const Portfolio = () => {
 
       {/* Section Progress Indicator */}
       <div className="section-progress">
-        {['Hero', 'About', 'Experience', 'Skills', 'Certs', 'Projects', 'Education', 'Contact'].map((label, index) => (
+        {['Hero', 'About', 'Experience', 'Skills', 'Certs', 'Projects', 'Education', 'Activity', 'Contact'].map((label, index) => (
           <button
             key={index}
             className={`progress-dot ${currentSection === index ? 'active' : ''}`}
@@ -461,7 +462,7 @@ const Portfolio = () => {
           <button onClick={() => scrollToSection(1)} className="nav-item">About</button>
           <button onClick={() => scrollToSection(2)} className="nav-item">Experience</button>
           <button onClick={() => scrollToSection(5)} className="nav-item">Projects</button>
-          <button onClick={() => scrollToSection(7)} className="nav-item">Contact</button>
+          <button onClick={() => scrollToSection(8)} className="nav-item">Contact</button>
         </div>
         <a
           href="/resume-nabin-chapagain.pdf"
@@ -500,7 +501,7 @@ const Portfolio = () => {
               <span>View Selected Work</span>
               <div className="button-glow"></div>
             </button>
-            <button className="secondary-button" onClick={() => scrollToSection(7)}>
+            <button className="secondary-button" onClick={() => scrollToSection(8)}>
               <span>Get In Touch</span>
             </button>
           </div>
@@ -1021,10 +1022,18 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 7: Contact */}
+      {/* Section 7: GitHub Activity - Days I Code */}
+      <section
+        className="github-activity-section"
+        ref={(el) => (sectionsRef.current[7] = el)}
+      >
+        <GitHubActivity username="nabin00012" />
+      </section>
+
+      {/* Section 8: Contact */}
       <section
         className="contact-section"
-        ref={(el) => (sectionsRef.current[7] = el)}
+        ref={(el) => (sectionsRef.current[8] = el)}
       >
         <div className="contact-container">
           <h2 className="section-title">

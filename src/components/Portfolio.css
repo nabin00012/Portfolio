@@ -3723,3 +3723,506 @@ body {
 }
 
 /* Skills grid media queries are defined above */
+
+/* ==================== GITHUB ACTIVITY SECTION ==================== */
+.github-activity-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.github-activity-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.github-activity-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+}
+
+.github-activity-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.github-activity-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.activity-icon {
+  font-size: 3rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.github-activity-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+/* Stats Grid */
+.github-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 136, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5));
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #00ff88;
+  line-height: 1;
+  margin-bottom: 5px;
+  background: linear-gradient(135deg, #00ff88, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Contribution Graph */
+.contribution-graph-wrapper {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contribution-graph {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+/* Month Labels */
+.month-labels {
+  grid-column: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+
+.month-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Day Labels */
+.day-labels {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 10px;
+  padding-top: 4px;
+}
+
+.day-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* Contribution Grid */
+.contribution-grid {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* Custom scrollbar for contribution grid */
+.contribution-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.contribution-grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.contribution-grid::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.3);
+  border-radius: 3px;
+}
+
+.contribution-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.5);
+}
+
+.contribution-week {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contribution-day {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contribution-day .day-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  filter: blur(4px);
+}
+
+/* Contribution Levels */
+.contribution-day.level-0 {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.contribution-day.level-1 {
+  background: rgba(0, 255, 136, 0.2);
+}
+
+.contribution-day.level-1 .day-glow {
+  background: rgba(0, 255, 136, 0.3);
+}
+
+.contribution-day.level-2 {
+  background: rgba(0, 255, 136, 0.4);
+}
+
+.contribution-day.level-2 .day-glow {
+  background: rgba(0, 255, 136, 0.5);
+}
+
+.contribution-day.level-3 {
+  background: rgba(0, 255, 136, 0.6);
+}
+
+.contribution-day.level-3 .day-glow {
+  background: rgba(0, 255, 136, 0.7);
+}
+
+.contribution-day.level-4 {
+  background: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.contribution-day.level-4 .day-glow {
+  background: #00ff88;
+}
+
+/* Hover Effects */
+.contribution-day:hover {
+  transform: scale(1.4);
+  z-index: 10;
+  border-color: rgba(0, 255, 136, 0.5);
+}
+
+.contribution-day:hover .day-glow {
+  opacity: 1;
+}
+
+/* Legend */
+.contribution-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  margin: 0 4px;
+}
+
+/* Loading State */
+.github-activity-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  min-height: 400px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #00ff88;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.github-activity-loading p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .github-activity-container {
+    padding: 40px;
+  }
+
+  .github-activity-title {
+    font-size: 2.5rem;
+  }
+
+  .github-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .github-activity-section {
+    padding: 80px 20px;
+  }
+
+  .github-activity-container {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .github-activity-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .activity-icon {
+    font-size: 2.5rem;
+  }
+
+  .github-activity-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .stat-card {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .stat-icon {
+    font-size: 2.5rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .contribution-graph-wrapper {
+    padding: 20px;
+  }
+
+  .contribution-day {
+    width: 11px;
+    height: 11px;
+  }
+
+  .month-label,
+  .day-label {
+    font-size: 0.65rem;
+  }
+
+  .contribution-grid {
+    gap: 3px;
+  }
+
+  .contribution-week {
+    gap: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .github-activity-container {
+    padding: 20px 15px;
+  }
+
+  .github-activity-title {
+    font-size: 1.75rem;
+  }
+
+  .github-stats-grid {
+    gap: 15px;
+  }
+
+  .stat-card {
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stat-icon {
+    font-size: 2rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  .contribution-graph-wrapper {
+    padding: 15px;
+  }
+
+  .contribution-day {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+  }
+
+  .contribution-grid {
+    gap: 2px;
+  }
+
+  .contribution-week {
+    gap: 2px;
+  }
+
+  .day-labels {
+    display: none;
+  }
+
+  .month-labels {
+    margin-bottom: 5px;
+  }
+
+  .contribution-legend {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
