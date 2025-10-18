@@ -531,65 +531,6 @@ const Portfolio = () => {
         className="about-section"
         ref={(el) => (sectionsRef.current[1] = el)}
       >
-        {/* About Photo with Crazy Effects - MOVED UP */}
-        <div className="about-photo-hero-wrapper">
-          <div className="about-photo-container">
-            {/* Animated Hexagon Border */}
-            <div className="hexagon-border"></div>
-            
-            {/* Orbiting Dots */}
-            <div className="orbit-container">
-              {[...Array(8)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="orbit-dot" 
-                  style={{ '--orbit-angle': `${i * 45}deg`, '--orbit-delay': `${i * 0.3}s` }}
-                ></div>
-              ))}
-            </div>
-            
-            {/* Photo with Effects */}
-            <div className="about-photo-inner">
-              <div className="about-photo-glow-1"></div>
-              <div className="about-photo-glow-2"></div>
-              <img 
-                src="/images/nabin.png" 
-                alt="Nabin Chapagain" 
-                className="about-photo"
-              />
-              <div className="photo-shine"></div>
-            </div>
-            
-            {/* Animated Geometric Shapes Instead of Emojis */}
-            <div className="floating-shapes">
-              {/* Triangle */}
-              <div className="float-shape shape-1">
-                <svg viewBox="0 0 100 100" className="shape-svg">
-                  <polygon points="50,10 90,90 10,90" fill="none" stroke="#00ff88" strokeWidth="3"/>
-                </svg>
-              </div>
-              {/* Circle */}
-              <div className="float-shape shape-2">
-                <svg viewBox="0 0 100 100" className="shape-svg">
-                  <circle cx="50" cy="50" r="35" fill="none" stroke="#00d4ff" strokeWidth="3"/>
-                </svg>
-              </div>
-              {/* Square */}
-              <div className="float-shape shape-3">
-                <svg viewBox="0 0 100 100" className="shape-svg">
-                  <rect x="15" y="15" width="70" height="70" fill="none" stroke="#ff0080" strokeWidth="3"/>
-                </svg>
-              </div>
-              {/* Pentagon */}
-              <div className="float-shape shape-4">
-                <svg viewBox="0 0 100 100" className="shape-svg">
-                  <polygon points="50,10 90,40 75,85 25,85 10,40" fill="none" stroke="#00ff88" strokeWidth="3"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="section-header">
           <h2 className="section-title">
             About
@@ -601,6 +542,81 @@ const Portfolio = () => {
         </div>
 
         <div className="about-content">
+          {/* SUPER CREATIVE Photo - LEFT SIDE, Positioned Higher */}
+          <div className="about-photo-wrapper">
+            <div className="about-photo-container">
+              {/* Animated Hexagon Border */}
+              <div className="hexagon-border"></div>
+              
+              {/* Orbiting Dots */}
+              <div className="orbit-container">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="orbit-dot"
+                    style={{ '--orbit-angle': `${i * 45}deg`, '--orbit-delay': `${i * 0.3}s` }}
+                  ></div>
+                ))}
+              </div>
+              
+              {/* Photo with Effects */}
+              <div className="about-photo-inner">
+                <div className="about-photo-glow-1"></div>
+                <div className="about-photo-glow-2"></div>
+                <img
+                  src="/images/nabin.png"
+                  alt="Nabin Chapagain"
+                  className="about-photo"
+                />
+                <div className="photo-shine"></div>
+              </div>
+              
+              {/* CREATIVE Animated SVG Geometric Shapes */}
+              <div className="floating-shapes">
+                {/* Morphing Triangle with Dash Animation */}
+                <div className="float-shape shape-1">
+                  <svg viewBox="0 0 100 100" className="shape-svg">
+                    <polygon points="50,10 90,90 10,90" fill="none" stroke="#00ff88" strokeWidth="3" strokeDasharray="5 5">
+                      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite"/>
+                    </polygon>
+                  </svg>
+                </div>
+                {/* Pulsing Circle */}
+                <div className="float-shape shape-2">
+                  <svg viewBox="0 0 100 100" className="shape-svg">
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#00d4ff" strokeWidth="3">
+                      <animate attributeName="r" values="30;38;30" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                  </svg>
+                </div>
+                {/* Rotating Square with Dashes */}
+                <div className="float-shape shape-3">
+                  <svg viewBox="0 0 100 100" className="shape-svg">
+                    <rect x="15" y="15" width="70" height="70" fill="none" stroke="#ff0080" strokeWidth="3" strokeDasharray="10 5">
+                      <animate attributeName="stroke-dashoffset" from="0" to="30" dur="2.5s" repeatCount="indefinite"/>
+                    </rect>
+                  </svg>
+                </div>
+                {/* Pentagon with Path Animation */}
+                <div className="float-shape shape-4">
+                  <svg viewBox="0 0 100 100" className="shape-svg">
+                    <polygon points="50,10 90,40 75,85 25,85 10,40" fill="none" stroke="#00d4ff" strokeWidth="3" strokeDasharray="8 4">
+                      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite"/>
+                    </polygon>
+                  </svg>
+                </div>
+              </div>
+              
+              {/* Floating Code Symbols - CREATIVE! */}
+              <div className="code-symbols">
+                <span className="code-symbol symbol-1">&lt;/&gt;</span>
+                <span className="code-symbol symbol-2">{'{}'}</span>
+                <span className="code-symbol symbol-3">( )</span>
+                <span className="code-symbol symbol-4">[ ]</span>
+              </div>
+            </div>
+          </div>
+
           <div className="about-text">
             <p className="about-paragraph">
               Hi there! I'm a web enthusiast who loves turning ideas into real, working applications.

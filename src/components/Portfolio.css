@@ -852,17 +852,19 @@ body {
 }
 
 .about-content {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  text-align: center;
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
 }
 
-/* ==================== ABOUT PHOTO WITH CRAZY EFFECTS - MOVED UP ==================== */
-.about-photo-hero-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 60px;
-  animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+/* ==================== ABOUT PHOTO - LEFT SIDE, POSITIONED HIGHER ==================== */
+.about-photo-wrapper {
+  flex-shrink: 0;
+  position: relative;
+  margin-top: -80px; /* POSITIONED HIGHER! */
+  animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
 .about-photo-container {
@@ -1075,8 +1077,86 @@ body {
   animation-play-state: paused;
 }
 
+/* Floating Code Symbols - SUPER CREATIVE! */
+.code-symbols {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.code-symbol {
+  position: absolute;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: #00ff88;
+  opacity: 0;
+  animation: floatCodeSymbol 5s ease-in-out infinite;
+  text-shadow: 0 0 20px currentColor;
+}
+
+.symbol-1 {
+  top: 15%;
+  left: -25%;
+  animation-delay: 0s;
+  color: #00ff88;
+}
+
+.symbol-2 {
+  bottom: 15%;
+  left: -20%;
+  animation-delay: 1.25s;
+  color: #00d4ff;
+}
+
+.symbol-3 {
+  top: 20%;
+  right: -25%;
+  animation-delay: 2.5s;
+  color: #ff0080;
+}
+
+.symbol-4 {
+  bottom: 20%;
+  right: -20%;
+  animation-delay: 3.75s;
+  color: #00ff88;
+}
+
+@keyframes floatCodeSymbol {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-20px) scale(1.2) rotate(15deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.8) rotate(30deg);
+  }
+}
+
 /* Mobile Responsive for About Photo */
 @media (max-width: 1024px) {
+  .about-content {
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .about-photo-wrapper {
+    margin-top: 0; /* Reset on tablet/mobile */
+  }
+  
   .about-photo-container {
     width: 280px;
     height: 280px;
@@ -1138,8 +1218,9 @@ body {
 }
 
 .about-text {
-  max-width: 800px;
-  margin: 0 auto;
+  flex: 1;
+  max-width: 700px;
+  text-align: left;
 }
 
 .about-paragraph {
