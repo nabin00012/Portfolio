@@ -136,17 +136,96 @@ const GitHubActivity = ({ username = 'nabin00012' }) => {
         );
     }
 
-    return (
-        <div className="github-activity-container">
-            <div className="github-activity-header">
-                <h3 className="github-activity-title">
-                    <span className="activity-icon">📊</span>
-                    Days I Code
-                </h3>
-        <p className="github-activity-subtitle">
+  return (
+    <div className="github-activity-container">
+      {/* Crazy Background Effects */}
+      <div className="github-crazy-bg">
+        <div className="crazy-gradient-1"></div>
+        <div className="crazy-gradient-2"></div>
+        <div className="crazy-gradient-3"></div>
+      </div>
+      
+      {/* Floating Particles */}
+      <div className="github-particles">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i} 
+            className="particle-dot"
+            style={{
+              '--particle-x': `${Math.random() * 100}%`,
+              '--particle-y': `${Math.random() * 100}%`,
+              '--particle-delay': `${Math.random() * 3}s`,
+              '--particle-duration': `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Matrix Rain Effect */}
+      <div className="matrix-rain">
+        {[...Array(15)].map((_, i) => (
+          <div 
+            key={i} 
+            className="matrix-column"
+            style={{
+              left: `${i * 7}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${5 + Math.random() * 5}s`
+            }}
+          >
+            {[...Array(10)].map((_, j) => (
+              <span key={j} className="matrix-char">
+                {String.fromCharCode(33 + Math.floor(Math.random() * 93))}
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div className="github-activity-header">
+        <div className="title-wrapper-crazy">
+          <div className="title-glow-effect"></div>
+          <h3 className="github-activity-title github-title-crazy">
+            <span className="activity-icon activity-icon-crazy">💻</span>
+            <span className="title-text-animated">
+              <span className="title-word">Days</span>
+              <span className="title-word">I</span>
+              <span className="title-word">Code</span>
+            </span>
+            <span className="activity-icon activity-icon-crazy">🔥</span>
+          </h3>
+          
+          {/* Live Update Badge */}
+          <div className="live-update-badge">
+            <span className="pulse-dot"></span>
+            <span className="live-text">Auto-updates on every git push</span>
+            <svg className="live-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+        
+        <p className="github-activity-subtitle github-subtitle-crazy">
           My GitHub contribution activity for {new Date().getFullYear()}
         </p>
-            </div>
+
+        {/* Visit GitHub Button */}
+        <a 
+          href="https://github.com/nabin00012" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="github-visit-btn"
+        >
+          <span className="btn-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </span>
+          <span className="btn-text">Visit My GitHub</span>
+          <span className="btn-arrow">→</span>
+          <div className="btn-glow"></div>
+        </a>
+      </div>
 
       {/* Stats Cards */}
       <div className="github-stats-grid github-stats-single">
