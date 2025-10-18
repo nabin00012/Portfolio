@@ -144,6 +144,21 @@ const Portfolio = () => {
         name: 'CSS3',
         icon: '<svg viewBox="0 0 128 128"><path fill="#1572B6" d="M19.67 26l8.069 90.493 36.206 10.05 36.307-10.063L108.33 26z"/><path fill="#33A9DC" d="M64 28.063v91.663l29.381-8.144 8.106-83.52z"/><path fill="#fff" d="M64 52.865H45.788L44.53 38.771h19.47V25.012H28.763l.33 3.692 3.382 37.927H64zm0 35.744l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/><path fill="#EBEBEB" d="M63.952 52.865v13.759h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.692h-3.708zm0-27.853v13.759h32.611l.276-3.092.628-6.978.329-3.692z"/></svg>',
         color: '#1572B6'
+      },
+      {
+        name: 'Tailwind CSS',
+        icon: '<svg viewBox="0 0 128 128"><path fill="#06B6D4" d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0"/></svg>',
+        color: '#06B6D4'
+      },
+      {
+        name: 'Solidity',
+        icon: '<svg viewBox="0 0 128 128"><path fill="#363636" d="M87.5 31.3L75.9 52.5h22.8L87.5 31.3z"/><path opacity=".45" fill="#363636" d="M87.5 31.3L75.9 52.5h22.8L87.5 31.3z"/><path fill="#363636" d="M75.9 52.5L64.3 73.7h22.8L75.9 52.5z"/><path opacity=".6" fill="#363636" d="M75.9 52.5L64.3 73.7h22.8L75.9 52.5z"/><path fill="#363636" d="M64.3 73.7L52.7 94.9h22.8L64.3 73.7z"/><path opacity=".45" fill="#363636" d="M64.3 73.7L52.7 94.9h22.8L64.3 73.7z"/><path fill="#363636" d="M40.5 31.3L28.9 52.5h22.8L40.5 31.3z"/><path opacity=".8" fill="#fff" d="M40.5 31.3L28.9 52.5h22.8L40.5 31.3z"/><path fill="#363636" d="M28.9 52.5L17.3 73.7h22.8L28.9 52.5z"/><path opacity=".45" fill="#fff" d="M28.9 52.5L17.3 73.7h22.8L28.9 52.5z"/><path fill="#363636" d="M17.3 73.7L5.7 94.9h22.8L17.3 73.7z"/><path opacity=".8" fill="#fff" d="M17.3 73.7L5.7 94.9h22.8L17.3 73.7z"/></svg>',
+        color: '#363636'
+      },
+      {
+        name: 'Web3',
+        icon: '<svg viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#FF6B00"/><path fill="#fff" d="M89.6 45.2L64 32.3 38.4 45.2v25.6l25.6 12.9 25.6-12.9V45.2zm-51.2 6.4l25.6-12.9 25.6 12.9-25.6 12.9-25.6-12.9zm0 19.2l25.6 12.9 25.6-12.9-25.6-12.9-25.6 12.9z"/></svg>',
+        color: '#FF6B00'
       }
     ],
     'Databases & APIs': [
@@ -188,6 +203,31 @@ const Portfolio = () => {
         name: 'VS Code',
         icon: '<svg viewBox="0 0 128 128"><path fill="#0065A9" d="M95.953 3.293l-31.11 28.52-23.897-18.57c-1.645-1.28-3.953-1.248-5.58.076L4.285 37.41c-2.164 1.763-2.164 4.97 0 6.734l12.336 10.06-12.336 10.06c-2.164 1.764-2.164 4.971 0 6.734l31.08 25.092c1.628 1.324 3.936 1.356 5.58.076l23.898-18.57 31.11 28.52c2.797 2.565 7.281 1.495 8.722-2.084l15.818-39.275c1.44-3.58 1.44-7.622 0-11.202L104.675 13.278c-1.44-3.58-5.925-4.65-8.722-2.085z"/></svg>',
         color: '#007ACC'
+      },
+      {
+        name: 'Docker',
+        icon: '<svg viewBox="0 0 128 128"><path fill="#2496ED" d="M124.8 52.1c-4.3-2.5-10-2.8-14.8-1.4-.6-5.2-4-9.7-8-12.9l-1.6-1.3-1.4 1.6c-2.7 3.1-3.5 8.3-3.1 12.4.3 2.9 1.2 5.9 3 8.3-1.4.8-2.9 1.9-4.3 2.4-2.8 1-5.9 2-8.9 2H79V49H66V24H51v12H26v13H13v14H1.8l.2 1.5c.5 6.4 3.1 12 7.7 16.8 5.2 5.4 12.8 8 23.6 8 16.6 0 29.5-7.2 35.8-19.8 7.6.1 15.2-1.9 19.8-5.8 2.4 1.7 5.8 2.8 9.4 2.8 2.7 0 5.8-.6 8.7-2.1l1.8-1.1-1-1.8c-1.1-2-1.9-4.2-2.3-6.4 3.8-2.6 6.2-6.3 6.2-10.9.1-3.7-1.8-7.3-5.3-9.6zM85 52h9v10h-9zm0-12h9v10h-9zm-13 12h9v10h-9zm0-12h9v10h-9zm-13 12h9v10h-9zm0-12h9v10h-9zm0-12h9v10h-9zM46 52h9v10h-9zm0-12h9v10h-9zm-13 0h9v10h-9zm-13 12h9v10h-9z"/></svg>',
+        color: '#2496ED'
+      },
+      {
+        name: 'Supabase',
+        icon: '<svg viewBox="0 0 128 128"><path fill="#3ECF8E" d="M73.7 127.2c-3.1 2.2-7.4.5-8.1-3.1L54 69.8h51.2c4.6 0 7.3 5.3 4.6 9L73.7 127.2z"/><path fill="#3ECF8E" opacity=".6" d="M54.3.8c3.1-2.2 7.4-.5 8.1 3.1L74 58.2H22.8c-4.6 0-7.3-5.3-4.6-9L54.3.8z"/></svg>',
+        color: '#3ECF8E'
+      },
+      {
+        name: 'AWS',
+        icon: '<svg viewBox="0 0 128 128"><path fill="#FF9900" d="M38.089 77.466l-11.4 4.313s-2.54-.427-3.464-2.114c-.924-1.687.64-3.54 2.114-4.16 1.473-.618 4.627-1.213 7.668-.515 3.04.698 5.082 2.476 5.082 2.476zm21.831-1.258l-15.494 5.837s-2.848-.855-3.928-2.827c-1.08-1.974.77-3.927 2.544-4.72 1.774-.794 5.405-1.458 9.03-.618 3.624.84 7.848 2.328 7.848 2.328zm-10.928-9.93l-13.395 5.043s-2.456-.823-3.387-2.667c-.932-1.845.666-3.726 2.205-4.472 1.538-.745 4.697-1.375 7.842-.574 3.145.8 6.735 2.67 6.735 2.67zM70.054 58.2L50.78 64.5s-3.395-1.02-4.657-3.363c-1.262-2.343.947-4.636 2.727-5.484 1.78-.848 5.637-1.62 10.12-.742 4.482.878 11.084 3.288 11.084 3.288zM16.477 16.388l.08-.021s2.004 2.367 3.457 4.815c1.454 2.448 2.664 5.373 2.664 5.373s-2.987-1.773-5.69-4.263c-2.702-2.49-3.58-4.562-3.58-4.562l3.069-1.342zm1.003 8.316l-.068.021s1.704 2.878 2.874 5.69c1.17 2.81 2.005 5.96 2.005 5.96s-3.217-2.25-5.974-5.374c-2.757-3.125-3.38-5.242-3.38-5.242l4.543-1.055zm6.482 50.817l-.078.033s-2.054-2.48-3.553-5.033c-1.5-2.553-2.776-5.661-2.776-5.661s3.106 1.918 5.916 4.498c2.81 2.58 3.668 4.75 3.668 4.75l-3.177 1.413zm21.308-54.876L25.328 27.08s-2.124-2.787-3.096-5.543c-.971-2.757-1.18-5.957-1.18-5.957s3.75 1.608 6.805 4.195c3.056 2.588 4.213 4.654 4.213 4.654l10.2-6.547zM65.657 20.822l-20.214 7.614s-2.656-3.488-3.879-7.035c-1.223-3.548-1.478-7.483-1.478-7.483s4.71 2.018 8.546 5.267c3.836 3.25 5.286 5.845 5.286 5.845l11.739-4.208zm8.874 22.344l-22.684 8.545s-3.006-3.944-4.386-7.954c-1.38-4.01-1.67-8.463-1.67-8.463s5.323 2.284 9.66 5.958c4.337 3.674 5.975 6.61 5.975 6.61l13.105-4.696zM128 70.258s-1.82.773-4.344 1.447c-2.524.674-5.535 1.216-9.154 1.46-7.238.488-17.046-.524-27.968-4.205C76.616 65.38 67.653 61.24 58.955 56.8c-8.698-4.44-17.655-9.406-24.42-14.552C27.77 37.1 22.518 32.095 19.88 29.01c-2.64-3.085-4.198-5.278-4.198-5.278l1.156-2.489s2.402 2.11 5.432 4.778c3.03 2.668 6.97 5.92 11.844 9.37 4.874 3.45 10.703 7.076 16.95 10.545 12.493 6.938 28.07 13.423 42.667 17.117 7.298 1.848 14.38 3.053 20.697 3.407 3.158.177 6.135.156 8.753-.074 1.31-.115 2.53-.273 3.617-.478 1.087-.204 2.04-.447 2.826-.707 1.573-.52 2.376-1.006 2.376-1.006V70.26z"/></svg>',
+        color: '#FF9900'
+      },
+      {
+        name: 'Railway',
+        icon: '<svg viewBox="0 0 128 128"><rect fill="#000" width="128" height="128" rx="20"/><path fill="#fff" d="M64 20L20 64l44 44 44-44-44-44zm0 12l32 32-32 32-32-32 32-32z"/></svg>',
+        color: '#000000'
+      },
+      {
+        name: 'Render',
+        icon: '<svg viewBox="0 0 128 128"><path fill="#46E3B7" d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm32.5 89.3L64 108.8 31.5 89.3V38.7L64 19.2l32.5 19.5v51.6z"/><path fill="#46E3B7" d="M64 32L40 46v28l24 14 24-14V46L64 32zm0 8l16 9.6v19.2L64 78.4 48 68.8V49.6L64 40z"/></svg>',
+        color: '#46E3B7'
       }
     ],
     'Authentication & Services': [
@@ -388,7 +428,7 @@ const Portfolio = () => {
 
       {/* Section Progress Indicator */}
       <div className="section-progress">
-        {['Hero', 'About', 'Education', 'Experience', 'Skills', 'Certs', 'Projects', 'Contact'].map((label, index) => (
+        {['Hero', 'About', 'Experience', 'Skills', 'Certs', 'Projects', 'Education', 'Contact'].map((label, index) => (
           <button
             key={index}
             className={`progress-dot ${currentSection === index ? 'active' : ''}`}
@@ -419,9 +459,8 @@ const Portfolio = () => {
         </div>
         <div className="nav-menu">
           <button onClick={() => scrollToSection(1)} className="nav-item">About</button>
-          <button onClick={() => scrollToSection(2)} className="nav-item">Education</button>
-          <button onClick={() => scrollToSection(3)} className="nav-item">Experience</button>
-          <button onClick={() => scrollToSection(6)} className="nav-item">Projects</button>
+          <button onClick={() => scrollToSection(2)} className="nav-item">Experience</button>
+          <button onClick={() => scrollToSection(5)} className="nav-item">Projects</button>
           <button onClick={() => scrollToSection(7)} className="nav-item">Contact</button>
         </div>
         <a
@@ -524,10 +563,270 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Section 2: Education */}
+      {/* Section 2: Experience Timeline */}
+      <section
+        className="experience-section"
+        ref={(el) => (sectionsRef.current[2] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Career
+            <span className="gradient-title"> Journey</span>
+          </h2>
+          <p className="section-subtitle">
+            My professional path in building digital products
+          </p>
+        </div>
+
+        <div className="timeline-container">
+          {experience.map((job, index) => (
+            <div key={job.id} className="timeline-item" data-index={index}>
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <div className="timeline-header">
+                  <h3 className="job-role">{job.role}</h3>
+                  <span className="job-period">{job.period}</span>
+                </div>
+                <h4 className="job-company">{job.company}</h4>
+                {job.highlight && (
+                  <div className="job-highlight">{job.highlight}</div>
+                )}
+                <p className="job-description">{job.description}</p>
+                {job.achievements && (
+                  <div className="job-achievements">
+                    <h5 className="achievements-title">Key Achievements:</h5>
+                    <ul className="achievements-list">
+                      {job.achievements.map((achievement, idx) => (
+                        <li key={idx}>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <div className="job-tech">
+                  {job.technologies.map((tech, idx) => (
+                    <span key={idx} className="tech-badge">{tech}</span>
+                  ))}
+                </div>
+                {job.offerLetter && (
+                  <a href="/offer-letter-octanet.pdf" target="_blank" rel="noopener noreferrer" className="offer-letter-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
+                      <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                    View Offer Letter
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 3: NEW Skills Section - 4 Category Grid */}
+      <section
+        className="skills-modern-section"
+        ref={(el) => (sectionsRef.current[3] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Skills
+          </h2>
+          <p className="section-subtitle">
+            Here are some of my skills, which I have been working on web development
+          </p>
+        </div>
+
+        <div className="skills-category-grid">
+          {Object.entries(skillsData).map(([category, techList], catIndex) => (
+            <div
+              key={category}
+              className="skill-category-card"
+              style={{ animationDelay: `${catIndex * 0.15}s` }}
+            >
+              <div className="category-header">
+                <h3 className="category-title">{category}</h3>
+              </div>
+              <div className="tech-grid">
+                {techList.map((tech, techIndex) => (
+                  <div
+                    key={tech.name}
+                    className="tech-badge-item"
+                    style={{
+                      animationDelay: `${(catIndex * 0.15) + (techIndex * 0.05)}s`
+                    }}
+                  >
+                    <div
+                      className="tech-icon"
+                      dangerouslySetInnerHTML={{ __html: tech.icon }}
+                      style={{ '--tech-color': tech.color }}
+                    />
+                    <span className="tech-name">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 4: Certificates & Achievements */}
+      <section
+        className="certifications-section"
+        ref={(el) => (sectionsRef.current[4] = el)}
+      >
+        <div className="section-header">
+          <h2 className="section-title">
+            Certificates &
+            <span className="gradient-title"> Achievements</span>
+          </h2>
+          <p className="section-subtitle">
+            Industry-recognized credentials and leaderboard highlights
+          </p>
+        </div>
+
+        <div className="certifications-grid">
+          {/* Coding Ninjas Leaderboard Achievement Card */}
+          <div className="cert-card" style={{ animationDelay: `0s` }}>
+            <div className="cert-thumbnail-wrapper">
+              <img src="/images/codingninjas-leaderboard.png" alt="Coding Ninjas Leaderboard" className="cert-thumbnail" style={{ objectFit: 'cover', background: '#fff' }} />
+              <div className="cert-thumbnail-overlay">
+                <span className="view-full-text">View Leaderboard</span>
+              </div>
+            </div>
+            <div className="cert-content">
+              <div className="cert-icon-wrapper" style={{ background: '#FF660020', borderColor: '#FF6600' }}>
+                <span className="cert-icon" style={{ color: '#FF6600' }}>🏆</span>
+              </div>
+              <h3 className="cert-title">Coding Ninjas Code360 Leaderboard</h3>
+              <p className="cert-issuer">Ranked 1st • Code360 Weekly Challenge</p>
+              <p className="cert-skills">Competitive Programming, Problem Solving, Consistency</p>
+              <a href="/images/codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
+                  <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
+                </svg>
+                View Leaderboard
+              </a>
+            </div>
+            <div className="cert-shine"></div>
+          </div>
+          {/* Existing certificates */}
+          {certifications.map((cert, index) => (
+            <div
+              key={cert.id}
+              className="cert-card"
+              style={{ animationDelay: `${(index + 1) * 0.15}s` }}
+            >
+              {/* Certificate Thumbnail Preview */}
+              <div className="cert-thumbnail-wrapper">
+                {cert.isImage ? (
+                  <img src={cert.thumbnail} alt={cert.title} className="cert-thumbnail" />
+                ) : (
+                  <iframe
+                    src={`${cert.thumbnail}#toolbar=0&navpanes=0&scrollbar=0`}
+                    className="cert-thumbnail-pdf"
+                    title={cert.title}
+                  />
+                )}
+                <div className="cert-thumbnail-overlay">
+                  <span className="view-full-text">Click to view full certificate</span>
+                </div>
+              </div>
+
+              <div className="cert-content">
+                <div className="cert-icon-wrapper" style={{ background: `${cert.color}20`, borderColor: cert.color }}>
+                  <span className="cert-icon" style={{ color: cert.color }}>{cert.icon}</span>
+                </div>
+                <h3 className="cert-title">{cert.title}</h3>
+                <p className="cert-issuer">{cert.issuer}</p>
+                <p className="cert-skills">{cert.skills}</p>
+
+                <a href={cert.pdfLink} target="_blank" rel="noopener noreferrer" className="cert-view-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
+                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                  View Certificate
+                </a>
+              </div>
+              <div className="cert-shine"></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 5: Projects - Horizontal Scroll */}
+      <section
+        className="projects-section"
+        ref={(el) => (sectionsRef.current[5] = el)}
+      >
+        <div className="projects-header">
+          <h2 className="section-title">
+            Selected
+            <span className="gradient-title"> Work</span>
+          </h2>
+          <p className="projects-hint">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            Scroll horizontally
+          </p>
+        </div>
+
+        <div className="projects-horizontal-scroll">
+          {projects.map((project, index) => (
+            <div key={project.id} className="project-card-horizontal">
+              <div className="project-number">0{index + 1}</div>
+              <div className="project-year">{project.year}</div>
+
+              <div className="project-image-container">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-image"
+                  loading="lazy"
+                />
+                <div className="project-image-overlay">
+                  <div className="project-overlay-buttons">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-view-button">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      <span>GitHub</span>
+                    </a>
+                    {project.live !== '#' && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-view-button live-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="project-info">
+                {project.recognition && (
+                  <div className="project-recognition">{project.recognition}</div>
+                )}
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="project-tags">
+                  {project.tags.map((tag, idx) => (
+                    <span key={idx} className="project-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 6: Education */}
       <section
         className="education-section"
-        ref={(el) => (sectionsRef.current[2] = el)}
+        ref={(el) => (sectionsRef.current[6] = el)}
       >
         <div className="section-header">
           <h2 className="section-title">
@@ -642,266 +941,6 @@ const Portfolio = () => {
                   <div className="connector-dot" style={{ background: edu.color }}></div>
                 </div>
               )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 3: Experience Timeline */}
-      <section
-        className="experience-section"
-        ref={(el) => (sectionsRef.current[3] = el)}
-      >
-        <div className="section-header">
-          <h2 className="section-title">
-            Career
-            <span className="gradient-title"> Journey</span>
-          </h2>
-          <p className="section-subtitle">
-            My professional path in building digital products
-          </p>
-        </div>
-
-        <div className="timeline-container">
-          {experience.map((job, index) => (
-            <div key={job.id} className="timeline-item" data-index={index}>
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <div className="timeline-header">
-                  <h3 className="job-role">{job.role}</h3>
-                  <span className="job-period">{job.period}</span>
-                </div>
-                <h4 className="job-company">{job.company}</h4>
-                {job.highlight && (
-                  <div className="job-highlight">{job.highlight}</div>
-                )}
-                <p className="job-description">{job.description}</p>
-                {job.achievements && (
-                  <div className="job-achievements">
-                    <h5 className="achievements-title">Key Achievements:</h5>
-                    <ul className="achievements-list">
-                      {job.achievements.map((achievement, idx) => (
-                        <li key={idx}>{achievement}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <div className="job-tech">
-                  {job.technologies.map((tech, idx) => (
-                    <span key={idx} className="tech-badge">{tech}</span>
-                  ))}
-                </div>
-                {job.offerLetter && (
-                  <a href="/offer-letter-octanet.pdf" target="_blank" rel="noopener noreferrer" className="offer-letter-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
-                      <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
-                    </svg>
-                    View Offer Letter
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 4: NEW Skills Section - 4 Category Grid */}
-      <section
-        className="skills-modern-section"
-        ref={(el) => (sectionsRef.current[4] = el)}
-      >
-        <div className="section-header">
-          <h2 className="section-title">
-            Skills
-          </h2>
-          <p className="section-subtitle">
-            Here are some of my skills, which I have been working on web development
-          </p>
-        </div>
-
-        <div className="skills-category-grid">
-          {Object.entries(skillsData).map(([category, techList], catIndex) => (
-            <div
-              key={category}
-              className="skill-category-card"
-              style={{ animationDelay: `${catIndex * 0.15}s` }}
-            >
-              <div className="category-header">
-                <h3 className="category-title">{category}</h3>
-              </div>
-              <div className="tech-grid">
-                {techList.map((tech, techIndex) => (
-                  <div
-                    key={tech.name}
-                    className="tech-badge-item"
-                    style={{
-                      animationDelay: `${(catIndex * 0.15) + (techIndex * 0.05)}s`
-                    }}
-                  >
-                    <div
-                      className="tech-icon"
-                      dangerouslySetInnerHTML={{ __html: tech.icon }}
-                      style={{ '--tech-color': tech.color }}
-                    />
-                    <span className="tech-name">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 5: Certificates & Achievements */}
-      <section
-        className="certifications-section"
-        ref={(el) => (sectionsRef.current[5] = el)}
-      >
-        <div className="section-header">
-          <h2 className="section-title">
-            Certificates &
-            <span className="gradient-title"> Achievements</span>
-          </h2>
-          <p className="section-subtitle">
-            Industry-recognized credentials and leaderboard highlights
-          </p>
-        </div>
-
-        <div className="certifications-grid">
-          {/* Coding Ninjas Leaderboard Achievement Card */}
-          <div className="cert-card" style={{ animationDelay: `0s` }}>
-            <div className="cert-thumbnail-wrapper">
-              <img src="/images/codingninjas-leaderboard.png" alt="Coding Ninjas Leaderboard" className="cert-thumbnail" style={{ objectFit: 'cover', background: '#fff' }} />
-              <div className="cert-thumbnail-overlay">
-                <span className="view-full-text">View Leaderboard</span>
-              </div>
-            </div>
-            <div className="cert-content">
-              <div className="cert-icon-wrapper" style={{ background: '#FF660020', borderColor: '#FF6600' }}>
-                <span className="cert-icon" style={{ color: '#FF6600' }}>🏆</span>
-              </div>
-              <h3 className="cert-title">Coding Ninjas Code360 Leaderboard</h3>
-              <p className="cert-issuer">Ranked 1st • Code360 Weekly Challenge</p>
-              <p className="cert-skills">Competitive Programming, Problem Solving, Consistency</p>
-              <a href="/images/codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-view-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
-                  <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
-                </svg>
-                View Leaderboard
-              </a>
-            </div>
-            <div className="cert-shine"></div>
-          </div>
-          {/* Existing certificates */}
-          {certifications.map((cert, index) => (
-            <div
-              key={cert.id}
-              className="cert-card"
-              style={{ animationDelay: `${(index + 1) * 0.15}s` }}
-            >
-              {/* Certificate Thumbnail Preview */}
-              <div className="cert-thumbnail-wrapper">
-                {cert.isImage ? (
-                  <img src={cert.thumbnail} alt={cert.title} className="cert-thumbnail" />
-                ) : (
-                  <iframe
-                    src={`${cert.thumbnail}#toolbar=0&navpanes=0&scrollbar=0`}
-                    className="cert-thumbnail-pdf"
-                    title={cert.title}
-                  />
-                )}
-                <div className="cert-thumbnail-overlay">
-                  <span className="view-full-text">Click to view full certificate</span>
-                </div>
-              </div>
-
-              <div className="cert-content">
-                <div className="cert-icon-wrapper" style={{ background: `${cert.color}20`, borderColor: cert.color }}>
-                  <span className="cert-icon" style={{ color: cert.color }}>{cert.icon}</span>
-                </div>
-                <h3 className="cert-title">{cert.title}</h3>
-                <p className="cert-issuer">{cert.issuer}</p>
-                <p className="cert-skills">{cert.skills}</p>
-
-                <a href={cert.pdfLink} target="_blank" rel="noopener noreferrer" className="cert-view-btn">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
-                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
-                  </svg>
-                  View Certificate
-                </a>
-              </div>
-              <div className="cert-shine"></div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 6: Projects - Horizontal Scroll */}
-      <section
-        className="projects-section"
-        ref={(el) => (sectionsRef.current[6] = el)}
-      >
-        <div className="projects-header">
-          <h2 className="section-title">
-            Selected
-            <span className="gradient-title"> Work</span>
-          </h2>
-          <p className="projects-hint">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            Scroll horizontally
-          </p>
-        </div>
-
-        <div className="projects-horizontal-scroll">
-          {projects.map((project, index) => (
-            <div key={project.id} className="project-card-horizontal">
-              <div className="project-number">0{index + 1}</div>
-              <div className="project-year">{project.year}</div>
-
-              <div className="project-image-container">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="project-image"
-                  loading="lazy"
-                />
-                <div className="project-image-overlay">
-                  <div className="project-overlay-buttons">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-view-button">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                      </svg>
-                      <span>GitHub</span>
-                    </a>
-                    {project.live !== '#' && (
-                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-view-button live-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span>Live Demo</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              <div className="project-info">
-                {project.recognition && (
-                  <div className="project-recognition">{project.recognition}</div>
-                )}
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-tags">
-                  {project.tags.map((tag, idx) => (
-                    <span key={idx} className="project-tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
             </div>
           ))}
         </div>
