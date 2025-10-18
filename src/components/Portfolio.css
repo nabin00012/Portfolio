@@ -317,6 +317,279 @@ body {
   margin: 0 auto;
 }
 
+/* ==================== CRAZY HERO PHOTO ANIMATIONS ==================== */
+.hero-photo-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 50px;
+  animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Morphing Blob Background */
+.photo-blob {
+  position: absolute;
+  inset: -30px;
+  background: linear-gradient(135deg, #00ff88, #00d4ff, #ff0080);
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: morphBlob 8s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 50% 40% 60% 50% / 50% 60% 40% 50%; transform: rotate(0deg) scale(1); }
+  25% { border-radius: 40% 60% 50% 40% / 60% 40% 50% 60%; transform: rotate(90deg) scale(1.1); }
+  50% { border-radius: 60% 50% 40% 60% / 50% 40% 60% 50%; transform: rotate(180deg) scale(1); }
+  75% { border-radius: 50% 40% 60% 50% / 40% 60% 50% 40%; transform: rotate(270deg) scale(1.1); }
+}
+
+/* Rotating Gradient Border */
+.photo-border-gradient {
+  position: absolute;
+  inset: -4px;
+  background: conic-gradient(
+    from 0deg,
+    #00ff88,
+    #00d4ff,
+    #ff0080,
+    #00ff88
+  );
+  border-radius: 50%;
+  animation: rotateBorderHero 4s linear infinite;
+  z-index: 2;
+}
+
+@keyframes rotateBorderHero {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Floating Particles Around Photo */
+.photo-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.photo-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  transform: rotate(var(--particle-angle)) translateX(160px) translateY(-50%);
+  animation: orbitParticle 10s linear infinite;
+  animation-delay: var(--particle-delay);
+  box-shadow: 0 0 20px currentColor;
+  opacity: 0.8;
+}
+
+.photo-particle:nth-child(odd) {
+  background: #00d4ff;
+}
+
+.photo-particle:nth-child(3n) {
+  background: #ff0080;
+}
+
+@keyframes orbitParticle {
+  0% { 
+    transform: rotate(var(--particle-angle)) translateX(160px) translateY(-50%) scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: rotate(calc(var(--particle-angle) + 180deg)) translateX(160px) translateY(-50%) scale(1.5);
+    opacity: 1;
+  }
+  100% { 
+    transform: rotate(calc(var(--particle-angle) + 360deg)) translateX(160px) translateY(-50%) scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* Scan Lines Effect */
+.photo-scan-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 136, 0.03),
+    rgba(0, 255, 136, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  border-radius: 50%;
+  animation: scanMove 3s linear infinite;
+  z-index: 9;
+  pointer-events: none;
+}
+
+@keyframes scanMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(10px); }
+}
+
+/* Main Photo Container */
+.photo-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 3;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-photo-container:hover .photo-inner {
+  transform: scale(1.05);
+  box-shadow: 0 30px 80px rgba(0, 255, 136, 0.4);
+}
+
+.photo-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, transparent 70%);
+  animation: pulsePhotoGlow 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes pulsePhotoGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  transition: all 0.6s ease;
+}
+
+.hero-photo-container:hover .hero-photo {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Holographic Overlay */
+.photo-hologram {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(0, 255, 136, 0.1) 25%,
+    transparent 50%,
+    rgba(0, 212, 255, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: hologramShift 4s ease-in-out infinite;
+  z-index: 8;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@keyframes hologramShift {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+/* Rotating Rings */
+.photo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.ring-1 {
+  width: 300px;
+  height: 300px;
+  animation: rotateRing1 20s linear infinite;
+}
+
+.ring-2 {
+  width: 280px;
+  height: 280px;
+  animation: rotateRing2 15s linear infinite reverse;
+}
+
+@keyframes rotateRing1 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotateRing2 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Mobile Responsive for Hero Photo */
+@media (max-width: 768px) {
+  .hero-photo-container {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 35px;
+  }
+  
+  .ring-1 {
+    width: 240px;
+    height: 240px;
+  }
+  
+  .ring-2 {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .photo-particle {
+    transform: rotate(var(--particle-angle)) translateX(120px) translateY(-50%);
+  }
+  
+  @keyframes orbitParticle {
+    0% { 
+      transform: rotate(var(--particle-angle)) translateX(120px) translateY(-50%) scale(0.8);
+    }
+    50% { 
+      transform: rotate(calc(var(--particle-angle) + 180deg)) translateX(120px) translateY(-50%) scale(1.2);
+    }
+    100% { 
+      transform: rotate(calc(var(--particle-angle) + 360deg)) translateX(120px) translateY(-50%) scale(0.8);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-photo-container {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .ring-1 {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .ring-2 {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .photo-particle {
+    width: 6px;
+    height: 6px;
+    transform: rotate(var(--particle-angle)) translateX(100px) translateY(-50%);
+  }
+}
+
 .hero-label {
   display: inline-flex;
   align-items: center;
@@ -581,11 +854,272 @@ body {
 .about-content {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ==================== ABOUT PHOTO WITH CRAZY EFFECTS ==================== */
+.about-photo-wrapper {
+  flex-shrink: 0;
+}
+
+.about-photo-container {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* Animated Hexagon Border */
+.hexagon-border {
+  position: absolute;
+  inset: -8px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 60deg,
+    #00ff88 60deg 120deg,
+    transparent 120deg 180deg,
+    #00d4ff 180deg 240deg,
+    transparent 240deg 300deg,
+    #ff0080 300deg 360deg
+  );
+  animation: rotateHexagon 8s linear infinite;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  z-index: 1;
+}
+
+@keyframes rotateHexagon {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Orbiting Dots */
+.orbit-container {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #00ff88, #00d4ff);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: rotate(var(--orbit-angle)) translateX(200px) translateY(-50%);
+  animation: orbitDot 12s linear infinite;
+  animation-delay: var(--orbit-delay);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+}
+
+@keyframes orbitDot {
+  0% { 
+    transform: rotate(var(--orbit-angle)) translateX(200px) translateY(-50%);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: rotate(calc(var(--orbit-angle) + 360deg)) translateX(200px) translateY(-50%);
+    opacity: 0;
+  }
+}
+
+/* Photo Inner Container */
+.about-photo-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-photo-container:hover .about-photo-inner {
+  transform: scale(1.05) rotate(5deg);
+  border-color: rgba(0, 255, 136, 0.3);
+  box-shadow: 0 40px 100px rgba(0, 255, 136, 0.3);
+}
+
+.about-photo-glow-1 {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, transparent 60%);
+  animation: pulseGlow1 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+.about-photo-glow-2 {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 60%);
+  animation: pulseGlow2 4s ease-in-out infinite;
+  animation-delay: 2s;
+  z-index: 1;
+}
+
+@keyframes pulseGlow1 {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes pulseGlow2 {
+  0%, 100% { opacity: 0.3; transform: scale(1.2); }
+  50% { opacity: 0.6; transform: scale(1); }
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  transition: all 0.6s ease;
+  filter: grayscale(0.2) brightness(1.05);
+}
+
+.about-photo-container:hover .about-photo {
+  filter: grayscale(0) brightness(1.1);
+  transform: scale(1.02);
+}
+
+/* Photo Shine Effect */
+.photo-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  transition: transform 0.8s ease;
+  z-index: 3;
+}
+
+.about-photo-container:hover .photo-shine {
+  transform: translateX(100%) translateY(100%) rotate(45deg);
+}
+
+/* Floating Tech Icons */
+.floating-icons {
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.float-icon {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatIcon 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.6));
+}
+
+.icon-1 { 
+  top: 10%; 
+  left: -10%; 
+  animation-delay: 0s;
+}
+
+.icon-2 { 
+  top: 80%; 
+  left: -15%; 
+  animation-delay: 0.75s;
+}
+
+.icon-3 { 
+  top: 10%; 
+  right: -10%; 
+  animation-delay: 1.5s;
+}
+
+.icon-4 { 
+  top: 80%; 
+  right: -15%; 
+  animation-delay: 2.25s;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+  50% { transform: translateY(-20px) rotate(10deg); opacity: 1; }
+}
+
+/* Mobile Responsive for About Photo */
+@media (max-width: 1024px) {
+  .about-content {
+    flex-direction: column;
+    gap: 50px;
+  }
+  
+  .about-photo-container {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+  }
+  
+  .orbit-dot {
+    transform: rotate(var(--orbit-angle)) translateX(160px) translateY(-50%);
+  }
+  
+  @keyframes orbitDot {
+    0% { 
+      transform: rotate(var(--orbit-angle)) translateX(160px) translateY(-50%);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { 
+      transform: rotate(calc(var(--orbit-angle) + 360deg)) translateX(160px) translateY(-50%);
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-photo-container {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .orbit-dot {
+    width: 10px;
+    height: 10px;
+    transform: rotate(var(--orbit-angle)) translateX(130px) translateY(-50%);
+  }
+  
+  .float-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-photo-container {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .orbit-dot {
+    width: 8px;
+    height: 8px;
+    transform: rotate(var(--orbit-angle)) translateX(110px) translateY(-50%);
+  }
+  
+  .float-icon {
+    font-size: 1.2rem;
+  }
 }
 
 .about-text {
-  max-width: 800px;
-  margin: 0 auto;
+  flex: 1;
+  max-width: 700px;
 }
 
 .about-paragraph {

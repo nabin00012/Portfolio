@@ -481,6 +481,63 @@ const Portfolio = () => {
         ref={(el) => (sectionsRef.current[0] = el)}
       >
         <div className="hero-content">
+          {/* CRAZY Animated Profile Photo */}
+          <div className="hero-photo-container">
+            {/* Morphing Blob Background */}
+            <div className="photo-blob"></div>
+
+            {/* Rotating Gradient Border */}
+            <div className="photo-border-gradient"></div>
+
+            {/* Floating Particles */}
+            <div className="photo-particles">
+              {[...Array(12)].map((_, i) => (
+                <div key={i} className="photo-particle" style={{
+                  '--particle-delay': `${i * 0.8}s`,
+                  '--particle-angle': `${i * 30}deg`
+                }}></div>
+              ))}
+            </div>
+
+            {/* Scan Lines Effect */}
+            <div className="photo-scan-lines"></div>
+
+            {/* Main Photo */}
+            <div className="photo-inner">
+              <div className="photo-glow"></div>
+              <img
+                src="/images/nabin.png"
+                alt="Nabin Chapagain"
+                className="hero-photo"
+              />
+
+              {/* Holographic Overlay */}
+              <div className="photo-hologram"></div>
+            </div>
+
+            {/* Rotating Rings */}
+            <svg className="photo-ring ring-1" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="95" fill="none" stroke="url(#gradient1)" strokeWidth="2" strokeDasharray="10 5" />
+            </svg>
+            <svg className="photo-ring ring-2" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="85" fill="none" stroke="url(#gradient2)" strokeWidth="1.5" strokeDasharray="5 10" />
+            </svg>
+
+            {/* SVG Gradients */}
+            <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+              <defs>
+                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00ff88" />
+                  <stop offset="100%" stopColor="#00d4ff" />
+                </linearGradient>
+                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ff0080" />
+                  <stop offset="100%" stopColor="#00ff88" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
           <div className="hero-label">
             <span className="status-indicator"></span>
             <span>Available for select projects</span>
@@ -496,11 +553,11 @@ const Portfolio = () => {
           </p>
 
           <div className="hero-cta">
-            <button className="primary-button" onClick={() => scrollToSection(2)}>
+            <button className="primary-button" onClick={() => scrollToSection(5)}>
               <span>View Selected Work</span>
               <div className="button-glow"></div>
             </button>
-            <button className="secondary-button" onClick={() => scrollToSection(4)}>
+            <button className="secondary-button" onClick={() => scrollToSection(7)}>
               <span>Get In Touch</span>
             </button>
           </div>
@@ -542,6 +599,45 @@ const Portfolio = () => {
         </div>
 
         <div className="about-content">
+          {/* About Photo with Crazy Effects */}
+          <div className="about-photo-wrapper">
+            <div className="about-photo-container">
+              {/* Animated Hexagon Border */}
+              <div className="hexagon-border"></div>
+
+              {/* Orbiting Dots */}
+              <div className="orbit-container">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="orbit-dot"
+                    style={{ '--orbit-angle': `${i * 45}deg`, '--orbit-delay': `${i * 0.3}s` }}
+                  ></div>
+                ))}
+              </div>
+
+              {/* Photo with Effects */}
+              <div className="about-photo-inner">
+                <div className="about-photo-glow-1"></div>
+                <div className="about-photo-glow-2"></div>
+                <img
+                  src="/images/nabin.png"
+                  alt="Nabin Chapagain"
+                  className="about-photo"
+                />
+                <div className="photo-shine"></div>
+              </div>
+
+              {/* Tech Stack Icons Floating Around */}
+              <div className="floating-icons">
+                <div className="float-icon icon-1">⚛️</div>
+                <div className="float-icon icon-2">💚</div>
+                <div className="float-icon icon-3">🔷</div>
+                <div className="float-icon icon-4">⚡</div>
+              </div>
+            </div>
+          </div>
+
           <div className="about-text">
             <p className="about-paragraph">
               Hi there! I'm a web enthusiast who loves turning ideas into real, working applications.
@@ -848,13 +944,13 @@ const Portfolio = () => {
               <div className="education-card-inner">
                 {/* Animated Border Gradient */}
                 <div className="education-card-border" style={{ '--border-color': edu.color }}></div>
-                
+
                 {/* Floating Particles Effect */}
                 <div className="education-particles">
                   {[...Array(6)].map((_, i) => (
-                    <div key={i} className="particle" style={{ 
+                    <div key={i} className="particle" style={{
                       animationDelay: `${i * 0.3}s`,
-                      '--particle-color': edu.color 
+                      '--particle-color': edu.color
                     }}></div>
                   ))}
                 </div>
@@ -865,19 +961,19 @@ const Portfolio = () => {
                   <div className="education-logo-wrapper">
                     <div className="education-logo-glow" style={{ background: edu.color }}></div>
                     <div className="education-logo-container">
-                      <img 
-                        src={edu.logo} 
+                      <img
+                        src={edu.logo}
                         alt={edu.institution}
                         className="education-logo"
                       />
                     </div>
                     {/* Animated Ring */}
                     <svg className="education-ring" viewBox="0 0 100 100">
-                      <circle 
-                        cx="50" 
-                        cy="50" 
-                        r="48" 
-                        fill="none" 
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="48"
+                        fill="none"
                         stroke={edu.color}
                         strokeWidth="2"
                         strokeDasharray="301.593"
@@ -892,7 +988,7 @@ const Portfolio = () => {
                       <h3 className="education-institution">{edu.institution}</h3>
                       <span className="education-period">{edu.period}</span>
                     </div>
-                    
+
                     <div className="education-degree-wrapper">
                       <h4 className="education-degree">{edu.degree}</h4>
                       <p className="education-field">{edu.field}</p>
