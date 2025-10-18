@@ -481,63 +481,6 @@ const Portfolio = () => {
         ref={(el) => (sectionsRef.current[0] = el)}
       >
         <div className="hero-content">
-          {/* CRAZY Animated Profile Photo */}
-          <div className="hero-photo-container">
-            {/* Morphing Blob Background */}
-            <div className="photo-blob"></div>
-
-            {/* Rotating Gradient Border */}
-            <div className="photo-border-gradient"></div>
-
-            {/* Floating Particles */}
-            <div className="photo-particles">
-              {[...Array(12)].map((_, i) => (
-                <div key={i} className="photo-particle" style={{
-                  '--particle-delay': `${i * 0.8}s`,
-                  '--particle-angle': `${i * 30}deg`
-                }}></div>
-              ))}
-            </div>
-
-            {/* Scan Lines Effect */}
-            <div className="photo-scan-lines"></div>
-
-            {/* Main Photo */}
-            <div className="photo-inner">
-              <div className="photo-glow"></div>
-              <img
-                src="/images/nabin.png"
-                alt="Nabin Chapagain"
-                className="hero-photo"
-              />
-
-              {/* Holographic Overlay */}
-              <div className="photo-hologram"></div>
-            </div>
-
-            {/* Rotating Rings */}
-            <svg className="photo-ring ring-1" viewBox="0 0 200 200">
-              <circle cx="100" cy="100" r="95" fill="none" stroke="url(#gradient1)" strokeWidth="2" strokeDasharray="10 5" />
-            </svg>
-            <svg className="photo-ring ring-2" viewBox="0 0 200 200">
-              <circle cx="100" cy="100" r="85" fill="none" stroke="url(#gradient2)" strokeWidth="1.5" strokeDasharray="5 10" />
-            </svg>
-
-            {/* SVG Gradients */}
-            <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-              <defs>
-                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00ff88" />
-                  <stop offset="100%" stopColor="#00d4ff" />
-                </linearGradient>
-                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#ff0080" />
-                  <stop offset="100%" stopColor="#00ff88" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-
           <div className="hero-label">
             <span className="status-indicator"></span>
             <span>Available for select projects</span>
