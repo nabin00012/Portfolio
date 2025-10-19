@@ -1,0 +1,232 @@
+/* ==================== TABLE OF CONTENTS STYLES ==================== */
+
+.toc-floating {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  max-height: 70vh;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  z-index: 1000;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toc-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.toc-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toc-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.toc-nav {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-item {
+  margin-bottom: 4px;
+}
+
+.toc-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.toc-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.toc-item.active .toc-link {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--pillar-color);
+  font-weight: 600;
+}
+
+.toc-link-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.toc-active-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: var(--pillar-color);
+  border-radius: 0 2px 2px 0;
+  animation: slideInLeft 0.3s ease;
+}
+
+.toc-footer {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toc-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.toc-progress-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.toc-progress-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  display: block;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1200px) {
+  .toc-floating {
+    right: 20px;
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .toc-floating {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 100vh;
+    transform: none;
+    border-radius: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.98);
+  }
+  
+  .toc-header {
+    margin-bottom: 16px;
+  }
+  
+  .toc-title {
+    font-size: 1rem;
+  }
+  
+  .toc-link {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+  
+  .toc-nav {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toc-floating {
+    padding: 16px;
+  }
+  
+  .toc-header {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .toc-title {
+    font-size: 0.875rem;
+  }
+  
+  .toc-close {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .toc-link {
+    padding: 10px 12px;
+    font-size: 0.875rem;
+  }
+}

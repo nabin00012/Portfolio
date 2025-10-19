@@ -1,0 +1,50 @@
+/* ==================== ARTICLE PAGE WRAPPER STYLES ==================== */
+
+.article-page-wrapper {
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Navigation override for article page */
+.article-page-wrapper .main-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(13, 17, 23, 0.9));
+  backdrop-filter: blur(30px) saturate(180%);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, transparent, #00ff88, #00d4ff, #ff0080, transparent) 1;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(0, 255, 136, 0.2),
+    0 0 50px rgba(0, 255, 136, 0.1);
+}
+
+.article-page-wrapper .nav-item {
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 12px 24px;
+}
+
+.article-page-wrapper .nav-item:hover {
+  color: #ffffff;
+}
+
+.article-page-wrapper .blog-link {
+  color: #00ff88 !important;
+  font-weight: 600;
+}
+
+.article-page-wrapper .blog-link:hover {
+  color: #00d4ff !important;
+}

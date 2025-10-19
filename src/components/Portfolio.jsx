@@ -495,6 +495,7 @@ const Portfolio = () => {
           <button onClick={() => scrollToSection(1)} className="nav-item">About</button>
           <button onClick={() => scrollToSection(2)} className="nav-item">Experience</button>
           <button onClick={() => scrollToSection(5)} className="nav-item">Projects</button>
+          <a href="/blog" className="nav-item blog-link">Blog</a>
           <button onClick={() => scrollToSection(8)} className="nav-item">Contact</button>
         </div>
         <a

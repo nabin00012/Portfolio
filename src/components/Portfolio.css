@@ -530,6 +530,20 @@ body {
   width: 100%;
 }
 
+/* Blog Link Styling */
+.blog-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.blog-link::before {
+  content: '📝';
+  font-size: 0.8rem;
+}
+
 .nav-cta-button {
   display: inline-flex;
   align-items: center;
