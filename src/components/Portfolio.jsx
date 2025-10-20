@@ -8,8 +8,35 @@ import './Portfolio.css';
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
   const [currentSection, setCurrentSection] = useState(0);
+  const [navOpen, setNavOpen] = useState(false);
   const sectionsRef = useRef([]);
   const lenisRef = useRef(null);
+
+  // Resume download function
+  const downloadResume = async () => {
+    try {
+      // Use fetch to get the file and create a blob URL for download
+      const response = await fetch('/resume-nabin-chapagain.pdf');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = 'Nabin_Chapagain_Resume.pdf';
+      downloadLink.style.display = 'none';
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      // Clean up the blob URL
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Download failed:', error);
+      // Fallback: open in new tab
+      window.open('/resume-nabin-chapagain.pdf', '_blank');
+    }
+  };
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
@@ -40,8 +67,15 @@ const Portfolio = () => {
 
       // Determine current section based on scroll position
       const windowHeight = window.innerHeight;
-      const sectionIndex = Math.floor(scroll / (windowHeight * 0.8));
-      setCurrentSection(Math.min(sectionIndex, sectionsRef.current.length - 1));
+      const newSectionIndex = Math.floor(scroll / (windowHeight * 0.8));
+      const newSection = Math.min(newSectionIndex, sectionsRef.current.length - 1);
+      
+      // Auto-collapse navigation when section changes
+      if (newSection !== currentSection && navOpen) {
+        setNavOpen(false);
+      }
+      
+      setCurrentSection(newSection);
     });
 
     return () => {
@@ -53,8 +87,16 @@ const Portfolio = () => {
   const scrollToSection = (index) => {
     const section = sectionsRef.current[index];
     if (section && lenisRef.current) {
+      // Auto-collapse navigation when navigating to a section
+      setNavOpen(false);
       lenisRef.current.scrollTo(section, { duration: 1.5 });
     }
+  };
+
+  // Handle blog navigation
+  const handleBlogNavigation = () => {
+    setNavOpen(false);
+    window.open('/blog', '_blank');
   };
 
   // Projects data - REAL PROJECTS
@@ -69,6 +111,7 @@ const Portfolio = () => {
       github: 'https://github.com/nabin00012/codecommons',
       live: 'https://codecommons-delta.vercel.app',
       recognition: '🏆 Recognized by Jain University',
+      blog: '/blog?project=codecommons',
     },
     {
       id: 2,
@@ -80,6 +123,7 @@ const Portfolio = () => {
       year: '2024',
       github: 'https://github.com/nabin00012/mern-ci-cd-kube',
       live: 'https://mern-ci-cd-kube.vercel.app/',
+      blog: '/blog?project=mern-ci-cd-kube',
     },
     {
       id: 3,
@@ -90,6 +134,7 @@ const Portfolio = () => {
       year: '2024',
       github: 'https://github.com/nabin00012/secure-fin-data',
       live: '#',
+      blog: '/blog?project=securefindata',
     },
     {
       id: 4,
@@ -100,6 +145,7 @@ const Portfolio = () => {
       year: '2025',
       github: 'https://github.com/nabin00012/fluxtrade',
       live: 'https://flux-trade-nine.vercel.app/',
+      blog: '/blog?project=fluxtrade',
     },
   ];
 
@@ -485,36 +531,27 @@ const Portfolio = () => {
         />
       </div>
 
-      {/* Navigation */}
-      <nav className="main-navigation">
-        <div className="nav-brand">
-          <span className="brand-text">NC</span>
-          <span className="brand-dot"></span>
-        </div>
-        <div className="nav-menu">
-          <button onClick={() => scrollToSection(1)} className="nav-item">About</button>
-          <button onClick={() => scrollToSection(2)} className="nav-item">Experience</button>
-          <button onClick={() => scrollToSection(5)} className="nav-item">Projects</button>
-          <a href="/blog" className="nav-item blog-link">Blog</a>
-          <button onClick={() => scrollToSection(8)} className="nav-item">Contact</button>
-        </div>
-        <a
-          href="/resume-nabin-chapagain.pdf"
-          download="Nabin_Chapagain_Resume.pdf"
-          className="nav-resume-button"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15M7 10L12 15M12 15L17 10M12 15V3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <span>Resume</span>
-        </a>
-      </nav>
 
       {/* Section 0: Hero */}
       <section
         className="hero-section"
         ref={(el) => (sectionsRef.current[0] = el)}
       >
+        <div className="hero-background-effects">
+          <div className="floating-particles">
+            <div className="particle particle-1"></div>
+            <div className="particle particle-2"></div>
+            <div className="particle particle-3"></div>
+            <div className="particle particle-4"></div>
+            <div className="particle particle-5"></div>
+          </div>
+          <div className="gradient-orbs">
+            <div className="orb orb-1"></div>
+            <div className="orb orb-2"></div>
+            <div className="orb orb-3"></div>
+          </div>
+        </div>
+
         <div className="hero-content">
           <div className="hero-label">
             <span className="status-indicator"></span>
@@ -522,23 +559,98 @@ const Portfolio = () => {
           </div>
 
           <h1 className="hero-title">
-            <span className="title-line">Nabin</span>
-            <span className="title-line gradient-title">Chapagain</span>
+            <span className="title-line" data-text="Nabin">Nabin</span>
+            <span className="title-line gradient-title" data-text="Chapagain">Chapagain</span>
           </h1>
 
-          <p className="hero-subtitle">
-            Full-Stack Engineer specializing in Scalable MERN Architectures, DevOps & Web3
-          </p>
-          <p className="hero-tagline">
-            Turning ideas into robust, production-ready applications
-          </p>
+          <div className="hero-subtitle-container">
+            <p className="hero-subtitle">
+              <span className="typing-text">Full-Stack Engineer</span>
+              <span className="typing-cursor">|</span>
+            </p>
+            <p className="hero-tagline">
+              Turning ideas into robust, production-ready applications
+            </p>
+          </div>
 
-          <div className="hero-cta">
-            <button className="primary-button" onClick={() => scrollToSection(5)}>
-              <span>View Selected Work</span>
-              <div className="button-glow"></div>
+          {/* Creative Navigation Grid */}
+          <div className="hero-navigation-grid">
+            <div className="nav-card nav-card-primary" onClick={() => scrollToSection(1)}>
+              <div className="nav-icon">👨‍💻</div>
+              <div className="nav-content">
+                <h3>About Me</h3>
+                <p>My journey & expertise</p>
+              </div>
+              <div className="nav-arrow">→</div>
+            </div>
+
+            <div className="nav-card nav-card-secondary" onClick={() => scrollToSection(2)}>
+              <div className="nav-icon">💼</div>
+              <div className="nav-content">
+                <h3>Experience</h3>
+                <p>Professional journey</p>
+              </div>
+              <div className="nav-arrow">→</div>
+            </div>
+
+            <div className="nav-card nav-card-accent" onClick={() => scrollToSection(5)}>
+              <div className="nav-icon">🚀</div>
+              <div className="nav-content">
+                <h3>Projects</h3>
+                <p>Featured work</p>
+              </div>
+              <div className="nav-arrow">→</div>
+            </div>
+
+            <div className="nav-card nav-card-special" onClick={() => window.open('/blog', '_blank')}>
+              <div className="nav-icon">📚</div>
+              <div className="nav-content">
+                <h3>Blog</h3>
+                <p>Technical insights</p>
+              </div>
+              <div className="nav-arrow">→</div>
+            </div>
+
+            <div className="nav-card nav-card-contact" onClick={() => scrollToSection(8)}>
+              <div className="nav-icon">📧</div>
+              <div className="nav-content">
+                <h3>Contact</h3>
+                <p>Let's connect</p>
+              </div>
+              <div className="nav-arrow">→</div>
+            </div>
+
+            <div className="nav-card nav-card-resume">
+              <div className="nav-icon">📄</div>
+              <div className="nav-content">
+                <h3>Resume</h3>
+                <p>View & Download</p>
+              </div>
+              <div className="nav-actions">
+                <button
+                  className="resume-action-btn view-btn"
+                  onClick={() => window.open('/resume-nabin-chapagain.pdf', '_blank')}
+                >
+                  👁️ View
+                </button>
+                <button
+                  className="resume-action-btn download-btn"
+                  onClick={downloadResume}
+                >
+                  ⬇️ Download
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Action Buttons */}
+          <div className="hero-quick-actions">
+            <button className="quick-action-btn primary-action" onClick={() => scrollToSection(5)}>
+              <span className="btn-icon">⚡</span>
+              <span>View Projects</span>
             </button>
-            <button className="secondary-button" onClick={() => scrollToSection(8)}>
+            <button className="quick-action-btn secondary-action" onClick={() => scrollToSection(8)}>
+              <span className="btn-icon">💬</span>
               <span>Get In Touch</span>
             </button>
           </div>
@@ -552,6 +664,141 @@ const Portfolio = () => {
             <div className="metric-item">
               <div className="metric-value">6M</div>
               <div className="metric-label">Internship Extended</div>
+            </div>
+            <div className="metric-divider"></div>
+            <div className="metric-item">
+              <div className="metric-value">4+</div>
+              <div className="metric-label">Production Apps</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Creative Bottom Navigation */}
+        <div className="creative-bottom-nav">
+          <div className="nav-toggle-section">
+            <button
+              className={`nav-toggle-btn-compact ${navOpen ? 'nav-toggle-active' : ''}`}
+              onClick={() => setNavOpen(!navOpen)}
+              title={navOpen ? 'Close Navigation' : 'Open Navigation'}
+            >
+              <div className="nav-toggle-icon-compact">
+                <span className={`nav-line-compact ${navOpen ? 'nav-line-1-compact' : ''}`}></span>
+                <span className={`nav-line-compact ${navOpen ? 'nav-line-2-compact' : ''}`}></span>
+                <span className={`nav-line-compact ${navOpen ? 'nav-line-3-compact' : ''}`}></span>
+              </div>
+              <div className="nav-toggle-ripple"></div>
+            </button>
+            <div className="nav-progress-indicator">
+              <span className="progress-text">
+                <span className="progress-section">{currentSection + 1}</span>
+                <span className="progress-separator">/</span>
+                <span className="progress-total">10</span>
+                <span className="progress-label">sections</span>
+              </span>
+              <div className="progress-bar">
+                <div
+                  className="progress-fill"
+                  style={{ width: `${((currentSection + 1) / 10) * 100}%` }}
+                ></div>
+                <div className="progress-glow"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Expandable Navigation Strip */}
+          <div className={`nav-strip ${navOpen ? 'nav-strip-expanded' : ''}`}>
+            <div className="nav-strip-background"></div>
+            <div className="nav-strip-content">
+              <button
+                className={`nav-item-compact ${currentSection === 0 ? 'active' : ''}`}
+                onClick={() => scrollToSection(0)}
+                title="Hero Section"
+              >
+                <span className="nav-item-icon">🏠</span>
+                <span className="nav-item-label">Hero</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 1 ? 'active' : ''}`}
+                onClick={() => scrollToSection(1)}
+                title="About Me"
+              >
+                <span className="nav-item-icon">👨‍💻</span>
+                <span className="nav-item-label">About</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 2 ? 'active' : ''}`}
+                onClick={() => scrollToSection(2)}
+                title="Experience"
+              >
+                <span className="nav-item-icon">💼</span>
+                <span className="nav-item-label">Experience</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 3 ? 'active' : ''}`}
+                onClick={() => scrollToSection(3)}
+                title="Skills"
+              >
+                <span className="nav-item-icon">⚡</span>
+                <span className="nav-item-label">Skills</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 4 ? 'active' : ''}`}
+                onClick={() => scrollToSection(4)}
+                title="Certificates"
+              >
+                <span className="nav-item-icon">🏆</span>
+                <span className="nav-item-label">Certificates</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 5 ? 'active' : ''}`}
+                onClick={() => scrollToSection(5)}
+                title="Projects"
+              >
+                <span className="nav-item-icon">🚀</span>
+                <span className="nav-item-label">Projects</span>
+              </button>
+
+              <button
+                className="nav-item-compact blog-nav-item"
+                onClick={handleBlogNavigation}
+                title="Blog & Articles"
+              >
+                <span className="nav-item-icon">📝</span>
+                <span className="nav-item-label">Blog</span>
+                <span className="nav-item-badge">NEW</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 6 ? 'active' : ''}`}
+                onClick={() => scrollToSection(6)}
+                title="Education"
+              >
+                <span className="nav-item-icon">🎓</span>
+                <span className="nav-item-label">Education</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 7 ? 'active' : ''}`}
+                onClick={() => scrollToSection(7)}
+                title="GitHub Activity"
+              >
+                <span className="nav-item-icon">📊</span>
+                <span className="nav-item-label">Activity</span>
+              </button>
+
+              <button
+                className={`nav-item-compact ${currentSection === 8 ? 'active' : ''}`}
+                onClick={() => scrollToSection(8)}
+                title="Contact"
+              >
+                <span className="nav-item-icon">📧</span>
+                <span className="nav-item-label">Contact</span>
+              </button>
             </div>
           </div>
         </div>
@@ -984,6 +1231,15 @@ const Portfolio = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Blog Button Below Tech Details */}
+                <div className="project-blog-section">
+                  <a href={project.blog} target="_blank" rel="noopener noreferrer" className="project-blog-button-compact">
+                    <div className="blog-icon-small">📖</div>
+                    <span className="blog-text">Read Blog</span>
+                    <div className="blog-arrow-small">→</div>
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -1239,13 +1495,16 @@ const Portfolio = () => {
               LinkedIn
             </a>
             <span className="footer-divider">◆</span>
-            <a href="/resume-nabin-chapagain.pdf" download>
+            <button
+              onClick={downloadResume}
+              style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', font: 'inherit' }}
+            >
               <svg className="link-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
                 <path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3" stroke="#000" strokeWidth="2" />
               </svg>
               Resume
-            </a>
+            </button>
           </div>
 
           {/* Made with Love Badge */}
