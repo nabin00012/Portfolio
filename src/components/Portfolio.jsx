@@ -347,11 +347,12 @@ const Portfolio = () => {
           <span className="brand-text">NC</span>
           <span className="brand-dot"></span>
         </div>
-        <div className="nav-menu">
+          <div className="nav-menu">
           <button onClick={() => scrollToSection(1)} className="nav-item">About</button>
           <button onClick={() => scrollToSection(2)} className="nav-item">Experience</button>
           <button onClick={() => scrollToSection(5)} className="nav-item">Projects</button>
           <button onClick={() => scrollToSection(6)} className="nav-item">Contact</button>
+          <a href="/blog" className="nav-item">Blog</a>
         </div>
         <a
           href="/resume-nabin-chapagain.pdf"
@@ -814,10 +815,12 @@ io.on('connection', socket => {
       {/* Footer */}
       <footer className="footer-section">
         <p>© 2025 Nabin Chapagain | Building fast, delightful web experiences — MERN & Web3</p>
-        <div className="footer-links">
+          <div className="footer-links">
           <a href="https://github.com/nabin00012" target="_blank" rel="noopener noreferrer">GitHub</a>
           <span>•</span>
           <a href="https://www.linkedin.com/in/nabin-chapagain-nab12in/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span>•</span>
+          <a href="/blog">Blog</a>
           <span>•</span>
           <a href="/resume-nabin-chapagain.pdf" download>Resume</a>
         </div>
