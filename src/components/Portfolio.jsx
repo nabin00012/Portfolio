@@ -69,12 +69,12 @@ const Portfolio = () => {
       const windowHeight = window.innerHeight;
       const newSectionIndex = Math.floor(scroll / (windowHeight * 0.8));
       const newSection = Math.min(newSectionIndex, sectionsRef.current.length - 1);
-      
+
       // Auto-collapse navigation when section changes
       if (newSection !== currentSection && navOpen) {
         setNavOpen(false);
       }
-      
+
       setCurrentSection(newSection);
     });
 
