@@ -1257,6 +1257,20 @@ body {
   align-items: flex-start;
 }
 
+.blog-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: linear-gradient(90deg, #00d4ff, #ff0080);
+  color: #000;
+  font-weight: 700;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 10px 40px rgba(255,0,128,0.08), inset 0 -4px 18px rgba(0,212,255,0.04);
+  transform: translateZ(0);
+}
+.blog-cta:hover { transform: translateY(-3px) scale(1.02); }
 /* ==================== ABOUT PHOTO - LEFT SIDE, POSITIONED HIGHER ==================== */
 .about-photo-wrapper {
   flex-shrink: 0;
@@ -3560,6 +3574,21 @@ body {
 }
 
 .projects-horizontal-scroll {
+/* Special blog project card styling */
+.project-card-horizontal.blog-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(0,255,136,0.06);
+}
+
+.project-card-horizontal.blog-card .project-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-card-horizontal.blog-card .project-title {
+  color: #00ff88;
+}
   display: flex;
   gap: 40px;
   overflow-x: auto;
@@ -4287,6 +4316,18 @@ body {
   font-size: 2rem;
   top: 20%;
   left: 15%;
+
+/* Decorative blog image used when showing the blog card */
+.project-image.blog-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(1200px 300px at 10% 10%, rgba(0,212,255,0.06), transparent), linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: #fff;
+}
+.project-image.blog-image .blog-image-inner { text-align: center; padding: 24px; }
+.project-image.blog-image h3 { font-size: 1.6rem; color: #00ff88; margin-bottom: 6px; }
+.project-image.blog-image p { color: rgba(255,255,255,0.75); }
   animation: sparkleFloat 8s ease-in-out infinite;
   opacity: 0.3;
   pointer-events: none;

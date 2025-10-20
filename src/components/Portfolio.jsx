@@ -100,6 +100,18 @@ const Portfolio = () => {
       github: 'https://github.com/nabin00012/fluxtrade',
       live: 'https://flux-trade-nine.vercel.app/',
     },
+    // Special blog card for Selected Work
+    {
+      id: 'blog-card',
+      title: 'Engineering Insights',
+      description: 'Deep technical articles on ops, security, testing, and web3 — straight from production systems.',
+      image: '',
+      tags: ['Blog', 'Articles'],
+      year: '2025',
+      github: '#',
+      live: '/blog',
+      isBlogCard: true
+    }
   ];
 
   // Skills data with SVG icons
@@ -421,6 +433,9 @@ io.on('connection', socket => {
             <button className="secondary-button" onClick={() => scrollToSection(4)}>
               <span>Get In Touch</span>
             </button>
+            <a className="blog-cta" href="/blog">
+              <span>Read Blog</span>
+            </a>
           </div>
 
           <div className="hero-metrics">
@@ -698,17 +713,26 @@ io.on('connection', socket => {
 
         <div className="projects-horizontal-scroll">
           {projects.map((project, index) => (
-            <div key={project.id} className="project-card-horizontal">
+            <div key={project.id} className={`project-card-horizontal ${project.isBlogCard ? 'blog-card' : ''}`}>
               <div className="project-number">0{index + 1}</div>
               <div className="project-year">{project.year}</div>
 
-              <div className="project-image-container">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="project-image"
-                  loading="lazy"
-                />
+                <div className="project-image-container">
+                {project.isBlogCard ? (
+                  <div className="project-image blog-image">
+                    <div className="blog-image-inner">
+                      <h3>Engineering Insights</h3>
+                      <p>Read deep technical articles</p>
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-image"
+                    loading="lazy"
+                  />
+                )}
                 <div className="project-image-overlay">
                   <div className="project-overlay-buttons">
                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-view-button">
