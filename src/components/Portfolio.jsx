@@ -104,7 +104,7 @@ const Portfolio = () => {
     {
       id: 1,
       title: 'CodeCommons',
-      description: '🏆 Recognized Collaborative Platform. Built with Next.js 14 and TypeScript (reducing runtime errors by 90%). Leverages Server-Side Rendering (SSR) for optimal Technical SEO and performance. Features real-time collaboration via Socket.IO and incorporates complex UI elements including Monaco Editor and Three.js, demonstrating proficiency in modern state management, high-performance web architecture, and design for educational scalability.',
+      description: '🏆 Recognized Collaborative Platform. Built with Next.js 14 and TypeScript (reducing runtime errors by 90%). Leverages Server-Side Rendering (SSR) for optimal Technical SEO and performance. Features real-time collaboration via Socket.IO and incorporates complex UI elements including Monaco Editor and Three.js, demonstrating proficiency in modern state management, high-performance web architecture, and design for educational scalability.<br /><strong>Role:</strong> Solo Project',
       image: '/images/codecommons.png',
       tags: ['Next.js 14', 'TypeScript', 'SSR', 'Socket.IO', 'Monaco', 'Three.js'],
       year: '2025',
@@ -116,7 +116,7 @@ const Portfolio = () => {
     {
       id: 2,
       title: 'MERN-CI-CD-Kube',
-      description: '⭐ Enterprise DevOps Flagship. A production-grade chat application featuring fully containerized MERN stack orchestrated by Kubernetes (K8s). The automated CI/CD Pipeline (GitHub Actions) handles Docker image builds and executes zero-downtime rolling updates. Demonstrates system design proficiency with separate K8s deployments for the client, Express API, and a MongoDB StatefulSet, ensuring environment consistency and high availability.',
+      description: '⭐ DevOps & CI/CD Project: MERN on Kubernetes. A comprehensive MERN chat application demonstrating a full CI/CD pipeline featuring fully containerized MERN stack orchestrated by Kubernetes (K8s). The automated CI/CD Pipeline (GitHub Actions) handles Docker image builds and executes zero-downtime rolling updates. Demonstrates system design proficiency with separate K8s deployments for the client, Express API, and a MongoDB StatefulSet, ensuring environment consistency and high availability.<br /><strong>Role:</strong> Solo Project',
       // Use provided project thumbnail image
       image: '/images/Mern-thumbnail.png?v=2',
       tags: ['Kubernetes', 'Docker', 'GitHub Actions', 'Rolling Updates', 'StatefulSet', 'HA'],
@@ -128,7 +128,7 @@ const Portfolio = () => {
     {
       id: 3,
       title: 'SecureFinData',
-      description: '🔒 Security-First Fintech Platform. A production-ready MERN application for financial data featuring military-grade AES-256-GCM encryption with RSA key wrapping and a Zero-Trust architecture (RBAC & audit trails). All critical logic was developed using a TDD workflow, achieving 85%+ unit test coverage via Jest, ensuring security protocols are rigorously validated and production-ready.',
+      description: '🔒 Security-First Fintech Prototype. A production-ready MERN application for financial data featuring Robust data-at-rest security using AES-256-GCM encryption with RSA key wrapping and a Zero-Trust architecture (RBAC & audit trails). All critical logic was developed using a TDD workflow, achieving 85%+ unit test coverage via Jest, ensuring security protocols are rigorously validated and production-ready.<br /><strong>Role:</strong> Solo Project',
       image: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?w=1200&q=80',
       tags: ['AES-256-GCM', 'Jest TDD', 'Zero-Trust', 'RBAC', 'Audit Trails', 'RSA'],
       year: '2024',
@@ -139,7 +139,7 @@ const Portfolio = () => {
     {
       id: 4,
       title: 'FluxTrade',
-      description: '⚡ Web3 Decentralized Trading Platform. A full-stack MERN DApp bridging traditional APIs with blockchain logic. The Node.js/Express backend serves as the crucial Web3.js integration layer, handling transaction signing, gas optimization, and real-time event listening for on-chain contract events. Features auditable, gas-optimized Solidity smart contracts and leverages off-chain indexing for fast portfolio and trade analytics.',
+      description: '⚡ Web3 Decentralized Trading Platform. A full-stack MERN DApp bridging traditional APIs with blockchain logic. The Node.js/Express backend serves as the crucial Web3.js integration layer, handling transaction signing, gas optimization, and real-time event listening for on-chain contract events. Features auditable, gas-optimized Solidity smart contracts and leverages off-chain indexing for fast portfolio and trade analytics.<br /><strong>Role:</strong> Solo Project',
       image: '/images/fluxtrade.png?v=2',
       tags: ['Web3.js', 'Solidity', 'DApp', 'Gas Optimization', 'Event Listening', 'DeFi'],
       year: '2025',
@@ -905,7 +905,7 @@ const Portfolio = () => {
           <div className="about-text">
             <div className="about-role-badge">
               <span className="badge-icon">⚡</span>
-              <span className="badge-text">MERN Full-Stack Architect | DevOps & Security Specialist</span>
+              <span className="badge-text">Full-Stack Engineer (MERN, DevOps & Security)</span>
             </div>
 
             <p className="about-paragraph about-intro">
@@ -940,6 +940,12 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
+
+            <p className="about-paragraph about-philosophy">
+              This approach is driven by my core philosophy: engineering isn't just about writing code—it's about earning trust. A well-built system must be secure and reliable <em>under the hood</em>.<br /><br />
+              But that trust is won or lost on the frontend. In a high-stakes application, a confusing layout or a lagging response isn't just a UI bug—it's a crack in the user's confidence.<br /><br />
+              That's why I believe a clean, logical, and responsive interface is the <em>visible proof</em> of the reliability underneath. That intersection of rock-solid logic and human-centric design is where great technology lives.
+            </p>
 
             <p className="about-paragraph about-closing">
               Currently blending advanced Computer Science theory <strong className="highlight-stat">(8.4 CGPA)</strong> with hands-on, industry-grade implementation.
