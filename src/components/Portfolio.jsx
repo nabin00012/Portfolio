@@ -96,7 +96,7 @@ const Portfolio = () => {
   // Handle blog navigation
   const handleBlogNavigation = () => {
     setNavOpen(false);
-    window.open('/blog', '_blank');
+    window.location.href = '/blog';
   };
 
   // Projects data - REAL PROJECTS
@@ -605,7 +605,7 @@ const Portfolio = () => {
             <div className="nav-card nav-card-special" onClick={handleBlogNavigation} style={{ cursor: 'pointer' }}>
               <div className="nav-icon">📚</div>
               <div className="nav-content">
-                <h3 style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={handleBlogNavigation}>Blog</h3>
+                <h3 style={{ cursor: 'pointer', textDecoration: 'underline' }}>Blog</h3>
                 <p>Technical insights</p>
               </div>
               <div className="nav-arrow">→</div>
@@ -769,7 +769,7 @@ const Portfolio = () => {
                 title="Blog & Articles"
               >
                 <span className="nav-item-icon">📝</span>
-                <span className="nav-item-label" style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={handleBlogNavigation}>Blog</span>
+                <span className="nav-item-label" style={{ cursor: 'pointer', textDecoration: 'underline' }}>Blog</span>
                 <span className="nav-item-badge">NEW</span>
               </button>
 
@@ -1240,7 +1240,7 @@ const Portfolio = () => {
 
                 {/* Blog Button Below Tech Details */}
                 <div className="project-blog-section">
-                  <a href={project.blog} target="_blank" rel="noopener noreferrer" className="project-blog-button-compact" style={{ cursor: 'pointer' }} onClick={handleBlogNavigation}>
+                  <a href={project.blog} className="project-blog-button-compact" style={{ cursor: 'pointer' }} onClick={e => { e.preventDefault(); handleBlogNavigation(); }}>
                     <div className="blog-icon-small">📖</div>
                     <span className="blog-text" style={{ textDecoration: 'underline' }}>Read Blog</span>
                     <div className="blog-arrow-small">→</div>
