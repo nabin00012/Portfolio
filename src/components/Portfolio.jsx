@@ -96,7 +96,8 @@ const Portfolio = () => {
   // Handle blog navigation
   const handleBlogNavigation = () => {
     setNavOpen(false);
-    window.location.href = '/blog';
+    window.history.pushState({}, '', '/blog');
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   // Projects data - REAL PROJECTS
@@ -104,7 +105,7 @@ const Portfolio = () => {
     {
       id: 1,
       title: 'CodeCommons',
-      description: '🏆 Recognized Collaborative Platform. Built with Next.js 14 and TypeScript (reducing runtime errors by 90%). Leverages Server-Side Rendering (SSR) for optimal Technical SEO and performance. Features real-time collaboration via Socket.IO and incorporates complex UI elements including Monaco Editor and Three.js, demonstrating proficiency in modern state management, high-performance web architecture, and design for educational scalability.<br /><strong>Role:</strong> Solo Project',
+      description: '🏆 Real-time collaborative coding platform built with Next.js 14 and TypeScript. Features SSR for optimal SEO, Socket.IO for live collaboration, Monaco Editor integration, and Three.js animations. Achieved 90% reduction in runtime errors through TypeScript implementation and demonstrates modern state management patterns.',
       image: '/images/codecommons.png',
       tags: ['Next.js 14', 'TypeScript', 'SSR', 'Socket.IO', 'Monaco', 'Three.js'],
       year: '2025',
@@ -116,8 +117,7 @@ const Portfolio = () => {
     {
       id: 2,
       title: 'MERN-CI-CD-Kube',
-      description: '⭐ DevOps & CI/CD Project: MERN on Kubernetes. A comprehensive MERN chat application demonstrating a full CI/CD pipeline featuring fully containerized MERN stack orchestrated by Kubernetes (K8s). The automated CI/CD Pipeline (GitHub Actions) handles Docker image builds and executes zero-downtime rolling updates. Demonstrates system design proficiency with separate K8s deployments for the client, Express API, and a MongoDB StatefulSet, ensuring environment consistency and high availability.<br /><strong>Role:</strong> Solo Project',
-      // Use provided project thumbnail image
+      description: '⚡ Production-grade MERN chat application with complete Kubernetes orchestration and CI/CD automation. Features containerized deployments, GitHub Actions pipeline for Docker builds, zero-downtime rolling updates, and MongoDB StatefulSet for data persistence. Demonstrates enterprise-level DevOps practices and system design.',
       image: '/images/Mern-thumbnail.png?v=2',
       tags: ['Kubernetes', 'Docker', 'GitHub Actions', 'Rolling Updates', 'StatefulSet', 'HA'],
       year: '2024',
@@ -128,7 +128,7 @@ const Portfolio = () => {
     {
       id: 3,
       title: 'SecureFinData',
-      description: '🔒 Security-First Fintech Prototype. A production-ready MERN application for financial data featuring Robust data-at-rest security using AES-256-GCM encryption with RSA key wrapping and a Zero-Trust architecture (RBAC & audit trails). All critical logic was developed using a TDD workflow, achieving 85%+ unit test coverage via Jest, ensuring security protocols are rigorously validated and production-ready.<br /><strong>Role:</strong> Solo Project',
+      description: '🔒 Enterprise-grade fintech application implementing military-level security protocols. Features AES-256-GCM encryption with RSA key wrapping, Zero-Trust architecture with RBAC, and comprehensive audit trails. Developed using TDD methodology with 85%+ Jest test coverage ensuring production reliability.',
       image: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?w=1200&q=80',
       tags: ['AES-256-GCM', 'Jest TDD', 'Zero-Trust', 'RBAC', 'Audit Trails', 'RSA'],
       year: '2024',
@@ -139,7 +139,7 @@ const Portfolio = () => {
     {
       id: 4,
       title: 'FluxTrade',
-      description: '⚡ Web3 Decentralized Trading Platform. A full-stack MERN DApp bridging traditional APIs with blockchain logic. The Node.js/Express backend serves as the crucial Web3.js integration layer, handling transaction signing, gas optimization, and real-time event listening for on-chain contract events. Features auditable, gas-optimized Solidity smart contracts and leverages off-chain indexing for fast portfolio and trade analytics.<br /><strong>Role:</strong> Solo Project',
+      description: '⚡ Full-stack Web3 decentralized trading platform bridging traditional finance with blockchain. Features optimized Solidity smart contracts, Web3.js integration for transaction handling, gas optimization algorithms, real-time event listeners, and off-chain indexing for lightning-fast portfolio analytics.',
       image: '/images/fluxtrade.png?v=2',
       tags: ['Web3.js', 'Solidity', 'DApp', 'Gas Optimization', 'Event Listening', 'DeFi'],
       year: '2025',
@@ -903,54 +903,174 @@ const Portfolio = () => {
           </div>
 
           <div className="about-text">
-            <div className="about-role-badge">
-              <span className="badge-icon">⚡</span>
-              <span className="badge-text">Full-Stack Engineer (MERN, DevOps & Security)</span>
-            </div>
-
-            <p className="about-paragraph about-intro">
-              I engineer <strong className="highlight-text">high-assurance, production-grade systems</strong>, specializing in the MERN stack, Next.js, and TypeScript.
-              My expertise is not just functionality, but <strong className="highlight-text">architectural maturity</strong> and <strong className="highlight-text">measurable engineering discipline</strong>.
-            </p>
-
-            <div className="core-pillars">
-              <h4 className="pillars-title">Three Core Pillars:</h4>
-
-              <div className="pillar-item">
-                <div className="pillar-icon">🚀</div>
-                <div className="pillar-content">
-                  <h5 className="pillar-name">Operational Readiness</h5>
-                  <p className="pillar-desc">Orchestrating zero-downtime deployments via <strong>Kubernetes</strong> and automated <strong>CI/CD pipelines</strong> (GitHub Actions).</p>
+            {/* Mission Section */}
+            <div className="mission-section">
+              <div className="mission-header">
+                <div className="mission-badge">
+                  <span className="mission-icon">🎯</span>
+                  <span className="mission-label">My Mission</span>
                 </div>
+                <h3 className="mission-title">
+                  From Code to <span className="title-highlight">Consequence</span>
+                </h3>
               </div>
 
-              <div className="pillar-item">
-                <div className="pillar-icon">✅</div>
-                <div className="pillar-content">
-                  <h5 className="pillar-name">Quality Assurance</h5>
-                  <p className="pillar-desc">Enforcing code integrity by practicing <strong>Test-Driven Development (TDD)</strong> on critical logic, demonstrated by <strong className="highlight-stat">85%+ unit test coverage</strong>.</p>
-                </div>
-              </div>
+              <div className="mission-content">
+                <p className="mission-paragraph">
+                  I'm a <strong className="text-accent">Full-Stack Developer</strong> specializing in the MERN stack. 
+                  My focus isn't just on writing code—it's on <strong className="text-glow-green">delivering results</strong>. 
+                  I'm passionate about the high-stakes domains of <strong className="text-accent">DevOps, Security, and System Design</strong>, 
+                  and I apply those principles to every project I build.
+                </p>
 
-              <div className="pillar-item">
-                <div className="pillar-icon">🔒</div>
-                <div className="pillar-content">
-                  <h5 className="pillar-name">Security Domain</h5>
-                  <p className="pillar-desc">Implementing military-grade <strong>AES-256-GCM encryption</strong>, <strong>Zero-Trust RBAC</strong>, and secure JWT flows in Fintech and high-stakes environments.</p>
+                <div className="mission-highlight-box">
+                  <div className="highlight-icon">💡</div>
+                  <p className="highlight-text">
+                    I thrive on solving complex problems and turning ambitious ideas into secure, scalable, and reliable applications. 
+                    <strong> I'm not just building features; I'm building trust.</strong>
+                  </p>
                 </div>
               </div>
             </div>
 
-            <p className="about-paragraph about-philosophy">
-              This approach is driven by my core philosophy: engineering isn't just about writing code—it's about earning trust. A well-built system must be secure and reliable <em>under the hood</em>.<br /><br />
-              But that trust is won or lost on the frontend. In a high-stakes application, a confusing layout or a lagging response isn't just a UI bug—it's a crack in the user's confidence.<br /><br />
-              That's why I believe a clean, logical, and responsive interface is the <em>visible proof</em> of the reliability underneath. That intersection of rock-solid logic and human-centric design is where great technology lives.
-            </p>
+            {/* SUPER COOL ENGINEERING PRINCIPLES SECTION */}
+            <div className="engineering-showcase">
+              <div className="showcase-header">
+                <div className="header-top">
+                  <div className="header-badge-modern">
+                    <span className="badge-icon-modern">⚡</span>
+                    <span className="badge-text-modern">Engineering Excellence</span>
+                  </div>
+                </div>
+                <h3 className="showcase-title">My Engineering Principles</h3>
+                <p className="showcase-subtitle">Three pillars that define how I build production-ready systems</p>
+              </div>
 
-            <p className="about-paragraph about-closing">
-              Currently blending advanced Computer Science theory <strong className="highlight-stat">(8.4 CGPA)</strong> with hands-on, industry-grade implementation.
-              I don't just build applications; <strong className="highlight-text">I architect solutions that scale, secure, and perform.</strong>
-            </p>
+              <div className="principles-showcase-grid">
+                {/* Security Principle */}
+                <div className="principle-showcase-card security-card">
+                  <div className="card-shine-effect"></div>
+                  <div className="card-number">01</div>
+                  
+                  <div className="showcase-card-header">
+                    <div className="showcase-icon-wrapper security-theme">
+                      <div className="icon-pulse"></div>
+                      <span className="showcase-icon">🔐</span>
+                    </div>
+                    <h4 className="showcase-card-title">Security by Design</h4>
+                  </div>
+
+                  <div className="showcase-card-body">
+                    <p className="showcase-card-text">
+                      Implementing security best practices from the start. This includes secure JWT authentication flows, 
+                      Role-Based Access Control (RBAC), and <strong>correctly applying standard encryption 
+                      (like AES-256-GCM)</strong> for data-at-rest. Security is a foundation, not an afterthought.
+                    </p>
+                  </div>
+
+                  <div className="showcase-card-footer">
+                    <div className="tech-tags">
+                      <span className="tech-tag security-tag">
+                        <span className="tag-icon">🔑</span>
+                        <span>JWT</span>
+                      </span>
+                      <span className="tech-tag security-tag">
+                        <span className="tag-icon">👤</span>
+                        <span>RBAC</span>
+                      </span>
+                      <span className="tech-tag security-tag">
+                        <span className="tag-icon">🔒</span>
+                        <span>AES-256-GCM</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="card-accent-bar security-accent"></div>
+                </div>
+
+                {/* Quality Principle */}
+                <div className="principle-showcase-card quality-card">
+                  <div className="card-shine-effect"></div>
+                  <div className="card-number">02</div>
+                  
+                  <div className="showcase-card-header">
+                    <div className="showcase-icon-wrapper quality-theme">
+                      <div className="icon-pulse"></div>
+                      <span className="showcase-icon">✅</span>
+                    </div>
+                    <h4 className="showcase-card-title">Quality Through Discipline</h4>
+                  </div>
+
+                  <div className="showcase-card-body">
+                    <p className="showcase-card-text">
+                      A firm believer in Test-Driven Development (TDD). I focus on achieving <strong>high test coverage 
+                      on critical logic</strong> (using Jest) to ensure code is reliable, maintainable, and production-ready. 
+                      I prove my code works.
+                    </p>
+                  </div>
+
+                  <div className="showcase-card-footer">
+                    <div className="tech-tags">
+                      <span className="tech-tag quality-tag">
+                        <span className="tag-icon">🧪</span>
+                        <span>TDD</span>
+                      </span>
+                      <span className="tech-tag quality-tag">
+                        <span className="tag-icon">🃏</span>
+                        <span>Jest</span>
+                      </span>
+                      <span className="tech-tag quality-tag">
+                        <span className="tag-icon">📊</span>
+                        <span>85%+ Coverage</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="card-accent-bar quality-accent"></div>
+                </div>
+
+                {/* Scalability Principle */}
+                <div className="principle-showcase-card scalability-card">
+                  <div className="card-shine-effect"></div>
+                  <div className="card-number">03</div>
+                  
+                  <div className="showcase-card-header">
+                    <div className="showcase-icon-wrapper scalability-theme">
+                      <div className="icon-pulse"></div>
+                      <span className="showcase-icon">🚀</span>
+                    </div>
+                    <h4 className="showcase-card-title">Scalability & Operations</h4>
+                  </div>
+
+                  <div className="showcase-card-body">
+                    <p className="showcase-card-text">
+                      Designing systems that can grow. My projects demonstrate a full DevOps cycle, from <strong>containerization 
+                      with Docker</strong> to <strong>orchestration with Kubernetes</strong> and <strong>automated CI/CD 
+                      pipelines</strong> (GitHub Actions). I build for the full lifecycle.
+                    </p>
+                  </div>
+
+                  <div className="showcase-card-footer">
+                    <div className="tech-tags">
+                      <span className="tech-tag scalability-tag">
+                        <span className="tag-icon">🐳</span>
+                        <span>Docker</span>
+                      </span>
+                      <span className="tech-tag scalability-tag">
+                        <span className="tag-icon">☸️</span>
+                        <span>Kubernetes</span>
+                      </span>
+                      <span className="tech-tag scalability-tag">
+                        <span className="tag-icon">⚙️</span>
+                        <span>CI/CD</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="card-accent-bar scalability-accent"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

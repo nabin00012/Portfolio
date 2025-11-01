@@ -94,27 +94,32 @@
     align-items: center;
     gap: 8px;
     padding: 12px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 25px;
     color: #fff;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .pillar-button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     border-color: var(--pillar-color);
     transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--pillar-color);
 }
 
 .pillar-button.active {
     background: var(--pillar-color);
     color: #000;
     border-color: var(--pillar-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 30px var(--pillar-color);
+    font-weight: 700;
 }
 
 .pillar-icon {
@@ -136,8 +141,8 @@
 }
 
 .article-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     padding: 30px;
     transition: all 0.3s ease;
@@ -146,6 +151,8 @@
     animation: card-appear 0.6s ease-out forwards;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .article-card.loaded {
@@ -156,7 +163,8 @@
 .article-card:hover {
     border-color: var(--card-border);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--card-glow);
+    background: rgba(0, 0, 0, 0.75);
 }
 
 @keyframes card-appear {
@@ -191,18 +199,21 @@
 }
 
 .article-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    line-height: 1.4;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.5;
     margin-bottom: 15px;
     color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .article-excerpt {
-    color: #ccc;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.7;
     margin-bottom: 20px;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* TECH TAGS */
@@ -214,14 +225,16 @@
 }
 
 .tech-tag {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
     font-family: 'JetBrains Mono', monospace;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 /* METRICS */
@@ -233,10 +246,14 @@
 }
 
 .metric-item {
-    background: rgba(0, 212, 255, 0.1);
+    background: rgba(0, 0, 0, 0.7);
     color: #00d4ff;
-    padding: 6px 12px;
+    padding: 8px 14px;
     border-radius: 15px;
+    border: 1.5px solid rgba(0, 212, 255, 0.4);
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    backdrop-filter: blur(10px);
     font-size: 0.8rem;
     font-weight: 600;
     border: 1px solid rgba(0, 212, 255, 0.3);
@@ -251,16 +268,19 @@
     padding: 12px 24px;
     border-radius: 25px;
     color: #000;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 0.95rem;
     text-decoration: none;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .read-more-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--card-glow);
+    filter: brightness(1.1);
 }
 
 /* RESPONSIVE DESIGN */
