@@ -602,10 +602,10 @@ const Portfolio = () => {
               <div className="nav-arrow">→</div>
             </div>
 
-            <div className="nav-card nav-card-special" onClick={() => window.open('/blog', '_blank')}>
+            <div className="nav-card nav-card-special" onClick={handleBlogNavigation} style={{ cursor: 'pointer' }}>
               <div className="nav-icon">📚</div>
               <div className="nav-content">
-                <h3>Blog</h3>
+                <h3 style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={handleBlogNavigation}>Blog</h3>
                 <p>Technical insights</p>
               </div>
               <div className="nav-arrow">→</div>
@@ -769,7 +769,7 @@ const Portfolio = () => {
                 title="Blog & Articles"
               >
                 <span className="nav-item-icon">📝</span>
-                <span className="nav-item-label">Blog</span>
+                <span className="nav-item-label" style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={handleBlogNavigation}>Blog</span>
                 <span className="nav-item-badge">NEW</span>
               </button>
 
@@ -1240,9 +1240,9 @@ const Portfolio = () => {
 
                 {/* Blog Button Below Tech Details */}
                 <div className="project-blog-section">
-                  <a href={project.blog} target="_blank" rel="noopener noreferrer" className="project-blog-button-compact">
+                  <a href={project.blog} target="_blank" rel="noopener noreferrer" className="project-blog-button-compact" style={{ cursor: 'pointer' }} onClick={handleBlogNavigation}>
                     <div className="blog-icon-small">📖</div>
-                    <span className="blog-text">Read Blog</span>
+                    <span className="blog-text" style={{ textDecoration: 'underline' }}>Read Blog</span>
                     <div className="blog-arrow-small">→</div>
                   </a>
                 </div>
