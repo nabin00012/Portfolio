@@ -6,28 +6,28 @@ const ProjectContextWidget = ({ project, metrics, technologies, pillarConfig }) 
 
     const projectData = {
         'MERN-CI-CD-Kube': {
-            description: 'Enterprise DevOps Flagship featuring fully containerized MERN stack orchestrated by Kubernetes.',
+            description: 'Enterprise DevOps platform with containerized MERN on Kubernetes.',
             demoLink: 'https://mern-ci-cd-kube.vercel.app/',
             githubLink: 'https://github.com/nabin00012/mern-ci-cd-kube',
             architecture: 'Kubernetes, Docker, GitHub Actions',
             features: ['Zero-downtime deployments', 'Auto-scaling', 'StatefulSets', 'Rolling updates']
         },
         'SecureFinData': {
-            description: 'Security-First Fintech Platform with military-grade AES-256-GCM encryption and Zero-Trust architecture.',
+            description: 'Fintech platform with AES-256-GCM encryption and Zero-Trust security.',
             demoLink: '#',
             githubLink: 'https://github.com/nabin00012/secure-fin-data',
             architecture: 'AES-256-GCM, Zero-Trust, RBAC',
             features: ['Military-grade encryption', 'Audit trails', '85%+ test coverage', 'Zero-Trust RBAC']
         },
         'FluxTrade': {
-            description: 'Web3 Decentralized Trading Platform bridging traditional APIs with blockchain logic.',
+            description: 'Web3 trading platform with blockchain integration and DeFi support.',
             demoLink: 'https://flux-trade-nine.vercel.app/',
             githubLink: 'https://github.com/nabin00012/fluxtrade',
             architecture: 'Web3.js, Solidity, Gas Optimization',
             features: ['Gas-optimized contracts', 'Real-time events', 'DeFi integration', 'Portfolio analytics']
         },
         'CodeCommons': {
-            description: 'Recognized Collaborative Platform built with Next.js 14 and TypeScript for optimal performance.',
+            description: 'Collaborative coding platform with Next.js 14 and TypeScript.',
             demoLink: 'https://codecommons-delta.vercel.app',
             githubLink: 'https://github.com/nabin00012/codecommons',
             architecture: 'Next.js 14, TypeScript, SSR',
@@ -51,7 +51,7 @@ const ProjectContextWidget = ({ project, metrics, technologies, pillarConfig }) 
         >
             <div className="widget-header" style={{ width: '100%', flexWrap: 'wrap' }}>
                 <div className="widget-icon">
-                    <span>🔗</span>
+                    <span>✅</span>
                 </div>
                 <div className="widget-title" style={{ 
                     flex: 1, 
