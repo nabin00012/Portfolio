@@ -155,7 +155,7 @@
     background: rgba(0, 0, 0, 0.6);
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
@@ -164,6 +164,8 @@
     overflow: hidden;
     backdrop-filter: blur(15px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
 }
 
 .article-card.loaded {
@@ -206,25 +208,36 @@
 
 /* ARTICLE CONTENT */
 .article-content {
-    margin-top: 16px;
+    margin-top: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .article-title {
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 12px;
+    line-height: 1.3;
+    margin-bottom: 10px;
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .article-excerpt {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    margin-bottom: 16px;
-    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
     font-weight: 400;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* TECH TAGS */
