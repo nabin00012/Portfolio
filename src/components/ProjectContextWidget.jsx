@@ -42,16 +42,33 @@ const ProjectContextWidget = ({ project, metrics, technologies, pillarConfig }) 
             className="project-context-widget"
             style={{
                 background: pillarConfig.bgColor,
-                borderColor: pillarConfig.borderColor
+                borderColor: pillarConfig.borderColor,
+                width: '100%',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+                overflow: 'visible'
             }}
         >
-            <div className="widget-header">
+            <div className="widget-header" style={{ width: '100%', flexWrap: 'wrap' }}>
                 <div className="widget-icon">
                     <span>🔗</span>
                 </div>
-                <div className="widget-title">
-                    <h4>Related Project</h4>
-                    <p className="project-name">{project}</p>
+                <div className="widget-title" style={{ 
+                    flex: 1, 
+                    minWidth: 0, 
+                    overflow: 'visible',
+                    maxWidth: 'calc(100% - 80px)'
+                }}>
+                    <h4 style={{ 
+                        wordWrap: 'break-word', 
+                        overflowWrap: 'break-word',
+                        whiteSpace: 'normal'
+                    }}>Related Project</h4>
+                    <p className="project-name" style={{ 
+                        wordWrap: 'break-word', 
+                        overflowWrap: 'break-word',
+                        whiteSpace: 'normal'
+                    }}>{project}</p>
                 </div>
                 <button
                     className="expand-button"
@@ -70,8 +87,13 @@ const ProjectContextWidget = ({ project, metrics, technologies, pillarConfig }) 
                 </button>
             </div>
 
-            <div className="widget-content">
-                <p className="project-description">{currentProject.description}</p>
+            <div className="widget-content" style={{ width: '100%', overflow: 'visible' }}>
+                <p className="project-description" style={{ 
+                    wordWrap: 'break-word', 
+                    overflowWrap: 'break-word',
+                    whiteSpace: 'normal',
+                    width: '100%'
+                }}>{currentProject.description}</p>
 
                 <div className="project-metrics">
                     <h5 className="metrics-title">Key Metrics</h5>
