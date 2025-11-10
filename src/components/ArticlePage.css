@@ -241,6 +241,12 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  .article-body {
+    max-width: 100%;
+  }
+}
+
 .article-body * {
   max-width: 100%;
   word-wrap: break-word;
@@ -551,7 +557,7 @@
 
 @media (max-width: 768px) {
   .article-header {
-    padding: 100px 24px 50px;
+    padding: 100px 20px 50px;
   }
   
   .article-breadcrumb {
@@ -597,18 +603,26 @@
   }
   
   .article-content {
-    padding: 30px 24px;
+    padding: 30px 20px;
     gap: 30px;
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
   
   .article-body {
-    max-width: 100%;
+    max-width: 100% !important;
+    width: 100%;
+  }
+  
+  .article-section {
+    margin-bottom: 36px;
+    width: 100%;
   }
   
   .section-title {
     font-size: 1.35rem;
     gap: 10px;
+    flex-wrap: wrap;
   }
   
   .section-icon {
@@ -618,19 +632,26 @@
   .section-content {
     font-size: 0.95rem;
     line-height: 1.75;
+    width: 100%;
+  }
+  
+  .section-content p {
+    width: 100%;
+    margin-bottom: 18px;
   }
   
   .code-block {
-    margin: 20px -24px;
+    margin: 20px -20px;
     border-radius: 0;
+    width: calc(100% + 40px);
   }
   
   .code-header {
-    padding: 10px 16px;
+    padding: 10px 20px;
   }
   
   .code-content {
-    padding: 16px;
+    padding: 16px 20px;
   }
   
   .code-content code {
@@ -641,6 +662,7 @@
   .takeaway-item {
     padding: 12px;
     margin-bottom: 12px;
+    width: 100%;
   }
   
   .takeaway-text {
@@ -649,7 +671,7 @@
   }
   
   .article-footer {
-    padding: 40px 24px;
+    padding: 40px 20px;
   }
   
   .article-footer-content {
@@ -679,18 +701,18 @@
 
 @media (max-width: 480px) {
   .article-header {
-    padding: 90px 18px 40px;
+    padding: 90px 16px 40px;
   }
   
   .article-breadcrumb {
     font-size: 0.75rem;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   
   .article-pillar-badge {
     padding: 6px 12px;
     font-size: 0.75rem;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   
   .pillar-icon {
@@ -699,28 +721,28 @@
   
   .article-meta {
     flex-direction: row;
-    gap: 10px;
-    font-size: 0.75rem;
+    gap: 8px;
+    font-size: 0.7rem;
     justify-content: flex-start;
     flex-wrap: wrap;
   }
   
   .article-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     line-height: 1.35;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   
   .article-excerpt {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.65;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
   
   .article-technologies {
     justify-content: flex-start;
     width: 100%;
-    gap: 8px;
+    gap: 6px;
   }
   
   .tech-tag {
@@ -734,45 +756,53 @@
   }
   
   .article-content {
-    padding: 24px 18px;
-    gap: 24px;
+    padding: 20px 16px;
+    gap: 20px;
   }
   
   .article-body {
-    max-width: 100%;
+    max-width: 100% !important;
+    width: 100%;
+  }
+  
+  .article-section {
+    margin-bottom: 28px;
     width: 100%;
   }
   
   .section-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   
   .section-icon {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
   
   .section-content {
-    font-size: 0.88rem;
+    font-size: 0.875rem;
     line-height: 1.75;
+    width: 100%;
   }
   
   .section-content p {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+    width: 100%;
   }
   
   .code-block {
-    margin: 16px -18px;
+    margin: 16px -16px;
     border-radius: 0;
     border-left: none;
     border-right: none;
+    width: calc(100% + 32px);
   }
   
   .code-header {
-    padding: 10px 18px;
+    padding: 10px 16px;
     flex-wrap: wrap;
     gap: 8px;
   }
@@ -788,7 +818,7 @@
   }
   
   .code-content {
-    padding: 14px 18px;
+    padding: 14px 16px;
   }
   
   .code-content code {
@@ -800,6 +830,7 @@
     padding: 12px;
     gap: 10px;
     margin-bottom: 10px;
+    width: 100%;
   }
   
   .takeaway-bullet {
@@ -815,11 +846,11 @@
   }
   
   .article-footer {
-    padding: 32px 18px;
+    padding: 28px 16px;
   }
   
   .article-footer-content {
-    gap: 20px;
+    gap: 18px;
   }
   
   .article-actions {
@@ -831,17 +862,17 @@
   .action-button {
     justify-content: center;
     width: 100%;
-    padding: 12px 18px;
-    font-size: 0.82rem;
+    padding: 12px 16px;
+    font-size: 0.8rem;
   }
   
   .nav-text {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
   
   .github-link {
-    padding: 12px 18px;
-    font-size: 0.82rem;
+    padding: 12px 16px;
+    font-size: 0.8rem;
   }
   
   .toc-toggle {
@@ -855,21 +886,160 @@
   }
 }
 
-/* EXTRA SMALL DEVICES */
+/* STANDARD MOBILE PHONES (360px - Samsung Galaxy S8+, etc) */
+@media (max-width: 390px) {
+  .article-header {
+    padding: 85px 14px 38px;
+  }
+  
+  .article-breadcrumb {
+    font-size: 0.72rem;
+    margin-bottom: 14px;
+  }
+  
+  .article-pillar-badge {
+    padding: 5px 11px;
+    font-size: 0.72rem;
+    margin-bottom: 14px;
+  }
+  
+  .article-meta {
+    font-size: 0.72rem;
+    gap: 8px;
+  }
+  
+  .article-title {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  
+  .article-excerpt {
+    font-size: 0.86rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  
+  .article-technologies {
+    gap: 6px;
+  }
+  
+  .tech-tag {
+    padding: 4px 9px;
+    font-size: 0.68rem;
+  }
+  
+  .article-content {
+    padding: 18px 14px;
+    gap: 18px;
+  }
+  
+  .article-body {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  
+  .article-section {
+    margin-bottom: 24px;
+    width: 100%;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+    gap: 7px;
+    margin-bottom: 12px;
+  }
+  
+  .section-icon {
+    font-size: 1.05rem;
+  }
+  
+  .section-content {
+    font-size: 0.84rem;
+    line-height: 1.75;
+    width: 100%;
+  }
+  
+  .section-content p {
+    margin-bottom: 13px;
+    width: 100%;
+  }
+  
+  .code-block {
+    margin: 14px -14px;
+    width: calc(100% + 28px);
+  }
+  
+  .code-header {
+    padding: 9px 14px;
+  }
+  
+  .code-language {
+    font-size: 0.68rem;
+  }
+  
+  .copy-button {
+    padding: 5px 9px;
+    font-size: 0.68rem;
+  }
+  
+  .code-content {
+    padding: 13px 14px;
+  }
+  
+  .code-content code {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+  
+  .takeaway-item {
+    padding: 11px;
+    gap: 9px;
+    margin-bottom: 9px;
+    width: 100%;
+  }
+  
+  .takeaway-bullet {
+    width: 5px;
+    height: 5px;
+    margin-top: 4px;
+  }
+  
+  .takeaway-text {
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+  
+  .article-footer {
+    padding: 26px 14px;
+  }
+  
+  .action-button {
+    padding: 11px 15px;
+    font-size: 0.79rem;
+  }
+  
+  .github-link {
+    padding: 11px 15px;
+    font-size: 0.79rem;
+  }
+}
+
+/* EXTRA SMALL DEVICES (iPhone SE, etc) */
 @media (max-width: 374px) {
   .article-header {
-    padding: 80px 14px 35px;
+    padding: 80px 12px 35px;
   }
   
   .article-breadcrumb {
     font-size: 0.7rem;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   
   .article-pillar-badge {
     padding: 5px 10px;
     font-size: 0.7rem;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   
   .pillar-icon {
@@ -878,23 +1048,23 @@
   
   .article-meta {
     font-size: 0.7rem;
-    gap: 8px;
+    gap: 6px;
   }
   
   .article-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     line-height: 1.35;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   
   .article-excerpt {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     line-height: 1.6;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
   
   .article-technologies {
-    gap: 6px;
+    gap: 5px;
   }
   
   .tech-tag {
@@ -908,14 +1078,24 @@
   }
   
   .article-content {
-    padding: 20px 14px;
-    gap: 20px;
+    padding: 16px 12px;
+    gap: 16px;
+  }
+  
+  .article-body {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  
+  .article-section {
+    margin-bottom: 22px;
+    width: 100%;
   }
   
   .section-title {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     gap: 6px;
-    margin-bottom: 14px;
+    margin-bottom: 11px;
   }
   
   .section-icon {
@@ -923,20 +1103,23 @@
   }
   
   .section-content {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     line-height: 1.7;
+    width: 100%;
   }
   
   .section-content p {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    width: 100%;
   }
   
   .code-block {
-    margin: 14px -14px;
+    margin: 12px -12px;
+    width: calc(100% + 24px);
   }
   
   .code-header {
-    padding: 8px 14px;
+    padding: 8px 12px;
   }
   
   .code-language {
@@ -949,7 +1132,7 @@
   }
   
   .code-content {
-    padding: 12px 14px;
+    padding: 11px 12px;
   }
   
   .code-content code {
@@ -961,6 +1144,7 @@
     padding: 10px;
     gap: 8px;
     margin-bottom: 8px;
+    width: 100%;
   }
   
   .takeaway-bullet {
@@ -970,16 +1154,16 @@
   }
   
   .takeaway-text {
-    font-size: 0.78rem;
+    font-size: 0.77rem;
     line-height: 1.6;
   }
   
   .article-footer {
-    padding: 28px 14px;
+    padding: 24px 12px;
   }
   
   .article-footer-content {
-    gap: 18px;
+    gap: 16px;
   }
   
   .article-actions {
@@ -987,17 +1171,17 @@
   }
   
   .action-button {
-    padding: 10px 16px;
-    font-size: 0.78rem;
+    padding: 10px 14px;
+    font-size: 0.76rem;
   }
   
   .nav-text {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
   
   .github-link {
-    padding: 10px 16px;
-    font-size: 0.78rem;
+    padding: 10px 14px;
+    font-size: 0.76rem;
   }
   
   .toc-toggle {
