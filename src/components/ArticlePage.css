@@ -9,6 +9,12 @@
   width: 100%;
 }
 
+.article-page *,
+.article-page *::before,
+.article-page *::after {
+  box-sizing: border-box;
+}
+
 /* ==================== LOADING & ERROR STATES ==================== */
 .article-loading,
 .article-not-found {
@@ -102,6 +108,7 @@
   margin-bottom: 24px;
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.6);
+  flex-wrap: wrap;
 }
 
 .breadcrumb-link {
@@ -219,6 +226,8 @@
   grid-template-columns: 1fr 300px;
   gap: 60px;
   align-items: start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .article-body {
@@ -227,6 +236,7 @@
   width: 100%;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .article-section {
@@ -257,6 +267,25 @@
 
 .section-content p {
   margin-bottom: 20px;
+}
+
+/* Prevent content overflow */
+.section-content img,
+.section-content video,
+.section-content iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.section-content table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.section-content pre {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 /* ==================== CODE BLOCKS ==================== */
@@ -578,6 +607,9 @@
   
   .toc-toggle {
     right: 16px;
+    top: auto;
+    bottom: 20px;
+    transform: none;
     padding: 10px 14px;
     font-size: 0.8rem;
   }
@@ -715,6 +747,9 @@
   
   .toc-toggle {
     right: 12px;
+    top: auto;
+    bottom: 16px;
+    transform: none;
     padding: 8px 12px;
     font-size: 0.75rem;
     gap: 6px;
@@ -771,5 +806,10 @@
   .action-button {
     padding: 10px 16px;
     font-size: 0.8rem;
+  }
+  
+  .toc-toggle {
+    right: 10px;
+    bottom: 12px;
   }
 }
