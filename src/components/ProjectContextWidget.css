@@ -490,7 +490,7 @@
 /* STANDARD MOBILE PHONES (360px - Samsung Galaxy S8+, etc) */
 @media (max-width: 390px) {
   .project-context-widget {
-    padding: 12px;
+    padding: 8px;
     width: 100% !important;
     max-width: 100% !important;
     overflow: visible;
@@ -498,20 +498,20 @@
   
   .widget-header {
     width: 100%;
-    gap: 8px;
+    gap: 6px;
   }
   
   .widget-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 0.95rem;
+    width: 24px;
+    height: 24px;
+    font-size: 0.85rem;
     flex-shrink: 0;
   }
   
   .widget-title {
     flex: 1;
     min-width: 0;
-    max-width: calc(100% - 65px);
+    max-width: calc(100% - 55px);
     overflow: visible;
   }
   
@@ -532,8 +532,8 @@
   }
   
   .expand-button {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
   }
   

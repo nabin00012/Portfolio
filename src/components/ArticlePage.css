@@ -576,7 +576,7 @@
 
 @media (max-width: 768px) {
   .article-header {
-    padding: 100px 20px 50px;
+    padding: 100px 16px 50px;
   }
   
   .article-breadcrumb {
@@ -622,7 +622,7 @@
   }
   
   .article-content {
-    padding: 30px 20px;
+    padding: 30px 12px;
     gap: 30px;
     grid-template-columns: 1fr;
     max-width: 100%;
@@ -775,7 +775,7 @@
   }
   
   .article-content {
-    padding: 20px 16px;
+    padding: 20px 8px;
     gap: 20px;
   }
   
@@ -949,7 +949,7 @@
   }
   
   .article-content {
-    padding: 18px 14px;
+    padding: 18px 8px;
     gap: 18px;
   }
   
