@@ -1181,7 +1181,7 @@ body {
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   min-width: 70px;
   flex-shrink: 0;
   backdrop-filter: blur(15px);
@@ -1196,9 +1196,11 @@ body {
 }
 
 .nav-item-compact.active {
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 212, 255, 0.2));
-  border: 2px solid rgba(0, 255, 136, 0.7);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.4), rgba(0, 212, 255, 0.3)) !important;
+  border: 2px solid rgba(0, 255, 136, 1) !important;
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.8), 0 0 60px rgba(0, 255, 136, 0.4) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  transition: none !important;
 }
 
 .nav-item-icon {
@@ -1218,8 +1220,9 @@ body {
 }
 
 .nav-item-compact.active .nav-item-label {
-  color: #00ff88;
-  font-weight: 600;
+  color: #00ff88 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.8) !important;
 }
 
 /* ==================== ENHANCED NAVIGATION FEATURES ==================== */
