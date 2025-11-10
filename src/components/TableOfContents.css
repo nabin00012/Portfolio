@@ -16,6 +16,11 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
+  box-sizing: border-box;
+}
+
+.toc-floating * {
+  box-sizing: border-box;
 }
 
 .toc-header {

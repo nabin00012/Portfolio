@@ -9,6 +9,12 @@
   overflow: hidden;
   transition: all 0.3s ease;
   margin-bottom: 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.project-context-widget * {
+  box-sizing: border-box;
 }
 
 .project-context-widget:hover {
@@ -82,6 +88,8 @@
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 16px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .project-metrics {
@@ -99,6 +107,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 8px;
+  width: 100%;
 }
 
 .metric-item {
@@ -106,6 +115,8 @@
   border-radius: 8px;
   padding: 8px;
   text-align: center;
+  min-width: 0;
+  word-wrap: break-word;
 }
 
 .metric-value {
@@ -142,6 +153,8 @@
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
   line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .features-list {
@@ -169,6 +182,10 @@
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+  min-width: 0;
 }
 
 .technologies-grid {
@@ -263,13 +280,14 @@
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
   .project-context-widget {
-    padding: 20px;
+    padding: 18px;
     margin-bottom: 24px;
   }
   
   .widget-header {
     gap: 10px;
     margin-bottom: 14px;
+    flex-wrap: wrap;
   }
   
   .widget-icon {
@@ -278,30 +296,39 @@
     font-size: 1.125rem;
   }
   
+  .widget-title {
+    flex: 1;
+    min-width: 0;
+  }
+  
   .widget-title h4 {
     font-size: 0.9rem;
+    word-wrap: break-word;
   }
   
   .project-name {
     font-size: 0.8rem;
+    word-wrap: break-word;
   }
   
   .expand-button {
     width: 28px;
     height: 28px;
+    flex-shrink: 0;
   }
   
   .project-description {
     font-size: 0.8rem;
+    line-height: 1.6;
   }
   
   .metrics-grid {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(70px, 100%), 1fr));
     gap: 6px;
   }
   
   .metric-item {
-    padding: 6px;
+    padding: 6px 4px;
   }
   
   .metric-value {
@@ -313,7 +340,7 @@
   }
   
   .action-button {
-    padding: 8px 12px;
+    padding: 10px 14px;
     font-size: 0.75rem;
   }
 }
@@ -336,11 +363,13 @@
   }
   
   .widget-title h4 {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+    line-height: 1.3;
   }
   
   .project-name {
     font-size: 0.75rem;
+    line-height: 1.3;
   }
   
   .expand-button {
@@ -350,28 +379,69 @@
   
   .project-description {
     font-size: 0.75rem;
+    line-height: 1.6;
   }
   
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 4px;
+    gap: 6px;
   }
   
   .metric-item {
-    padding: 4px;
+    padding: 6px 4px;
   }
   
   .metric-value {
     font-size: 0.65rem;
+    line-height: 1.2;
   }
   
   .widget-actions {
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
   
   .action-button {
-    padding: 6px 10px;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+  
+  .architecture-text,
+  .feature-text {
+    font-size: 0.75rem;
+  }
+  
+  .tech-badge {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 374px) {
+  .project-context-widget {
+    padding: 12px;
+  }
+  
+  .widget-title h4 {
+    font-size: 0.8rem;
+  }
+  
+  .project-name {
+    font-size: 0.7rem;
+  }
+  
+  .project-description {
+    font-size: 0.7rem;
+  }
+  
+  .metric-value {
+    font-size: 0.6rem;
+  }
+  
+  .action-button {
+    padding: 8px 12px;
     font-size: 0.7rem;
   }
 }
