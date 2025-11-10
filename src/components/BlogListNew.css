@@ -135,19 +135,27 @@
 /* CLEAN ARTICLE GRID */
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
-    gap: 40px;
-    padding: 40px 20px;
-    max-width: 1400px;
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    gap: 24px;
+    padding: 30px 20px;
+    max-width: 1300px;
     margin: 0 auto;
     width: 100%;
+}
+
+/* 3 columns on large screens */
+@media (min-width: 1200px) {
+    .articles-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 }
 
 .article-card {
     background: rgba(0, 0, 0, 0.6);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    padding: 30px;
+    border-radius: 12px;
+    padding: 24px;
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
@@ -180,42 +188,42 @@
 /* PILLAR TAG */
 .pillar-tag {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
+    top: 16px;
+    right: 16px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
     font-weight: 600;
     color: #000;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
 
 .tag-icon {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 /* ARTICLE CONTENT */
 .article-content {
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .article-title {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    line-height: 1.5;
-    margin-bottom: 15px;
+    line-height: 1.4;
+    margin-bottom: 12px;
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .article-excerpt {
-    color: rgba(255, 255, 255, 0.92);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    font-weight: 400;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -223,16 +231,16 @@
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 6px;
+    margin-bottom: 14px;
 }
 
 .tech-tag {
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.75rem;
     font-weight: 600;
     border: 1.5px solid rgba(255, 255, 255, 0.3);
     font-family: 'JetBrains Mono', monospace;
@@ -244,35 +252,33 @@
 .metrics-display {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 25px;
+    gap: 6px;
+    margin-bottom: 18px;
 }
 
 .metric-item {
     background: rgba(0, 0, 0, 0.7);
     color: #00d4ff;
-    padding: 8px 14px;
-    border-radius: 15px;
-    border: 1.5px solid rgba(0, 212, 255, 0.4);
-    font-weight: 600;
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
-    backdrop-filter: blur(10px);
-    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
     border: 1px solid rgba(0, 212, 255, 0.3);
     font-family: 'JetBrains Mono', monospace;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    backdrop-filter: blur(10px);
 }
 
 /* READ MORE BUTTON */
 .read-more-button {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 25px;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 20px;
     color: #000;
-    font-weight: 700;
-    font-size: 0.95rem;
+    font-weight: 600;
+    font-size: 0.875rem;
     text-decoration: none;
     transition: all 0.3s ease;
     border: 2px solid transparent;
@@ -281,7 +287,7 @@
 }
 
 .read-more-button:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--card-glow);
     filter: brightness(1.1);
 }
