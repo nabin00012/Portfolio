@@ -565,6 +565,29 @@
   }
 }
 
+/* ACTUAL MOBILE DEVICE DETECTION */
+@media only screen and (max-device-width: 480px) {
+  .project-context-widget {
+    padding: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+  
+  .widget-header,
+  .widget-content,
+  .widget-title,
+  .project-description {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+}
+
 /* EXTRA SMALL DEVICES (iPhone SE, etc) */
 @media (max-width: 374px) {
   .project-context-widget {

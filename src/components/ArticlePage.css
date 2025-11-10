@@ -1044,6 +1044,26 @@
   }
 }
 
+/* ACTUAL MOBILE DEVICE DETECTION */
+@media only screen and (max-device-width: 480px) {
+  .article-page,
+  .article-header,
+  .article-content,
+  .article-body,
+  .article-section,
+  .section-content {
+    max-width: 100vw !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  
+  .article-content {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
 /* EXTRA SMALL DEVICES (iPhone SE, etc) */
 @media (max-width: 374px) {
   .article-header {

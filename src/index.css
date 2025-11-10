@@ -30,10 +30,28 @@ body {
     max-width: 100vw;
     width: 100vw;
     overflow-x: hidden;
+    position: relative;
   }
   
   * {
     max-width: 100vw;
+  }
+}
+
+/* ACTUAL MOBILE DEVICE FIXES */
+@media only screen and (max-device-width: 480px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    max-width: 100vw !important;
   }
 }
 
