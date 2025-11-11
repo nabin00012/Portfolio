@@ -1049,6 +1049,21 @@ body {
 }
 
 /* ==================== CREATIVE BOTTOM NAVIGATION ==================== */
+/* Navigation Backdrop Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nav-backdrop {
+  cursor: pointer;
+  touch-action: none;
+}
+
 .creative-bottom-nav {
   position: fixed;
   bottom: 0;

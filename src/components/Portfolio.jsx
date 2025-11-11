@@ -91,7 +91,12 @@ const Portfolio = () => {
       // Auto-close navigation when section changes
       if (newSection !== prevSectionRef.current) {
         prevSectionRef.current = newSection;
-        setNavOpen(false);
+        // Force close navigation on mobile when scrolling
+        if (window.innerWidth <= 768) {
+          setTimeout(() => setNavOpen(false), 50);
+        } else {
+          setNavOpen(false);
+        }
       }
 
       setCurrentSection(newSection);
@@ -106,25 +111,33 @@ const Portfolio = () => {
 
   // Close navigation when clicking outside
   useEffect(() => {
+    if (!navOpen) return;
+
     const handleClickOutside = (event) => {
-      if (navOpen) {
-        const navElement = document.querySelector('.nav-strip');
-        const toggleElement = document.querySelector('.nav-toggle-btn-compact');
-        
-        if (navElement && toggleElement && 
-            !navElement.contains(event.target) && 
-            !toggleElement.contains(event.target)) {
-          setNavOpen(false);
-        }
+      const navElement = document.querySelector('.nav-strip');
+      const toggleElement = document.querySelector('.nav-toggle-btn-compact');
+      const navSection = document.querySelector('.creative-bottom-nav');
+      
+      // Check if click is outside the entire navigation area
+      if (navSection && !navSection.contains(event.target)) {
+        setNavOpen(false);
+      } else if (navElement && toggleElement && 
+          !navElement.contains(event.target) && 
+          !toggleElement.contains(event.target)) {
+        setNavOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+    // Use a small delay to prevent immediate closing on toggle click
+    const timer = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside, true);
+      document.addEventListener('touchend', handleClickOutside, true);
+    }, 100);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      clearTimeout(timer);
+      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('touchend', handleClickOutside, true);
     };
   }, [navOpen]);
 
@@ -134,6 +147,16 @@ const Portfolio = () => {
     if (section && lenisRef.current) {
       // Auto-collapse navigation when navigating to a section
       setNavOpen(false);
+      
+      // On mobile, ensure navigation stays closed
+      if (window.innerWidth <= 768) {
+        // Force remove expanded class on mobile
+        const navStrip = document.querySelector('.nav-strip');
+        if (navStrip) {
+          navStrip.classList.remove('nav-strip-expanded');
+        }
+      }
+      
       lenisRef.current.scrollTo(section, { duration: 1.5 });
     }
   };
@@ -141,6 +164,15 @@ const Portfolio = () => {
   // Handle blog navigation
   const handleBlogNavigation = () => {
     setNavOpen(false);
+    
+    // On mobile, ensure navigation stays closed
+    if (window.innerWidth <= 768) {
+      const navStrip = document.querySelector('.nav-strip');
+      if (navStrip) {
+        navStrip.classList.remove('nav-strip-expanded');
+      }
+    }
+    
     window.history.pushState({}, '', '/blog');
     window.dispatchEvent(new PopStateEvent('popstate'));
   };
@@ -717,6 +749,22 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Backdrop */}
+        {navOpen && (
+          <div 
+            className="nav-backdrop"
+            onClick={() => setNavOpen(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(0, 0, 0, 0.5)',
+              zIndex: 998,
+              backdropFilter: 'blur(2px)',
+              animation: 'fadeIn 0.2s ease-out',
+            }}
+          />
+        )}
 
         {/* Creative Bottom Navigation */}
         <div className="creative-bottom-nav">
