@@ -11,6 +11,7 @@ const Portfolio = () => {
   const [navOpen, setNavOpen] = useState(false);
   const sectionsRef = useRef([]);
   const lenisRef = useRef(null);
+  const prevSectionRef = useRef(0);
 
   // Resume download function
   const downloadResume = async () => {
@@ -62,7 +63,7 @@ const Portfolio = () => {
 
     requestAnimationFrame(raf);
 
-    lenis.on('scroll', ({ scroll }) => {
+    const handleScroll = ({ scroll }) => {
       setScrollY(scroll);
 
       // Determine current section based on actual section positions
@@ -87,18 +88,45 @@ const Portfolio = () => {
         }
       });
 
-      // Auto-collapse navigation when section changes
-      if (newSection !== currentSection && navOpen) {
+      // Auto-close navigation when section changes
+      if (newSection !== prevSectionRef.current) {
+        prevSectionRef.current = newSection;
         setNavOpen(false);
       }
 
       setCurrentSection(newSection);
-    });
+    };
+
+    lenis.on('scroll', handleScroll);
 
     return () => {
       lenis.destroy();
     };
   }, []);
+
+  // Close navigation when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navOpen) {
+        const navElement = document.querySelector('.nav-strip');
+        const toggleElement = document.querySelector('.nav-toggle-btn-compact');
+        
+        if (navElement && toggleElement && 
+            !navElement.contains(event.target) && 
+            !toggleElement.contains(event.target)) {
+          setNavOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [navOpen]);
 
   // Smooth scroll to section
   const scrollToSection = (index) => {
