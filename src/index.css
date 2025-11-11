@@ -73,11 +73,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8b5cf6 0%, #ec4899 100%);
+  background: linear-gradient(180deg, #00A3FF 0%, #00FF88 100%);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #7c3aed 0%, #db2777 100%);
+  background: linear-gradient(180deg, #00B8FF 0%, #00FF99 100%);
 }
 

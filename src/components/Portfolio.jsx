@@ -65,10 +65,27 @@ const Portfolio = () => {
     lenis.on('scroll', ({ scroll }) => {
       setScrollY(scroll);
 
-      // Determine current section based on scroll position
+      // Determine current section based on actual section positions
       const windowHeight = window.innerHeight;
-      const newSectionIndex = Math.floor(scroll / (windowHeight * 0.8));
-      const newSection = Math.min(newSectionIndex, sectionsRef.current.length - 1);
+      const scrollPosition = scroll + windowHeight / 2; // Middle of viewport
+      
+      let newSection = 0;
+      let minDistance = Infinity;
+      
+      sectionsRef.current.forEach((section, index) => {
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionMiddle = sectionTop + sectionHeight / 2;
+          const distance = Math.abs(scrollPosition - sectionMiddle);
+          
+          // Find the section whose middle is closest to viewport middle
+          if (distance < minDistance) {
+            minDistance = distance;
+            newSection = index;
+          }
+        }
+      });
 
       // Auto-collapse navigation when section changes
       if (newSection !== currentSection && navOpen) {
