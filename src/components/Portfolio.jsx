@@ -88,15 +88,10 @@ const Portfolio = () => {
         }
       });
 
-      // Auto-close navigation when section changes
+      // Auto-close navigation when section changes or scrolling
       if (newSection !== prevSectionRef.current) {
         prevSectionRef.current = newSection;
-        // Force close navigation on mobile when scrolling
-        if (window.innerWidth <= 768) {
-          setTimeout(() => setNavOpen(false), 50);
-        } else {
-          setNavOpen(false);
-        }
+        setNavOpen(false);
       }
 
       setCurrentSection(newSection);
@@ -109,35 +104,56 @@ const Portfolio = () => {
     };
   }, []);
 
-  // Close navigation when clicking outside
+  // Prevent body scroll when nav is open
+  useEffect(() => {
+    if (navOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [navOpen]);
+
+  // Close navigation when clicking/tapping outside
   useEffect(() => {
     if (!navOpen) return;
 
-    const handleClickOutside = (event) => {
-      const navElement = document.querySelector('.nav-strip');
-      const toggleElement = document.querySelector('.nav-toggle-btn-compact');
-      const navSection = document.querySelector('.creative-bottom-nav');
+    const handleClose = (event) => {
+      const navStrip = document.querySelector('.nav-strip');
+      const toggleBtn = document.querySelector('.nav-toggle-btn-compact');
+      const navSection = document.querySelector('.nav-toggle-section');
       
-      // Check if click is outside the entire navigation area
-      if (navSection && !navSection.contains(event.target)) {
+      // If clicking the backdrop or outside nav area
+      if (event.target.classList.contains('nav-backdrop')) {
+        event.preventDefault();
+        event.stopPropagation();
         setNavOpen(false);
-      } else if (navElement && toggleElement && 
-          !navElement.contains(event.target) && 
-          !toggleElement.contains(event.target)) {
-        setNavOpen(false);
+        return;
+      }
+      
+      // Check if click is outside navigation elements
+      if (navStrip && toggleBtn && navSection) {
+        const isInsideNav = navStrip.contains(event.target);
+        const isToggleBtn = toggleBtn.contains(event.target) || navSection.contains(event.target);
+        
+        if (!isInsideNav && !isToggleBtn) {
+          setNavOpen(false);
+        }
       }
     };
 
-    // Use a small delay to prevent immediate closing on toggle click
+    // Add listeners with a slight delay
     const timer = setTimeout(() => {
-      document.addEventListener('click', handleClickOutside, true);
-      document.addEventListener('touchend', handleClickOutside, true);
-    }, 100);
+      document.addEventListener('touchstart', handleClose, { passive: false });
+      document.addEventListener('mousedown', handleClose, true);
+    }, 150);
 
     return () => {
       clearTimeout(timer);
-      document.removeEventListener('click', handleClickOutside, true);
-      document.removeEventListener('touchend', handleClickOutside, true);
+      document.removeEventListener('touchstart', handleClose);
+      document.removeEventListener('mousedown', handleClose, true);
     };
   }, [navOpen]);
 
@@ -145,18 +161,8 @@ const Portfolio = () => {
   const scrollToSection = (index) => {
     const section = sectionsRef.current[index];
     if (section && lenisRef.current) {
-      // Auto-collapse navigation when navigating to a section
+      // Close navigation immediately
       setNavOpen(false);
-      
-      // On mobile, ensure navigation stays closed
-      if (window.innerWidth <= 768) {
-        // Force remove expanded class on mobile
-        const navStrip = document.querySelector('.nav-strip');
-        if (navStrip) {
-          navStrip.classList.remove('nav-strip-expanded');
-        }
-      }
-      
       lenisRef.current.scrollTo(section, { duration: 1.5 });
     }
   };
@@ -164,15 +170,6 @@ const Portfolio = () => {
   // Handle blog navigation
   const handleBlogNavigation = () => {
     setNavOpen(false);
-    
-    // On mobile, ensure navigation stays closed
-    if (window.innerWidth <= 768) {
-      const navStrip = document.querySelector('.nav-strip');
-      if (navStrip) {
-        navStrip.classList.remove('nav-strip-expanded');
-      }
-    }
-    
     window.history.pushState({}, '', '/blog');
     window.dispatchEvent(new PopStateEvent('popstate'));
   };
@@ -754,14 +751,30 @@ const Portfolio = () => {
         {navOpen && (
           <div 
             className="nav-backdrop"
-            onClick={() => setNavOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setNavOpen(false);
+            }}
+            onTouchStart={(e) => {
+              e.preventDefault();
+              setNavOpen(false);
+            }}
             style={{
               position: 'fixed',
-              inset: 0,
-              background: 'rgba(0, 0, 0, 0.5)',
-              zIndex: 998,
-              backdropFilter: 'blur(2px)',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: '100vw',
+              height: '100vh',
+              background: 'rgba(0, 0, 0, 0.6)',
+              zIndex: 999,
+              backdropFilter: 'blur(3px)',
+              WebkitBackdropFilter: 'blur(3px)',
               animation: 'fadeIn 0.2s ease-out',
+              cursor: 'pointer',
+              touchAction: 'none',
             }}
           />
         )}
