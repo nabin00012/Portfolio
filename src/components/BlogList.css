@@ -367,14 +367,15 @@
 .article-actions {
   position: relative;
   z-index: 2;
+  margin-top: 16px;
 }
 
 .read-more-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: var(--button-gradient);
+  background: linear-gradient(135deg, #00ff88, #00d4ff);
   border: none;
   border-radius: 50px;
   color: #000;
@@ -496,11 +497,32 @@
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Laptop screens */
+@media (max-width: 1400px) {
+  .articles-grid {
+    padding: 50px 40px;
+  }
+  
+  .article-card {
+    padding: 28px;
+  }
+}
+
 @media (max-width: 1200px) {
   .articles-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 32px;
-    padding: 40px;
+    padding: 40px 30px;
+  }
+  
+  .article-title {
+    font-size: 1.35rem;
+  }
+  
+  .read-more-button {
+    padding: 10px 20px;
+    font-size: 0.8rem;
   }
 }
 

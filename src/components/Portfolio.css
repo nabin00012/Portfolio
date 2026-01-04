@@ -4303,6 +4303,19 @@ body {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(10, 10, 26, 0.8) 100%);
 }
 
+/* Mobile responsive for experience section */
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 80px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 60px 16px;
+  }
+}
+
 .timeline-container {
   max-width: 800px; /* Narrower for better readability */
   margin: 0 auto;
@@ -7271,6 +7284,7 @@ body {
   /* Timeline */
   .timeline-container {
     padding-left: 30px;
+    max-width: 100%;
   }
   
   .timeline-container::before {
@@ -7278,20 +7292,53 @@ body {
   }
   
   .timeline-dot {
-    left: -38px;
+    left: -28px;
+    width: 8px;
+    height: 8px;
+  }
+  
+  .timeline-content {
+    padding: 20px 16px;
   }
   
   .job-role {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
+    line-height: 1.3;
   }
   
   .job-company {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+  }
+  
+  .job-period {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+  
+  .job-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+  
+  .job-tech {
+    gap: 4px;
+  }
+  
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+  
+  .offer-letter-btn {
+    font-size: 0.75rem;
+    padding: 6px 12px;
   }
   
   .timeline-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
   }
   
   /* Skills grid handled by new media queries above */
@@ -7608,11 +7655,25 @@ body {
   }
   
   .timeline-content {
-    padding: 20px;
+    padding: 16px;
+  }
+  
+  .timeline-container {
+    padding-left: 24px;
+  }
+  
+  .timeline-dot {
+    left: -22px;
+    width: 6px;
+    height: 6px;
   }
   
   .job-role {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+  
+  .job-description {
+    font-size: 0.85rem;
   }
   
   .form-group input,
