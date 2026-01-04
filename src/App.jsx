@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Portfolio from './components/Portfolio'
 import BlogPage from './pages/BlogPage'
 import ArticlePageWrapper from './pages/ArticlePage'
+import CertificatesPage from './pages/CertificatesPage'
 
 function App() {
     const [currentPage, setCurrentPage] = useState('portfolio');
@@ -18,6 +19,8 @@ function App() {
                 setCurrentPage('article');
                 const urlParams = new URLSearchParams(search);
                 setArticleSlug(urlParams.get('slug') || 'kubernetes-zero-downtime-deployments');
+            } else if (path === '/certificates') {
+                setCurrentPage('certificates');
             } else {
                 setCurrentPage('portfolio');
             }
@@ -32,7 +35,8 @@ function App() {
         // Override link clicks for client-side routing
         const handleLinkClick = (e) => {
             const link = e.target.closest('a[href^="/"]');
-            if (link) {
+            // Skip if link opens in new tab or is a file download
+            if (link && link.getAttribute('target') !== '_blank') {
                 e.preventDefault();
                 const href = link.getAttribute('href');
                 window.history.pushState({}, '', href);
@@ -53,6 +57,8 @@ function App() {
             return <BlogPage />;
         case 'article':
             return <ArticlePageWrapper />;
+        case 'certificates':
+            return <CertificatesPage />;
         default:
             return <Portfolio />;
     }

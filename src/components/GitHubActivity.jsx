@@ -4,6 +4,28 @@ const GitHubActivity = ({ username = 'nabin00012' }) => {
   const [contributions, setContributions] = useState([]);
   const [totalContributions, setTotalContributions] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [dateRange, setDateRange] = useState({ from: null, to: null });
+
+  // Compute May-to-May date range programmatically
+  // Returns ISO date strings for reliable comparison
+  const getDateRange = () => {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth(); // 0-indexed (4 = May)
+    
+    // May 1 of previous year (as ISO string YYYY-MM-DD)
+    const fromStr = `${currentYear - 1}-05-01`;
+    
+    // End date: today's date as ISO string
+    const toStr = now.toISOString().split('T')[0];
+    
+    return { 
+      fromStr, 
+      toStr,
+      fromDate: new Date(currentYear - 1, 4, 1),
+      toDate: now
+    };
+  };
 
   useEffect(() => {
     fetchGitHubContributions();
@@ -11,43 +33,65 @@ const GitHubActivity = ({ username = 'nabin00012' }) => {
 
   const fetchGitHubContributions = async () => {
     try {
-      // Get current year
-      const currentYear = new Date().getFullYear();
+      const { fromStr, toStr, fromDate, toDate } = getDateRange();
+      setDateRange({ from: fromDate, to: toDate });
       
-      // Fetch contribution data for current year only (Jan-Dec)
-      // Add cache-busting parameter to force fresh data
+      // Fetch contribution data - need both 2025 AND 2026 to cover May 2025 - Jan 2026
       const cacheBuster = new Date().getTime();
-      const response = await fetch(
-        `https://github-contributions-api.jogruber.de/v4/${username}?y=${currentYear}&_=${cacheBuster}`,
-        { cache: 'no-store' }
-      );
-      const data = await response.json();
-
-      if (!data || !data.contributions) {
-        throw new Error('Failed to fetch contributions');
-      }
-
-      // Filter to only show Jan 1 - Dec 31 of current year
-      const yearStart = new Date(currentYear, 0, 1);
-      const yearEnd = new Date(currentYear, 11, 31);
+      const fromYear = fromDate.getFullYear(); // 2025
+      const toYear = toDate.getFullYear(); // 2026
       
+      console.log(`Fetching GitHub data from ${fromStr} to ${toStr}`);
+      console.log(`Years to fetch: ${fromYear}, ${toYear}`);
+      
+      // Fetch data for all required years
+      const fetchPromises = [];
+      for (let year = fromYear; year <= toYear; year++) {
+        fetchPromises.push(
+          fetch(
+            `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}&_=${cacheBuster}`,
+            { cache: 'no-store' }
+          ).then(res => res.json()).catch(() => ({ contributions: [] }))
+        );
+      }
+      
+      const results = await Promise.all(fetchPromises);
+      
+      // Combine contributions from all years
+      const allContributions = [];
+      results.forEach(data => {
+        if (data && data.contributions) {
+          allContributions.push(...data.contributions);
+        }
+      });
+      
+      console.log(`Total raw contributions fetched: ${allContributions.length}`);
+
+      // Filter to May-to-May window using string comparison (avoids timezone issues)
       const contributionData = [];
       let total = 0;
       
-      data.contributions.forEach(contribution => {
-        const date = new Date(contribution.date);
+      allContributions.forEach(contribution => {
+        const dateStr = contribution.date; // Format: "YYYY-MM-DD"
         
-        // Only include dates from current year
-        if (date >= yearStart && date <= yearEnd) {
+        // String comparison works for ISO dates (lexicographic order = chronological order)
+        if (dateStr >= fromStr && dateStr <= toStr) {
+          const date = new Date(dateStr + 'T12:00:00'); // Parse at noon to avoid timezone edge cases
           contributionData.push({
-            date: contribution.date,
+            date: dateStr,
             count: contribution.count,
             day: date.getDay(),
             month: date.getMonth(),
+            year: date.getFullYear(),
           });
           total += contribution.count;
         }
       });
+      
+      console.log(`Filtered contributions in range: ${contributionData.length}, total: ${total}`);
+
+      // Sort by date string (ISO format sorts correctly)
+      contributionData.sort((a, b) => a.date.localeCompare(b.date));
 
       setContributions(contributionData);
       setTotalContributions(total);
@@ -60,28 +104,39 @@ const GitHubActivity = ({ username = 'nabin00012' }) => {
   };
 
   const generateMockData = () => {
-    const currentYear = new Date().getFullYear();
+    const { fromDate, toDate } = getDateRange();
+    setDateRange({ from: fromDate, to: toDate });
+    
     const mockData = [];
     let total = 0;
     
-    // Generate data for current year only (Jan 1 - today)
-    const yearStart = new Date(currentYear, 0, 1);
-    const today = new Date();
-    
-    for (let d = new Date(yearStart); d <= today; d.setDate(d.getDate() + 1)) {
+    // Generate data for May-to-May window
+    for (let d = new Date(fromDate); d <= toDate; d.setDate(d.getDate() + 1)) {
       const count = Math.random() > 0.7 ? Math.floor(Math.random() * 10) : 0;
       total += count;
+      const dateStr = d.toISOString().split('T')[0];
       mockData.push({
-        date: d.toISOString().split('T')[0],
+        date: dateStr,
         count,
         day: d.getDay(),
         month: d.getMonth(),
+        year: d.getFullYear(),
       });
     }
     
     setContributions(mockData);
     setTotalContributions(total);
     setLoading(false);
+  };
+
+  // Format date range label (e.g., "May 2025 – May 2026")
+  const getDateRangeLabel = () => {
+    if (!dateRange.from || !dateRange.to) return '';
+    const fromMonth = dateRange.from.toLocaleString('default', { month: 'short' });
+    const fromYear = dateRange.from.getFullYear();
+    const toMonth = dateRange.to.toLocaleString('default', { month: 'short' });
+    const toYear = dateRange.to.getFullYear();
+    return `${fromMonth} ${fromYear} – ${toMonth} ${toYear}`;
   };
 
     const getContributionLevel = (count) => {
@@ -144,18 +199,17 @@ const GitHubActivity = ({ username = 'nabin00012' }) => {
             <svg className="github-icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
             </svg>
-            {totalContributions} contributions in {new Date().getFullYear()}
+            {totalContributions} contributions
           </h3>
           
-          {/* Live Update Badge */}
-          <div className="live-update-badge">
-            <span className="pulse-dot"></span>
-            <span className="live-text">Updates automatically</span>
+          {/* Date Range Label - explicit and visible */}
+          <div className="date-range-label">
+            GitHub activity from {getDateRangeLabel()}
           </div>
         </div>
         
         <p className="github-activity-subtitle">
-          A year of code, one commit at a time. Every green square represents hours of problem-solving, learning, and building.
+          Active development period. Every green square represents real commits from my GitHub profile.
         </p>
 
         {/* Visit GitHub Button */}

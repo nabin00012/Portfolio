@@ -1,0 +1,485 @@
+/**
+ * CaseStudies Styles
+ * 
+ * Minimal layout styles only.
+ * Matches existing portfolio dark theme.
+ * No decorative animations.
+ */
+
+.case-studies {
+  padding: 80px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.case-studies-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.case-studies-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.case-studies-subtitle {
+  font-size: 1.1rem;
+  color: #8b949e;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid Layout */
+.case-studies-grid {
+  display: grid;
+  gap: 24px;
+}
+
+/* Individual Case Study Card */
+.case-study-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.case-study-card.expanded {
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+/* Card Header (Clickable) */
+.case-study-header {
+  width: 100%;
+  padding: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
+}
+
+.case-study-header:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: -2px;
+}
+
+.case-study-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.case-study-domain {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #00d4ff;
+}
+
+.case-study-systems {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.system-link-tag {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 4px;
+  color: #00ff88;
+}
+
+.case-study-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.case-study-problem-preview {
+  font-size: 0.95rem;
+  color: #8b949e;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.case-study-problem-preview strong {
+  color: #c9d1d9;
+}
+
+.expand-indicator {
+  font-size: 0.85rem;
+  color: #00d4ff;
+  font-weight: 500;
+}
+
+/* Expanded Content */
+.case-study-content {
+  padding: 0 24px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.case-study-content[hidden] {
+  display: none;
+}
+
+/* Sections (Problem, Action, Result) */
+.case-section {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.case-section:last-of-type {
+  border-bottom: none;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 16px 0;
+  padding: 4px 10px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.problem-section .section-label {
+  background: rgba(255, 100, 100, 0.15);
+  color: #ff6b6b;
+}
+
+.action-section .section-label {
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+}
+
+.result-section .section-label {
+  background: rgba(0, 255, 136, 0.15);
+  color: #00ff88;
+}
+
+/* Problem Section */
+.problem-context {
+  color: #c9d1d9;
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+
+.problem-details {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .problem-details {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.constraints h5,
+.failure-mode h5 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8b949e;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.constraints ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #c9d1d9;
+}
+
+.constraints li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.failure-mode p {
+  margin: 0;
+  color: #ff6b6b;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Action Section */
+.action-headline {
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.decisions-list {
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.decision-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.decision-what {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.decision-details {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.decision-rationale,
+.decision-tradeoff {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: flex;
+  gap: 8px;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #6e7681;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.decision-rationale span:last-child {
+  color: #c9d1d9;
+}
+
+.decision-tradeoff span:last-child {
+  color: #ffd700;
+}
+
+/* Result Section */
+.result-headline {
+  color: #00ff88;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.metrics-table th,
+.metrics-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.metrics-table th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8b949e;
+}
+
+.metrics-table td {
+  color: #c9d1d9;
+}
+
+.metric-before {
+  color: #8b949e;
+}
+
+.metric-after {
+  color: #00ff88;
+  font-weight: 500;
+}
+
+.validation {
+  font-size: 0.9rem;
+  color: #8b949e;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Footer */
+.case-study-footer {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: #c9d1d9;
+}
+
+.case-study-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.log-link,
+.repo-link,
+.live-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.log-link {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+}
+
+.log-link:hover {
+  background: rgba(0, 255, 136, 0.15);
+}
+
+.repo-link {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c9d1d9;
+}
+
+.repo-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.live-link {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+}
+
+.live-link:hover {
+  background: rgba(0, 212, 255, 0.15);
+}
+
+.log-link:focus-visible,
+.repo-link:focus-visible,
+.live-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Known Limitations Section */
+.limitations-section {
+  background: rgba(255, 200, 0, 0.03);
+  border: 1px solid rgba(255, 200, 0, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.limitations-section .section-label {
+  color: #ffd700;
+  margin-bottom: 12px;
+}
+
+.limitations-content {
+  font-size: 0.9rem;
+  color: #c9d1d9;
+  line-height: 1.6;
+}
+
+.limitations-content p {
+  margin-bottom: 12px;
+}
+
+.limitations-content strong {
+  color: #8b949e;
+}
+
+.limitation-assumptions ul {
+  margin: 8px 0 12px 20px;
+  padding: 0;
+}
+
+.limitation-assumptions li {
+  margin-bottom: 4px;
+}
+
+.limitation-break {
+  color: #f0883e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .case-studies {
+    padding: 60px 4%;
+  }
+
+  .case-study-header {
+    padding: 20px;
+  }
+
+  .case-study-content {
+    padding: 0 20px 20px;
+  }
+
+  .case-study-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .decision-rationale,
+  .decision-tradeoff {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .detail-label {
+    min-width: auto;
+  }
+
+  .metrics-table {
+    font-size: 0.8rem;
+  }
+
+  .metrics-table th,
+  .metrics-table td {
+    padding: 8px 6px;
+  }
+}

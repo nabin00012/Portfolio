@@ -3,6 +3,8 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import ThreeBackground from './ThreeBackground';
 import GitHubActivity from './GitHubActivity';
+import SystemHealth from './SystemHealth';
+import CaseStudies from './CaseStudies';
 import './Portfolio.css';
 
 const Portfolio = () => {
@@ -174,24 +176,12 @@ const Portfolio = () => {
     window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
-  // Projects data - REAL PROJECTS
+  // Projects data - REAL PROJECTS (ordered by engineering trust priority)
   const projects = [
     {
       id: 1,
-      title: 'CodeCommons',
-      description: '🏆 Real-time collaborative coding platform built with Next.js 14 and TypeScript. Features SSR for optimal SEO, Socket.IO for live collaboration, Monaco Editor integration, and Three.js animations. Achieved 90% reduction in runtime errors through TypeScript implementation and demonstrates modern state management patterns.',
-      image: '/images/codecommons.png',
-      tags: ['Next.js 14', 'TypeScript', 'SSR', 'Socket.IO', 'Monaco', 'Three.js'],
-      year: '2025',
-      github: 'https://github.com/nabin00012/codecommons',
-      live: 'https://codecommons-delta.vercel.app',
-      recognition: '🏆 Recognized by Jain University',
-      blog: '/blog?project=codecommons',
-    },
-    {
-      id: 2,
       title: 'MERN-CI-CD-Kube',
-      description: '⚡ Production-grade MERN chat application with complete Kubernetes orchestration and CI/CD automation. Features containerized deployments, GitHub Actions pipeline for Docker builds, zero-downtime rolling updates, and MongoDB StatefulSet for data persistence. Demonstrates enterprise-level DevOps practices and system design.',
+      description: 'MERN chat application with Kubernetes orchestration and CI/CD automation. Features containerized deployments, GitHub Actions pipeline for Docker builds, rolling updates configured for zero downtime, and MongoDB StatefulSet for data persistence.',
       image: '/images/Mern-thumbnail.png?v=2',
       tags: ['Kubernetes', 'Docker', 'GitHub Actions', 'Rolling Updates', 'StatefulSet', 'HA'],
       year: '2024',
@@ -200,22 +190,34 @@ const Portfolio = () => {
       blog: '/blog?project=mern-ci-cd-kube',
     },
     {
-      id: 3,
+      id: 2,
       title: 'SecureFinData',
-      description: '🔒 Enterprise-grade fintech application implementing military-level security protocols. Features AES-256-GCM encryption with RSA key wrapping, Zero-Trust architecture with RBAC, and comprehensive audit trails. Developed using TDD methodology with 85%+ Jest test coverage ensuring production reliability.',
+      description: 'Fintech API implementing AES-256-GCM authenticated encryption for documents at rest. Features role-based access control, audit logging, and TDD workflow with Jest. Security module tested against intentional tampering.',
       image: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?w=1200&q=80',
-      tags: ['AES-256-GCM', 'Jest TDD', 'Zero-Trust', 'RBAC', 'Audit Trails', 'RSA'],
+      tags: ['AES-256-GCM', 'Jest TDD', 'RBAC', 'Audit Trails', 'Node.js Crypto'],
       year: '2024',
       github: 'https://github.com/nabin00012/secure-fin-data',
       live: '#',
       blog: '/blog?project=securefindata',
     },
     {
+      id: 3,
+      title: 'CodeCommons',
+      description: 'Real-time collaborative coding platform built with Next.js 14 and TypeScript. Server-side rendering for initial content, Socket.IO for live collaboration, Monaco Editor for code editing. TypeScript strict mode catches null/undefined errors at build time.',
+      image: '/images/codecommons.png',
+      tags: ['Next.js 14', 'TypeScript', 'SSR', 'Socket.IO', 'Monaco', 'Three.js'],
+      year: '2025',
+      github: 'https://github.com/nabin00012/codecommons',
+      live: 'https://codecommons-delta.vercel.app',
+      recognition: 'Recognized by Jain University',
+      blog: '/blog?project=codecommons',
+    },
+    {
       id: 4,
       title: 'FluxTrade',
-      description: '⚡ Full-stack Web3 decentralized trading platform bridging traditional finance with blockchain. Features optimized Solidity smart contracts, Web3.js integration for transaction handling, gas optimization algorithms, real-time event listeners, and off-chain indexing for lightning-fast portfolio analytics.',
+      description: 'Web3 trading platform with off-chain event indexing. Solidity smart contracts emit events captured by Node.js indexer and stored in MongoDB. Portfolio queries avoid direct blockchain reads, reducing load times from seconds to sub-second.',
       image: '/images/fluxtrade.png?v=2',
-      tags: ['Web3.js', 'Solidity', 'DApp', 'Gas Optimization', 'Event Listening', 'DeFi'],
+      tags: ['Web3.js', 'Solidity', 'MongoDB', 'Event Indexing', 'Node.js'],
       year: '2025',
       github: 'https://github.com/nabin00012/fluxtrade',
       live: 'https://flux-trade-nine.vercel.app/',
@@ -403,19 +405,21 @@ const Portfolio = () => {
       id: 1,
       role: 'Full-Stack Development Intern',
       company: 'Octanet Services',
-      period: 'Extended from 2 to 6 months',
-      highlight: '⭐ Performance exceeded expectations - Extended 3x due to outstanding work',
-      description: 'Architected and deployed a production-grade user management system with React 18.2.0 frontend and Express.js backend. Designed normalized MongoDB schemas using Mongoose for optimal query performance. Implemented JWT-based authentication middleware across five Express routes for secure access control and session management.',
-      achievements: [
-        'User Dashboard & Profile Management System shipped to production with 500+ active users',
-        'Implemented JWT authentication flow with refresh token rotation for enhanced security',
-        'Designed normalized MongoDB schemas (Users, Profiles, Sessions) with proper indexing',
-        'Built RESTful APIs with Express.js following MVC architecture and middleware patterns',
-        'Zero critical issues in production deployment - maintained 99.9% uptime',
-        'Integrated Formik + Yup validation with server-side validation for data integrity'
-      ],
-      technologies: ['React.js 18.2.0', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Formik', 'Yup', 'Axios', 'React Router v6'],
+      period: 'Internship extended from 2 to 6 months',
+      description: 'Owned the user management system from database schema to deployed frontend. Was responsible for the authentication flow, including JWT issuance, refresh token rotation, and session invalidation. Designed MongoDB schemas for Users, Profiles, and Sessions, including index selection for query performance. Implemented validation on both client (Formik + Yup) and server (Express middleware) to enforce data integrity before writes. Maintained the system through production deployment; no critical regressions were reported during my ownership. Offer letter on file.',
+      technologies: ['React 18', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Formik', 'Yup'],
       offerLetter: true,
+      offerLetterPath: '/offer-letter-octanet.pdf',
+    },
+    {
+      id: 2,
+      role: 'MERN Stack Developer',
+      company: 'Swostitech Solutions',
+      period: 'Current',
+      description: 'Formally onboarded as a MERN Stack Developer (offer letter on file). Responsible for building and maintaining features across frontend and backend in production and near-production codebases. Work includes reading and extending existing systems, debugging failures, and delivering features under real project deadlines.',
+      technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+      offerLetter: true,
+      offerLetterPath: '/offer.pdf',
     },
   ];
 
@@ -533,45 +537,29 @@ const Portfolio = () => {
     },
   ];
 
-  // Education data - REAL EDUCATION
+  // Education data - Compact factual format
   const education = [
     {
       id: 1,
       institution: 'Jain (Deemed-to-be University), Bangalore',
-      degree: 'Bachelor of Technology (B.Tech)',
-      field: 'Computer Science and Engineering',
-      period: 'Sep 2023 - Present',
+      degree: 'B.Tech, Computer Science',
+      period: '2023 - Present',
       grade: '8.4/10 CGPA',
-      logo: '/images/jain.png',
-      description: 'Currently pursuing a B.Tech in Computer Science, focusing on core programming, data structures, and software engineering principles. I am blending advanced theoretical knowledge with extensive hands-on MERN stack development experience.',
-      color: '#FF6B00',
-      achievements: [
-        'CodeCommons project recognized by Jain University',
-        'Focus on Full-Stack Development & DevOps',
-        'Active participation in tech communities'
-      ]
+      relevance: 'Focus: Full-stack development, data structures, DevOps practices.',
     },
     {
       id: 2,
       institution: 'Deep Boarding High School, Nepal',
-      degree: 'Higher Secondary Education',
-      field: 'Science (10+2)',
+      degree: 'Higher Secondary (Science)',
       period: '2021 - 2023',
       grade: '3.34/4.0 CGPA',
-      logo: '/images/deep.png',
-      description: 'Completed my higher secondary education in Science, building a strong foundation in core sciences and developing initial analytical and critical thinking skills.',
-      color: '#4CAF50'
     },
     {
       id: 3,
       institution: 'Deep Boarding High School, Nepal',
       degree: 'Secondary School Certificate',
-      field: 'SLC/SEE',
       period: '2008 - 2021',
       grade: '3.5/4.0 CGPA',
-      logo: '/images/deep.png',
-      description: 'Successfully achieved my secondary education certificate, demonstrating strong performance across all subjects.',
-      color: '#2196F3'
     }
   ];
 
@@ -582,7 +570,7 @@ const Portfolio = () => {
 
       {/* Section Progress Indicator */}
       <div className="section-progress">
-        {['Hero', 'About', 'Experience', 'Skills', 'Certs', 'Projects', 'Education', 'Activity', 'Contact'].map((label, index) => (
+        {['Hero', 'About', 'Experience', 'Systems', 'Projects', 'Education', 'Activity', 'Contact'].map((label, index) => (
           <button
             key={index}
             className={`progress-dot ${currentSection === index ? 'active' : ''}`}
@@ -627,11 +615,6 @@ const Portfolio = () => {
         </div>
 
         <div className="hero-content">
-          <div className="hero-label">
-            <span className="status-indicator"></span>
-            <span>Available for select projects</span>
-          </div>
-
           <h1 className="hero-title">
             <span className="title-line" data-text="Nabin">Nabin</span>
             <span className="title-line gradient-title" data-text="Chapagain">Chapagain</span>
@@ -639,11 +622,10 @@ const Portfolio = () => {
 
           <div className="hero-subtitle-container">
             <p className="hero-subtitle">
-              <span className="typing-text">Full-Stack Engineer</span>
-              <span className="typing-cursor">|</span>
+              <span className="typing-text">Full-Stack Engineer — Systems & Reliability</span>
             </p>
             <p className="hero-tagline">
-              Turning ideas into robust, production-ready applications
+              I build production systems and document the decisions and tradeoffs behind them.
             </p>
           </div>
 
@@ -685,7 +667,7 @@ const Portfolio = () => {
               <div className="nav-arrow">→</div>
             </div>
 
-            <div className="nav-card nav-card-contact" onClick={() => scrollToSection(8)}>
+            <div className="nav-card nav-card-contact" onClick={() => scrollToSection(7)}>
               <div className="nav-icon">📧</div>
               <div className="nav-content">
                 <h3>Contact</h3>
@@ -719,31 +701,14 @@ const Portfolio = () => {
 
           {/* Quick Action Buttons */}
           <div className="hero-quick-actions">
-            <button className="quick-action-btn primary-action" onClick={() => scrollToSection(5)}>
+            <button className="quick-action-btn primary-action" onClick={() => scrollToSection(3)}>
               <span className="btn-icon">⚡</span>
-              <span>View Projects</span>
+              <span>Systems & Case Studies</span>
             </button>
-            <button className="quick-action-btn secondary-action" onClick={() => scrollToSection(8)}>
+            <button className="quick-action-btn secondary-action" onClick={() => scrollToSection(7)}>
               <span className="btn-icon">💬</span>
               <span>Get In Touch</span>
             </button>
-          </div>
-
-          <div className="hero-metrics">
-            <div className="metric-item">
-              <div className="metric-value">11+</div>
-              <div className="metric-label">Certifications</div>
-            </div>
-            <div className="metric-divider"></div>
-            <div className="metric-item">
-              <div className="metric-value">6M</div>
-              <div className="metric-label">Internship Extended</div>
-            </div>
-            <div className="metric-divider"></div>
-            <div className="metric-item">
-              <div className="metric-value">4+</div>
-              <div className="metric-label">Production Apps</div>
-            </div>
           </div>
         </div>
 
@@ -798,13 +763,13 @@ const Portfolio = () => {
               <span className="progress-text">
                 <span className="progress-section">{currentSection + 1}</span>
                 <span className="progress-separator">/</span>
-                <span className="progress-total">10</span>
+                <span className="progress-total">8</span>
                 <span className="progress-label">sections</span>
               </span>
               <div className="progress-bar">
                 <div
                   className="progress-fill"
-                  style={{ width: `${((currentSection + 1) / 10) * 100}%` }}
+                  style={{ width: `${((currentSection + 1) / 8) * 100}%` }}
                 ></div>
                 <div className="progress-glow"></div>
               </div>
@@ -845,28 +810,31 @@ const Portfolio = () => {
               <button
                 className={`nav-item-compact ${currentSection === 3 ? 'active' : ''}`}
                 onClick={() => scrollToSection(3)}
-                title="Skills"
+                title="Systems"
               >
                 <span className="nav-item-icon">⚡</span>
-                <span className="nav-item-label">Skills</span>
+                <span className="nav-item-label">Systems</span>
               </button>
 
               <button
                 className={`nav-item-compact ${currentSection === 4 ? 'active' : ''}`}
                 onClick={() => scrollToSection(4)}
-                title="Certificates"
-              >
-                <span className="nav-item-icon">🏆</span>
-                <span className="nav-item-label">Certificates</span>
-              </button>
-
-              <button
-                className={`nav-item-compact ${currentSection === 5 ? 'active' : ''}`}
-                onClick={() => scrollToSection(5)}
                 title="Projects"
               >
                 <span className="nav-item-icon">🚀</span>
                 <span className="nav-item-label">Projects</span>
+              </button>
+
+              <button
+                className="nav-item-compact"
+                onClick={() => {
+                  window.history.pushState({}, '', '/certificates');
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                }}
+                title="Certificates"
+              >
+                <span className="nav-item-icon">🏆</span>
+                <span className="nav-item-label">Certificates</span>
               </button>
 
               <button
@@ -880,8 +848,8 @@ const Portfolio = () => {
               </button>
 
               <button
-                className={`nav-item-compact ${currentSection === 6 ? 'active' : ''}`}
-                onClick={() => scrollToSection(6)}
+                className={`nav-item-compact ${currentSection === 5 ? 'active' : ''}`}
+                onClick={() => scrollToSection(5)}
                 title="Education"
               >
                 <span className="nav-item-icon">🎓</span>
@@ -889,8 +857,8 @@ const Portfolio = () => {
               </button>
 
               <button
-                className={`nav-item-compact ${currentSection === 7 ? 'active' : ''}`}
-                onClick={() => scrollToSection(7)}
+                className={`nav-item-compact ${currentSection === 6 ? 'active' : ''}`}
+                onClick={() => scrollToSection(6)}
                 title="GitHub Activity"
               >
                 <span className="nav-item-icon">📊</span>
@@ -898,8 +866,8 @@ const Portfolio = () => {
               </button>
 
               <button
-                className={`nav-item-compact ${currentSection === 8 ? 'active' : ''}`}
-                onClick={() => scrollToSection(8)}
+                className={`nav-item-compact ${currentSection === 7 ? 'active' : ''}`}
+                onClick={() => scrollToSection(7)}
                 title="Contact"
               >
                 <span className="nav-item-icon">📧</span>
@@ -1009,172 +977,24 @@ const Portfolio = () => {
           </div>
 
           <div className="about-text">
-            {/* Mission Section */}
+            {/* About Me Content */}
             <div className="mission-section">
               <div className="mission-header">
-                <div className="mission-badge">
-                  <span className="mission-icon">🎯</span>
-                  <span className="mission-label">My Mission</span>
-                </div>
-                <h3 className="mission-title">
-                  From Code to <span className="title-highlight">Consequence</span>
-                </h3>
+                <h3 className="mission-title">About Me</h3>
               </div>
 
               <div className="mission-content">
                 <p className="mission-paragraph">
-                  I'm a <strong className="text-accent">Full-Stack Developer</strong> specializing in the MERN stack. 
-                  My focus isn't just on writing code—it's on <strong className="text-glow-green">delivering results</strong>. 
-                  I'm passionate about the high-stakes domains of <strong className="text-accent">DevOps, Security, and System Design</strong>, 
-                  and I apply those principles to every project I build.
+                  I build full-stack systems where reliability and correctness are non-negotiable. My work spans frontend architecture, backend services, data persistence, and deployment pipelines. The common thread is making systems work under real constraints: limited time, unclear requirements, and code that cannot afford to fail silently.
                 </p>
 
-                <div className="mission-highlight-box">
-                  <div className="highlight-icon">💡</div>
-                  <p className="highlight-text">
-                    I thrive on solving complex problems and turning ambitious ideas into secure, scalable, and reliable applications. 
-                    <strong> I'm not just building features; I'm building trust.</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
+                <p className="mission-paragraph">
+                  Most of what I know comes from building systems end-to-end and diagnosing what breaks. The System Health dashboard and Case Studies on this site document that process—not as a list of tools, but as evidence of how I make decisions when tradeoffs are unavoidable.
+                </p>
 
-            {/* SUPER COOL ENGINEERING PRINCIPLES SECTION */}
-            <div className="engineering-showcase">
-              <div className="showcase-header">
-                <div className="header-top">
-                  <div className="header-badge-modern">
-                    <span className="badge-icon-modern">⚡</span>
-                    <span className="badge-text-modern">Engineering Excellence</span>
-                  </div>
-                </div>
-                <h3 className="showcase-title">My Engineering Principles</h3>
-                <p className="showcase-subtitle">Three pillars that define how I build production-ready systems</p>
-              </div>
-
-              <div className="principles-showcase-grid">
-                {/* Security Principle */}
-                <div className="principle-showcase-card security-card">
-                  <div className="card-shine-effect"></div>
-                  <div className="card-number">01</div>
-                  
-                  <div className="showcase-card-header">
-                    <div className="showcase-icon-wrapper security-theme">
-                      <div className="icon-pulse"></div>
-                      <span className="showcase-icon">🔐</span>
-                    </div>
-                    <h4 className="showcase-card-title">Security by Design</h4>
-                  </div>
-
-                  <div className="showcase-card-body">
-                    <p className="showcase-card-text">
-                      Implementing security best practices from the start. This includes secure JWT authentication flows, 
-                      Role-Based Access Control (RBAC), and <strong>correctly applying standard encryption 
-                      (like AES-256-GCM)</strong> for data-at-rest. Security is a foundation, not an afterthought.
-                    </p>
-                  </div>
-
-                  <div className="showcase-card-footer">
-                    <div className="tech-tags">
-                      <span className="tech-tag security-tag">
-                        <span className="tag-icon">🔑</span>
-                        <span>JWT</span>
-                      </span>
-                      <span className="tech-tag security-tag">
-                        <span className="tag-icon">👤</span>
-                        <span>RBAC</span>
-                      </span>
-                      <span className="tech-tag security-tag">
-                        <span className="tag-icon">🔒</span>
-                        <span>AES-256-GCM</span>
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="card-accent-bar security-accent"></div>
-                </div>
-
-                {/* Quality Principle */}
-                <div className="principle-showcase-card quality-card">
-                  <div className="card-shine-effect"></div>
-                  <div className="card-number">02</div>
-                  
-                  <div className="showcase-card-header">
-                    <div className="showcase-icon-wrapper quality-theme">
-                      <div className="icon-pulse"></div>
-                      <span className="showcase-icon">✅</span>
-                    </div>
-                    <h4 className="showcase-card-title">Quality Through Discipline</h4>
-                  </div>
-
-                  <div className="showcase-card-body">
-                    <p className="showcase-card-text">
-                      A firm believer in Test-Driven Development (TDD). I focus on achieving <strong>high test coverage 
-                      on critical logic</strong> (using Jest) to ensure code is reliable, maintainable, and production-ready. 
-                      I prove my code works.
-                    </p>
-                  </div>
-
-                  <div className="showcase-card-footer">
-                    <div className="tech-tags">
-                      <span className="tech-tag quality-tag">
-                        <span className="tag-icon">🧪</span>
-                        <span>TDD</span>
-                      </span>
-                      <span className="tech-tag quality-tag">
-                        <span className="tag-icon">🃏</span>
-                        <span>Jest</span>
-                      </span>
-                      <span className="tech-tag quality-tag">
-                        <span className="tag-icon">📊</span>
-                        <span>85%+ Coverage</span>
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="card-accent-bar quality-accent"></div>
-                </div>
-
-                {/* Scalability Principle */}
-                <div className="principle-showcase-card scalability-card">
-                  <div className="card-shine-effect"></div>
-                  <div className="card-number">03</div>
-                  
-                  <div className="showcase-card-header">
-                    <div className="showcase-icon-wrapper scalability-theme">
-                      <div className="icon-pulse"></div>
-                      <span className="showcase-icon">🚀</span>
-                    </div>
-                    <h4 className="showcase-card-title">Scalability & Operations</h4>
-                  </div>
-
-                  <div className="showcase-card-body">
-                    <p className="showcase-card-text">
-                      Designing systems that can grow. My projects demonstrate a full DevOps cycle, from <strong>containerization 
-                      with Docker</strong> to <strong>orchestration with Kubernetes</strong> and <strong>automated CI/CD 
-                      pipelines</strong> (GitHub Actions). I build for the full lifecycle.
-                    </p>
-                  </div>
-
-                  <div className="showcase-card-footer">
-                    <div className="tech-tags">
-                      <span className="tech-tag scalability-tag">
-                        <span className="tag-icon">🐳</span>
-                        <span>Docker</span>
-                      </span>
-                      <span className="tech-tag scalability-tag">
-                        <span className="tag-icon">☸️</span>
-                        <span>Kubernetes</span>
-                      </span>
-                      <span className="tech-tag scalability-tag">
-                        <span className="tag-icon">⚙️</span>
-                        <span>CI/CD</span>
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="card-accent-bar scalability-accent"></div>
-                </div>
+                <p className="mission-paragraph">
+                  I am most useful on teams that ship code where correctness matters the first time.
+                </p>
               </div>
             </div>
           </div>
@@ -1199,7 +1019,7 @@ const Portfolio = () => {
 
         <div className="timeline-container">
           {experience.map((job, index) => (
-            <div key={job.id} className="timeline-item" data-index={index}>
+            <article key={job.id} className="timeline-item" data-index={index}>
               <div className="timeline-dot"></div>
               <div className="timeline-content">
                 <div className="timeline-header">
@@ -1207,27 +1027,14 @@ const Portfolio = () => {
                   <span className="job-period">{job.period}</span>
                 </div>
                 <h4 className="job-company">{job.company}</h4>
-                {job.highlight && (
-                  <div className="job-highlight">{job.highlight}</div>
-                )}
                 <p className="job-description">{job.description}</p>
-                {job.achievements && (
-                  <div className="job-achievements">
-                    <h5 className="achievements-title">Key Achievements:</h5>
-                    <ul className="achievements-list">
-                      {job.achievements.map((achievement, idx) => (
-                        <li key={idx}>{achievement}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
                 <div className="job-tech">
                   {job.technologies.map((tech, idx) => (
                     <span key={idx} className="tech-badge">{tech}</span>
                   ))}
                 </div>
                 {job.offerLetter && (
-                  <a href="/offer-letter-octanet.pdf" target="_blank" rel="noopener noreferrer" className="offer-letter-btn">
+                  <a href={job.offerLetterPath} target="_blank" rel="noopener noreferrer" className="offer-letter-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                       <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
                       <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
@@ -1236,163 +1043,45 @@ const Portfolio = () => {
                   </a>
                 )}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* Section 3: NEW Skills Section - 4 Category Grid */}
+      {/* Section 3: System Health Dashboard */}
       <section
-        className="skills-modern-section"
+        className="system-health-section"
         ref={(el) => (sectionsRef.current[3] = el)}
       >
-        <div className="section-header">
-          <h2 className="section-title">
-            Skills
-          </h2>
-          <p className="section-subtitle">
-            Here are some of my skills, which I have been working on web development
-          </p>
-        </div>
-
-        <div className="skills-category-grid">
-          {Object.entries(skillsData).map(([category, techList], catIndex) => (
-            <div
-              key={category}
-              className="skill-category-card"
-              style={{ animationDelay: `${catIndex * 0.15}s` }}
-            >
-              <div className="category-header">
-                <h3 className="category-title">{category}</h3>
-              </div>
-              <div className="tech-grid">
-                {techList.map((tech, techIndex) => (
-                  <div
-                    key={tech.name}
-                    className="tech-badge-item"
-                    style={{
-                      animationDelay: `${(catIndex * 0.15) + (techIndex * 0.05)}s`
-                    }}
-                  >
-                    <div
-                      className="tech-icon"
-                      dangerouslySetInnerHTML={{ __html: tech.icon }}
-                      style={{ '--tech-color': tech.color }}
-                    />
-                    <span className="tech-name">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <p style={{ textAlign: 'center', color: '#8b949e', fontSize: '0.875rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>Observable behaviors from systems I built and maintain</p>
+        <SystemHealth />
       </section>
 
-      {/* Section 4: Certificates & Achievements */}
-      <section
-        className="certifications-section"
-        ref={(el) => (sectionsRef.current[4] = el)}
-      >
-        <div className="section-header">
-          <h2 className="section-title">
-            Certificates &
-            <span className="gradient-title"> Achievements</span>
-          </h2>
-          <p className="section-subtitle">
-            Industry-recognized credentials and leaderboard highlights
-          </p>
-        </div>
-
-        <div className="certifications-grid">
-          {/* Coding Ninjas Leaderboard Achievement Card */}
-          <div className="cert-card" style={{ animationDelay: `0s` }}>
-            <div className="cert-thumbnail-wrapper">
-              <img src="/images/codingninjas-leaderboard.png" alt="Coding Ninjas Leaderboard" className="cert-thumbnail" style={{ objectFit: 'cover', background: '#fff' }} />
-              <div className="cert-thumbnail-overlay">
-                <span className="view-full-text">View Leaderboard</span>
-              </div>
-            </div>
-            <div className="cert-content">
-              <div className="cert-icon-wrapper" style={{ background: '#FF660020', borderColor: '#FF6600' }}>
-                <span className="cert-icon" style={{ color: '#FF6600' }}>🏆</span>
-              </div>
-              <h3 className="cert-title">Coding Ninjas Code360 Leaderboard</h3>
-              <p className="cert-issuer">Ranked 1st • Code360 Weekly Challenge</p>
-              <p className="cert-skills">Competitive Programming, Problem Solving, Consistency</p>
-              <a href="/images/codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-view-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
-                  <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
-                </svg>
-                View Leaderboard
-              </a>
-            </div>
-            <div className="cert-shine"></div>
-          </div>
-          {/* Existing certificates */}
-          {certifications.map((cert, index) => (
-            <div
-              key={cert.id}
-              className="cert-card"
-              style={{ animationDelay: `${(index + 1) * 0.15}s` }}
-            >
-              {/* Certificate Thumbnail Preview */}
-              <div className="cert-thumbnail-wrapper">
-                {cert.isImage ? (
-                  <img src={cert.thumbnail} alt={cert.title} className="cert-thumbnail" />
-                ) : (
-                  <iframe
-                    src={`${cert.thumbnail}#toolbar=0&navpanes=0&scrollbar=0`}
-                    className="cert-thumbnail-pdf"
-                    title={cert.title}
-                  />
-                )}
-                <div className="cert-thumbnail-overlay">
-                  <span className="view-full-text">Click to view full certificate</span>
-                </div>
-              </div>
-
-              <div className="cert-content">
-                <div className="cert-icon-wrapper" style={{ background: `${cert.color}20`, borderColor: cert.color }}>
-                  <span className="cert-icon" style={{ color: cert.color }}>{cert.icon}</span>
-                </div>
-                <h3 className="cert-title">{cert.title}</h3>
-                <p className="cert-issuer">{cert.issuer}</p>
-                <p className="cert-skills">{cert.skills}</p>
-
-                <a href={cert.pdfLink} target="_blank" rel="noopener noreferrer" className="cert-view-btn">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
-                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
-                  </svg>
-                  View Certificate
-                </a>
-              </div>
-              <div className="cert-shine"></div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 5: Projects - Horizontal Scroll */}
+      {/* Section 4: Projects - Case Studies + Gallery */}
       <section
         className="projects-section"
-        ref={(el) => (sectionsRef.current[5] = el)}
+        ref={(el) => (sectionsRef.current[4] = el)}
       >
-        <div className="projects-header">
-          <h2 className="section-title">
-            Selected
-            <span className="gradient-title"> Work</span>
-          </h2>
-          <p className="projects-hint">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            Scroll horizontally
-          </p>
-        </div>
+        {/* Engineering Case Studies */}
+        <p style={{ textAlign: 'center', color: '#8b949e', fontSize: '0.875rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>Real problems I diagnosed, decisions I made, and what I would do differently</p>
+        <CaseStudies />
 
-        <div className="projects-horizontal-scroll">
+        {/* Visual Project Gallery */}
+        <div className="projects-gallery-section">
+          <div className="projects-header">
+            <h3 className="section-title gallery-title">
+              Project
+              <span className="gradient-title"> Gallery</span>
+            </h3>
+            <p className="projects-hint">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7 10H13M13 10L10 7M13 10L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+              Scroll horizontally
+            </p>
+          </div>
+
+          <div className="projects-horizontal-scroll">
           {projects.map((project, index) => (
             <div key={project.id} className="project-card-horizontal">
               {/* Floating Particles for Each Card */}
@@ -1476,143 +1165,53 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
+        </div>
       </section>
 
-      {/* Section 6: Education */}
+      {/* Section 5: Education */}
       <section
         className="education-section"
-        ref={(el) => (sectionsRef.current[6] = el)}
+        ref={(el) => (sectionsRef.current[5] = el)}
       >
         <div className="section-header">
           <h2 className="section-title">
             Education
           </h2>
-          <p className="section-subtitle">
-            My education has been a journey of self-discovery and growth. My educational details are as follows.
-          </p>
         </div>
 
-        <div className="education-timeline">
-          {education.map((edu, index) => (
-            <div
-              key={edu.id}
-              className="education-card"
-              data-index={index}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div className="education-card-inner">
-                {/* Animated Border Gradient */}
-                <div className="education-card-border" style={{ '--border-color': edu.color }}></div>
-
-                {/* Floating Particles Effect */}
-                <div className="education-particles">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="particle" style={{
-                      animationDelay: `${i * 0.3}s`,
-                      '--particle-color': edu.color
-                    }}></div>
-                  ))}
+        <div className="education-list">
+          {education.map((edu) => (
+            <div key={edu.id} className="education-item">
+              <div className="education-item-main">
+                <div className="education-item-left">
+                  <h3 className="education-institution-name">{edu.institution}</h3>
+                  <p className="education-degree-text">{edu.degree}</p>
+                  {edu.relevance && (
+                    <p className="education-relevance">{edu.relevance}</p>
+                  )}
                 </div>
-
-                {/* Content */}
-                <div className="education-content">
-                  {/* Logo Section with Glow */}
-                  <div className="education-logo-wrapper">
-                    <div className="education-logo-glow" style={{ background: edu.color }}></div>
-                    <div className="education-logo-container">
-                      <img
-                        src={edu.logo}
-                        alt={edu.institution}
-                        className="education-logo"
-                      />
-                    </div>
-                    {/* Animated Ring */}
-                    <svg className="education-ring" viewBox="0 0 100 100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="48"
-                        fill="none"
-                        stroke={edu.color}
-                        strokeWidth="2"
-                        strokeDasharray="301.593"
-                        className="ring-circle"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Details Section */}
-                  <div className="education-details">
-                    <div className="education-header">
-                      <h3 className="education-institution">{edu.institution}</h3>
-                      <span className="education-period">{edu.period}</span>
-                    </div>
-
-                    <div className="education-degree-wrapper">
-                      <h4 className="education-degree">{edu.degree}</h4>
-                      <p className="education-field">{edu.field}</p>
-                    </div>
-
-                    {/* Grade Badge with Animation */}
-                    <div className="education-grade-badge" style={{ borderColor: edu.color }}>
-                      <div className="grade-icon">🎓</div>
-                      <div className="grade-details">
-                        <span className="grade-label">Grade</span>
-                        <span className="grade-value" style={{ color: edu.color }}>{edu.grade}</span>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="education-description">{edu.description}</p>
-
-                    {/* Achievements (if any) */}
-                    {edu.achievements && (
-                      <div className="education-achievements">
-                        <h5 className="achievements-title">Key Highlights:</h5>
-                        <ul className="achievements-list">
-                          {edu.achievements.map((achievement, idx) => (
-                            <li key={idx} className="achievement-item">
-                              <div className="achievement-bullet" style={{ background: edu.color }}></div>
-                              <span>{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+                <div className="education-item-right">
+                  <span className="education-period-text">{edu.period}</span>
+                  <span className="education-grade-text">{edu.grade}</span>
                 </div>
-
-                {/* Decorative Corner Elements */}
-                <div className="corner-decoration top-left" style={{ borderColor: edu.color }}></div>
-                <div className="corner-decoration top-right" style={{ borderColor: edu.color }}></div>
-                <div className="corner-decoration bottom-left" style={{ borderColor: edu.color }}></div>
-                <div className="corner-decoration bottom-right" style={{ borderColor: edu.color }}></div>
               </div>
-
-              {/* Connecting Line for Timeline */}
-              {index < education.length - 1 && (
-                <div className="timeline-connector">
-                  <div className="connector-line" style={{ background: `linear-gradient(180deg, ${edu.color} 0%, ${education[index + 1].color} 100%)` }}></div>
-                  <div className="connector-dot" style={{ background: edu.color }}></div>
-                </div>
-              )}
             </div>
           ))}
         </div>
       </section>
 
-      {/* Section 7: GitHub Activity - Days I Code */}
+      {/* Section 6: GitHub Activity - Days I Code */}
       <section
         className="github-activity-section"
-        ref={(el) => (sectionsRef.current[7] = el)}
+        ref={(el) => (sectionsRef.current[6] = el)}
       >
         <GitHubActivity username="nabin00012" />
       </section>
 
-      {/* Section 8: Contact */}
+      {/* Section 7: Contact */}
       <section
         className="contact-section"
-        ref={(el) => (sectionsRef.current[8] = el)}
+        ref={(el) => (sectionsRef.current[7] = el)}
       >
         <div className="contact-container">
           <h2 className="section-title">
