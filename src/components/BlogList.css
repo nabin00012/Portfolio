@@ -177,10 +177,13 @@
   border-radius: 20px;
   padding: 32px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
 }
 
 .article-card:hover {
@@ -248,6 +251,9 @@
 .article-content {
   position: relative;
   z-index: 2;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .article-meta {
@@ -344,7 +350,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-top: auto;
 }
 
 .tech-tag {
@@ -366,26 +372,34 @@
 /* Article Actions */
 .article-actions {
   position: relative;
-  z-index: 2;
-  margin-top: 16px;
+  z-index: 10;
+  margin-top: auto;
+  padding-top: 24px;
+  display: flex;
+  flex-shrink: 0;
 }
 
 .read-more-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #00ff88, #00d4ff);
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #00ff88, #00d4ff) !important;
   border: none;
   border-radius: 50px;
-  color: #000;
-  font-weight: 600;
-  font-size: 0.875rem;
+  color: #000 !important;
+  font-weight: 700;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
   text-decoration: none;
+  visibility: visible !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+  min-width: 160px;
 }
 
 .read-more-button:hover {
@@ -568,6 +582,23 @@
   
   .article-title {
     font-size: 1.25rem;
+  }
+  
+  .article-card {
+    min-height: auto;
+  }
+  
+  .article-actions {
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+  
+  .read-more-button {
+    padding: 14px 24px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+    min-width: unset;
   }
   
   .blog-cta {
