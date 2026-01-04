@@ -295,23 +295,23 @@ const BlogList = () => {
                                         </span>
                                     ))}
                                 </div>
-                            </div>
 
-                            {/* Read More Button */}
-                            <div className="article-actions">
-                                <a
-                                    href={`/article?slug=${article.slug}`}
-                                    className="read-more-button"
-                                    style={{
-                                        '--button-gradient': pillarConfig.gradient,
-                                        '--button-color': pillarConfig.borderColor
-                                    }}
-                                >
-                                    <span>Read Article</span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </a>
+                                {/* Read More Button - Inside content for proper flex */}
+                                <div className="article-actions">
+                                    <a
+                                        href={`/article?slug=${article.slug}`}
+                                        className="read-more-button"
+                                        style={{
+                                            '--button-gradient': pillarConfig.gradient,
+                                            '--button-color': pillarConfig.borderColor
+                                        }}
+                                    >
+                                        <span>Read Article</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
 
                             {/* Hover Glow Effect */}
