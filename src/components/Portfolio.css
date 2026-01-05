@@ -4216,19 +4216,18 @@ body {
   z-index: 2;
 }
 
-/* Clean card - document-like, content floats */
+/* Clean card - document-like, content floats freely */
 .timeline-content {
   background: transparent;
   border: none;
-  border-left: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 0;
-  padding: 0 0 0 24px;
-  margin-left: -8px;
+  padding: 0 0 0 20px;
+  margin-left: 0;
 }
 
-/* No hover effect - reduces UI feeling */
+/* No hover effect - content is content, not interactive UI */
 .timeline-content:hover {
-  border-color: rgba(255, 255, 255, 0.08);
+  /* intentionally empty */
 }
 
 .timeline-header {
@@ -4249,14 +4248,16 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Period badge - documentation style, not UI element */
+/* Period/status - pure metadata, never competes with role */
 .job-period {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.25);
   font-weight: 400;
   padding: 0;
   background: transparent;
   border-radius: 0;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
 }
 
 /* Company name - clear secondary, supports role */
@@ -4267,35 +4268,38 @@ body {
   margin-bottom: 20px;
 }
 
-/* Job bullets - first 2 primary, rest secondary but readable */
+/* Job bullets - clear hierarchy: first 2 primary, rest supporting */
 .job-bullets {
   margin: 0 0 24px 0;
-  padding: 0 0 0 16px;
-  max-width: 580px;
+  padding: 0 0 0 18px;
+  max-width: 560px;
 }
 
 .job-bullets li {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 10px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 8px;
   position: relative;
 }
 
-/* First two bullets - primary emphasis */
+/* First two bullets - primary emphasis, recruiter reads these */
 .job-bullets li:nth-child(1),
 .job-bullets li:nth-child(2) {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
 }
 
-/* Remaining bullets - secondary */
+/* Remaining bullets - clearly secondary, available if reader pauses */
 .job-bullets li:nth-child(n+3) {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.825rem;
+  line-height: 1.65;
 }
 
 .job-bullets li::marker {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.15);
 }
 
 /* Tech badges - minimal, supports content not competes */

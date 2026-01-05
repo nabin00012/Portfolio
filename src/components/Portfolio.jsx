@@ -995,15 +995,15 @@ const Portfolio = () => {
 
               <div className="mission-content">
                 <p className="mission-paragraph">
-                  I build full-stack systems where reliability and correctness are non-negotiable. My work spans frontend architecture, backend services, data persistence, and deployment pipelines. The common thread is making systems work under real constraints: limited time, unclear requirements, and code that cannot afford to fail silently.
+                  I build full-stack systems that are meant to run in the real world, not just look good in demos. My work covers frontend, backend, data, and deployment—with a strong focus on reliability and correctness.
                 </p>
 
                 <p className="mission-paragraph">
-                  Most of what I know comes from building systems end-to-end and diagnosing what breaks. The System Health dashboard and Case Studies on this site document that process—not as a list of tools, but as evidence of how I make decisions when tradeoffs are unavoidable.
+                  Most of what I've learned comes from building systems end-to-end and fixing them when things break. The System Health and Case Studies sections show how I approach real problems, make tradeoffs, and decide what matters when constraints are unavoidable.
                 </p>
 
                 <p className="mission-paragraph">
-                  I am most useful on teams that ship code where correctness matters the first time.
+                  I work best on teams where getting things right the first time actually matters.
                 </p>
               </div>
             </div>
