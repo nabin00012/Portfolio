@@ -135,7 +135,7 @@
 /* CLEAN ARTICLE GRID */
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    grid-template-columns: 1fr;
     gap: 24px;
     padding: 30px 20px;
     max-width: 1300px;
@@ -143,11 +143,19 @@
     width: 100%;
 }
 
+/* 2 columns on tablets */
+@media (min-width: 640px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
 /* 3 columns on large screens */
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
     .articles-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        gap: 24px;
     }
 }
 
@@ -155,18 +163,19 @@
     background: rgba(0, 0, 0, 0.7);
     border: 2px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;
-    padding: 18px;
+    padding: 20px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0;
     transform: translateY(20px);
     animation: card-appear 0.6s ease-out forwards;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     backdrop-filter: blur(20px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    min-height: 320px;
+    min-height: 280px;
+    height: auto;
 }
 
 .article-card::before {
@@ -232,14 +241,19 @@
 }
 
 .article-title {
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     font-weight: 700;
-    line-height: 1.35;
-    margin-bottom: 8px;
+    line-height: 1.4;
+    margin-bottom: 10px;
     color: #fff;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    min-height: 3.8em;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     transition: color 0.3s ease;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .article-card:hover .article-title {
@@ -255,20 +269,19 @@
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 14px;
+    gap: 5px;
+    margin-bottom: 12px;
 }
 
 .tech-tag {
     background: rgba(0, 0, 0, 0.8);
-    color: rgba(255, 255, 255, 0.9);
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: clamp(0.6rem, 1.8vw, 0.7rem);
     font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     font-family: 'JetBrains Mono', monospace;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
@@ -283,21 +296,25 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .metric-item {
     background: rgba(0, 0, 0, 0.8);
     color: #00d4ff;
-    padding: 7px 14px;
-    border-radius: 14px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    border: 1.5px solid rgba(0, 212, 255, 0.4);
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: clamp(0.6rem, 1.8vw, 0.72rem);
+    font-weight: 600;
+    border: 1px solid rgba(0, 212, 255, 0.3);
     font-family: 'JetBrains Mono', monospace;
-    text-shadow: 0 0 12px rgba(0, 212, 255, 0.7);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .article-card:hover .metric-item {
@@ -312,11 +329,11 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 24px;
-    border-radius: 25px;
+    padding: 10px 20px;
+    border-radius: 20px;
     color: #000 !important;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     text-decoration: none;
     transition: all 0.3s ease;
     border: none;
@@ -325,6 +342,7 @@
     background: linear-gradient(135deg, #00ff88, #00d4ff) !important;
     visibility: visible !important;
     opacity: 1 !important;
+    width: 100%;
 }
 
 .read-more-button:hover {
@@ -336,11 +354,11 @@
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
     .blog-header {
-        padding: 60px 20px 40px;
+        padding: 60px 16px 40px;
     }
     
     .blog-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .title-main,
@@ -349,105 +367,162 @@
     }
     
     .blog-subtitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.6;
     }
     
     .header-stats {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 24px;
     }
     
     .stat {
-        width: 100%;
         text-align: center;
     }
     
     .stat-number {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     
     .stat-label {
-        font-size: 0.9rem;
+        font-size: 0.75rem;
     }
     
     .articles-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
-        padding: 30px 15px;
+        gap: 20px;
+        padding: 24px 16px;
     }
     
     .article-card {
-        padding: 20px;
+        padding: 18px;
+        min-height: auto;
+    }
+    
+    .article-title {
+        font-size: 1rem;
+        -webkit-line-clamp: 3;
     }
     
     .pillar-navigation {
-        padding: 20px 15px;
-        gap: 10px;
+        padding: 20px 16px;
+        gap: 8px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(0, 255, 136, 0.5) rgba(0, 0, 0, 0.3);
-    }
-    
-    .pillar-navigation::-webkit-scrollbar {
-        height: 6px;
-    }
-    
-    .pillar-navigation::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-    }
-    
-    .pillar-navigation::-webkit-scrollbar-thumb {
-        background: rgba(0, 255, 136, 0.5);
-        border-radius: 10px;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
     }
     
     .pillar-button {
         flex-shrink: 0;
-        padding: 10px 16px;
-        font-size: 0.85rem;
-    }
-    
-    .pillar-icon {
-        font-size: 0.9rem;
+        padding: 10px 14px;
+        font-size: 0.8rem;
     }
     
     .pillar-tag {
-        top: 15px;
-        right: 15px;
-        padding: 5px 10px;
-        font-size: 0.75rem;
+        top: 14px;
+        right: 14px;
+        padding: 4px 8px;
+        font-size: 0.65rem;
     }
     
     .tech-tags {
-        gap: 6px;
+        gap: 5px;
+    }
+    
+    .tech-tag {
+        padding: 4px 8px;
+        font-size: 0.65rem;
     }
     
     .metrics-display {
-        gap: 6px;
+        gap: 5px;
+    }
+    
+    .metric-item {
+        padding: 5px 8px;
+        font-size: 0.62rem;
+    }
+    
+    .read-more-button {
+        padding: 10px 16px;
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 480px) {
     .blog-header {
-        padding: 50px 15px 30px;
+        padding: 50px 12px 30px;
     }
     
     .blog-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
     .blog-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     
     .header-stats {
-        gap: 15px;
+        gap: 16px;
     }
     
     .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .articles-grid {
+        padding: 20px 12px;
+        gap: 16px;
+    }
+    
+    .article-card {
+        padding: 16px;
+    }
+    
+    .article-title {
+        font-size: 0.95rem;
+        line-height: 1.35;
+        -webkit-line-clamp: 3;
+    }
+    
+    .tech-tag {
+        font-size: 0.6rem;
+        padding: 4px 7px;
+    }
+    
+    .metric-item {
+        font-size: 0.58rem;
+        padding: 4px 7px;
+    }
+    
+    .read-more-button {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+    }
+    
+    .pillar-navigation {
+        padding: 16px 12px;
+        gap: 6px;
+    }
+    
+    .pillar-button {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .pillar-tag {
+        top: 12px;
+        right: 12px;
+        padding: 3px 6px;
+        font-size: 0.6rem;
+    }
+}
         font-size: 1.5rem;
     }
     

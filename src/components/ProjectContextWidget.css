@@ -114,13 +114,13 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: #fff;
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
   word-wrap: break-word;
 }
 
 .metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   width: 100%;
 }
@@ -128,21 +128,22 @@
 .metric-item {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  padding: 8px;
+  padding: 8px 12px;
   text-align: center;
   min-width: 0;
   word-wrap: break-word;
   overflow: hidden;
+  flex: 0 1 auto;
 }
 
 .metric-value {
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 2vw, 0.75rem);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   display: block;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .widget-expanded {
