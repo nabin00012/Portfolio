@@ -25,7 +25,7 @@ const ArticlePage = ({ articleSlug }) => {
             featured: true,
             slug: "kubernetes-zero-downtime-deployments",
             metrics: ["~99.99% uptime observed", "~80% faster deploys", "No user-facing interruptions"],
-            icon: "🚀",
+            icon: "",
             content: {
                 problemStatement: "Standard deployments typically require service restarts. For a real-time chat service, even brief interruptions can violate SLA windows and degrade user experience. We needed a deployment approach that avoided service gaps entirely.",
                 architecturalChoice: "We configured Kubernetes RollingUpdate for both client and API deployments. The key constraint was maxUnavailable: 0, which prevents Kubernetes from terminating old pods until new ones pass health checks. GitHub Actions handles the build, push, and rollout trigger. This isn't novel—it's documented Kubernetes behavior—but getting the probe timings and replica counts right took iteration.",
@@ -81,7 +81,7 @@ spec:
             featured: true,
             slug: "aes-256-gcm-encryption",
             metrics: ["AES-256-GCM (authenticated)", "85%+ test coverage", "No critical bugs in crypto module"],
-            icon: "🔒",
+            icon: "",
             content: {
                 problemStatement: "The platform stores sensitive financial documents (Excel, PDF). Standard encryption without authentication doesn't detect tampering, which is a compliance concern. We also needed test coverage to catch implementation errors before they reached production.",
                 architecturalChoice: "We chose AES-256-GCM because it provides authenticated encryption—both confidentiality and integrity in one pass. The authentication tag detects any modification to the ciphertext. We wrote the crypto module test-first using Jest, which caught several IV-reuse bugs during development. Final coverage landed at 85%+, focused on the encryption/decryption paths.",
@@ -132,7 +132,7 @@ function encrypt(data, key) {
             featured: true,
             slug: "web3-event-indexing",
             metrics: ["<100ms indexed queries", "Real-time sync via events", "Full event history preserved"],
-            icon: "🌐",
+            icon: "",
             content: {
                 problemStatement: "Fetching a user's full trade history directly from the blockchain is slow—often several seconds—and costs gas for complex queries. For a portfolio dashboard that users check frequently, this wasn't acceptable.",
                 architecturalChoice: "We added a Node.js service that subscribes to contract events via Web3.js and writes them to MongoDB. The React client queries MongoDB instead of the chain. This introduces an indexing delay (events aren't instant), but for our use case—historical analytics—the tradeoff made sense. We kept the blockchain as the source of truth; the index is just a read optimization.",
@@ -187,7 +187,7 @@ startEventListening();`,
             featured: true,
             slug: "nextjs-typescript-architecture",
             metrics: ["95+ Lighthouse score", "~90% fewer runtime errors", "Strict TypeScript across 150+ components"],
-            icon: "✅",
+            icon: "",
             content: {
                 problemStatement: "The platform includes a collaborative code editor (Monaco), which is heavy. Initial loads were slow, hurting both UX and SEO. Separately, as more contributors joined, null/undefined errors became a recurring problem—the kind that only surface in production.",
                 architecturalChoice: "We enforced strict TypeScript across the entire codebase to catch type errors at build time. For performance, we used Next.js 14 Server Components for static content (course listings, dashboards) and dynamically imported Monaco only on pages that need it. This split the bundle and moved most rendering to the server.",
@@ -241,7 +241,7 @@ async function ProjectDashboard({ userId }: { userId: string }) {
             featured: true,
             slug: "mern-production-deployment",
             metrics: ["~99.9% uptime observed", "Structured logging", "Health check endpoints"],
-            icon: "⚡",
+            icon: "",
             content: {
                 problemStatement: "The application worked fine locally, but production exposed problems: errors were logged inconsistently, there was no way to check service health externally, and debugging issues required SSH access to read logs. We needed better observability without overengineering.",
                 architecturalChoice: "We added structured logging with Winston, a global error handler that catches unhandled exceptions, and a /health endpoint for external monitoring. The goal wasn't to build a complex microservices architecture—it was to make the existing monolith easier to operate. Health checks enable automated restarts when the service becomes unresponsive.",
@@ -313,10 +313,10 @@ app.get('/health', (req, res) => {
                 // Extract headings for TOC
                 const headings = [
                     { id: 'problem-statement', text: 'Problem Statement', level: 2 },
-                    { id: 'architectural-choice', text: 'The Architectural Choice', level: 2 },
-                    { id: 'code-walkthrough', text: 'Code Walkthrough & Snippets', level: 2 },
-                    { id: 'measurable-outcome', text: 'Measurable Outcome', level: 2 },
-                    { id: 'key-takeaways', text: 'Key Takeaways', level: 2 }
+                    { id: 'architectural-choice', text: 'Architectural Decision', level: 2 },
+                    { id: 'code-walkthrough', text: 'Implementation', level: 2 },
+                    { id: 'measurable-outcome', text: 'Outcome', level: 2 },
+                    { id: 'key-takeaways', text: 'Notes', level: 2 }
                 ];
                 setArticle(prev => ({ ...prev, headings }));
             }
@@ -442,7 +442,7 @@ app.get('/health', (req, res) => {
                             borderColor: pillarConfig.borderColor
                         }}
                     >
-                        <span className="pillar-icon">{article.icon}</span>
+                        {article.icon && <span className="pillar-icon">{article.icon}</span>}
                         <span className="pillar-name">{pillarConfig.name}</span>
                     </div>
 
@@ -482,7 +482,7 @@ app.get('/health', (req, res) => {
                         ref={el => headingsRef.current[0] = el}
                     >
                         <h2 className="section-title">
-                            <span className="section-icon">🎯</span>
+                            <span className="section-number">01</span>
                             Problem Statement
                         </h2>
                         <div className="section-content">
@@ -497,8 +497,8 @@ app.get('/health', (req, res) => {
                         ref={el => headingsRef.current[1] = el}
                     >
                         <h2 className="section-title">
-                            <span className="section-icon">🏗️</span>
-                            The Architectural Choice
+                            <span className="section-number">02</span>
+                            Architectural Decision
                         </h2>
                         <div className="section-content">
                             <p>{article.content.architecturalChoice}</p>
@@ -512,8 +512,8 @@ app.get('/health', (req, res) => {
                         ref={el => headingsRef.current[2] = el}
                     >
                         <h2 className="section-title">
-                            <span className="section-icon">💻</span>
-                            Code Walkthrough & Snippets
+                            <span className="section-number">03</span>
+                            Implementation
                         </h2>
                         <div className="section-content">
                             <div className="code-block">
@@ -543,8 +543,8 @@ app.get('/health', (req, res) => {
                         ref={el => headingsRef.current[3] = el}
                     >
                         <h2 className="section-title">
-                            <span className="section-icon">📊</span>
-                            Measurable Outcome
+                            <span className="section-number">04</span>
+                            Outcome
                         </h2>
                         <div className="section-content">
                             <p>{article.content.measurableOutcome}</p>
@@ -558,8 +558,8 @@ app.get('/health', (req, res) => {
                         ref={el => headingsRef.current[4] = el}
                     >
                         <h2 className="section-title">
-                            <span className="section-icon">🚀</span>
-                            Key Takeaways
+                            <span className="section-number">05</span>
+                            Notes
                         </h2>
                         <div className="section-content">
                             <ul className="takeaways-list">

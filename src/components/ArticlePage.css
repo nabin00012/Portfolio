@@ -313,6 +313,16 @@
   font-size: 1.5rem;
 }
 
+/* Section number - engineering doc style */
+.section-number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'JetBrains Mono', monospace;
+  margin-right: 12px;
+  letter-spacing: 0.05em;
+}
+
 .section-content {
   font-size: 1.125rem;
   line-height: 1.7;

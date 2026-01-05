@@ -13,56 +13,56 @@ const BlogListNew = () => {
     const blogArticles = [
         {
             id: 1,
-            title: "From Main Branch to Microservice: Orchestrating Zero-Downtime MERN Deployments with Kubernetes",
-            excerpt: "Traditional deployments often require service restarts, leading to unacceptable SLA violations. Learn how to leverage Kubernetes RollingUpdate Strategy for zero-downtime deployments with automated GitHub Actions CI/CD pipeline orchestration.",
+            title: "Zero-Downtime MERN Deployments with Kubernetes RollingUpdate",
+            excerpt: "Standard deployments typically require service restarts, which can violate SLA windows. This documents how we configured Kubernetes RollingUpdate to avoid downtime during releases.",
             pillar: "operational-readiness",
             project: "MERN-CI-CD-Kube",
-            technologies: ["Kubernetes", "RollingUpdate", "CI/CD", "Zero-Downtime"],
+            technologies: ["Kubernetes", "RollingUpdate", "CI/CD"],
             readTime: "12 min read",
             publishedAt: "2025-01-15",
             featured: true,
             slug: "kubernetes-zero-downtime-deployments",
-            metrics: ["99.99% uptime", "80% faster deployment", "Zero service interruption"],
-            icon: "🚀",
+            metrics: ["~99.99% uptime", "~80% faster deploys", "No observed interruptions"],
+            icon: "",
             difficulty: "Advanced",
-            category: "DevOps & Infrastructure"
+            category: "DevOps"
         },
         {
             id: 2,
-            title: "Military-Grade Data-at-Rest: Implementing AES-256-GCM with TDD Validation in a Fintech API",
-            excerpt: "Financial platforms require military-grade security to protect sensitive documents. Learn how to implement AES-256-GCM (Authenticated Encryption) with Test-Driven Development workflow achieving 85%+ unit test coverage for rigorous security validation.",
+            title: "AES-256-GCM Implementation: Authenticated Encryption with TDD",
+            excerpt: "Financial document storage requires encryption that covers both confidentiality and integrity. This documents how we implemented AES-256-GCM with a test-driven approach.",
             pillar: "security-domain",
             project: "SecureFinData",
-            technologies: ["AES-256-GCM", "TDD", "Zero-Trust", "Jest"],
+            technologies: ["AES-256-GCM", "TDD", "Node.js Crypto", "Jest"],
             readTime: "15 min read",
             publishedAt: "2025-01-12",
             featured: true,
             slug: "aes-256-gcm-encryption",
-            metrics: ["Military-grade security", "85%+ test coverage", "Zero critical bugs"],
-            icon: "🔒",
+            metrics: ["Authenticated encryption", "85%+ test coverage", "No critical bugs"],
+            icon: "",
             difficulty: "Expert",
-            category: "Security & Cryptography"
+            category: "Security"
         },
         {
             id: 3,
-            title: "Event-Driven DApps: Using Node.js/Express as a Real-Time Indexer for Solidity Contract Events",
-            excerpt: "Direct blockchain reads for large datasets are slow and expensive. Learn how to use Node.js/Express as an Off-Chain Indexer that listens to Solidity Events using Web3.js, providing lightning-fast portfolio analytics without querying the blockchain.",
+            title: "Off-Chain Event Indexing for Solidity Contracts with Node.js",
+            excerpt: "Querying blockchain state directly for large datasets is slow and expensive. This documents how we built an off-chain indexer that stores events in MongoDB for faster reads.",
             pillar: "web3-dapp",
             project: "FluxTrade",
-            technologies: ["Web3.js", "Solidity", "Event Listening", "Off-Chain Indexing"],
+            technologies: ["Web3.js", "Solidity", "MongoDB", "Event Indexing"],
             readTime: "18 min read",
             publishedAt: "2025-01-10",
             featured: true,
             slug: "web3-event-indexing",
-            metrics: ["< 100ms response", "Real-time updates", "Auditable data lineage"],
-            icon: "🌐",
+            metrics: ["<100ms queries", "Event-driven sync", "Full history preserved"],
+            icon: "",
             difficulty: "Advanced",
-            category: "Web3 & Blockchain"
+            category: "Web3"
         },
         {
             id: 4,
-            title: "Architecting Educational SaaS: Achieving Performance and Type Safety with Next.js 14 & TypeScript",
-            excerpt: "Building complex, interactive platforms faces dual challenges: slow initial load times and high risk of runtime errors. Learn how to enforce TypeScript across the stack and utilize Next.js 14 SSR for perfect Lighthouse scores and 90% error reduction.",
+            title: "Next.js 14 SSR + TypeScript: Performance and Type Safety Tradeoffs",
+            excerpt: "An interactive code editor platform faced slow initial loads and frequent runtime errors. This documents how we approached both with SSR and strict TypeScript.",
             pillar: "quality-assurance",
             project: "CodeCommons",
             technologies: ["Next.js 14", "TypeScript", "SSR", "Monaco Editor"],
@@ -70,36 +70,36 @@ const BlogListNew = () => {
             publishedAt: "2025-01-08",
             featured: true,
             slug: "nextjs-typescript-architecture",
-            metrics: ["95+ Lighthouse Score", "90% error reduction", "Type safety"],
-            icon: "✅",
+            metrics: ["95+ Lighthouse", "~90% fewer errors", "150+ typed components"],
+            icon: "",
             difficulty: "Advanced",
-            category: "Frontend Architecture"
+            category: "Frontend"
         },
         {
             id: 5,
-            title: "Production-Ready MERN Stack: From Development to Enterprise Deployment",
-            excerpt: "Scaling a MERN application from development to production requires careful orchestration of multiple services. Learn how to implement proper error handling, monitoring, and deployment strategies for enterprise-grade applications with 99.9% uptime.",
+            title: "Production MERN Stack: Error Handling and Observability Patterns",
+            excerpt: "Moving a MERN application from local to production surfaced gaps in error handling and observability. This documents the patterns we added to make the system easier to debug.",
             pillar: "architecture",
             project: "CodeCommons",
-            technologies: ["MERN Stack", "Production Deployment", "Monitoring", "Error Handling"],
+            technologies: ["MERN Stack", "Winston", "Health Checks", "Error Handling"],
             readTime: "16 min read",
             publishedAt: "2025-01-05",
             featured: true,
             slug: "mern-production-deployment",
-            metrics: ["99.9% uptime", "Enterprise-grade", "Scalable architecture"],
-            icon: "⚡",
+            metrics: ["~99.9% uptime", "Structured logging", "Health endpoints"],
+            icon: "",
             difficulty: "Expert",
-            category: "Full-Stack Architecture"
+            category: "Architecture"
         }
     ];
 
     const pillars = [
-        { id: 'all', name: 'All Articles', icon: '📚', color: '#00d4ff' },
-        { id: 'operational-readiness', name: 'Operational Readiness', icon: '🚀', color: '#00d4ff' },
-        { id: 'security-domain', name: 'Security Domain', icon: '🔒', color: '#ff0080' },
-        { id: 'quality-assurance', name: 'Quality Assurance', icon: '✅', color: '#00ff88' },
-        { id: 'web3-dapp', name: 'Web3 & DApp', icon: '🌐', color: '#ff6b35' },
-        { id: 'architecture', name: 'Architecture', icon: '⚡', color: '#9d4edd' }
+        { id: 'all', name: 'All Articles', icon: '', color: '#00d4ff' },
+        { id: 'operational-readiness', name: 'DevOps', icon: '', color: '#00d4ff' },
+        { id: 'security-domain', name: 'Security', icon: '', color: '#ff0080' },
+        { id: 'quality-assurance', name: 'Quality', icon: '', color: '#00ff88' },
+        { id: 'web3-dapp', name: 'Web3', icon: '', color: '#ff6b35' },
+        { id: 'architecture', name: 'Architecture', icon: '', color: '#9d4edd' }
     ];
 
     const filteredArticles = selectedPillar === 'all'
@@ -141,10 +141,10 @@ const BlogListNew = () => {
                 <div className="header-content">
                     <h1 className="blog-title">
                         <span className="title-main">Engineering</span>
-                        <span className="title-accent">Insights</span>
+                        <span className="title-accent">Notes</span>
                     </h1>
                     <p className="blog-subtitle">
-                        Where code meets creativity • Technical deep-dives from the trenches of production systems
+                        Implementation notes and architectural decisions from production systems
                     </p>
                     <div className="header-stats">
                         <div className="stat">
@@ -172,7 +172,7 @@ const BlogListNew = () => {
                         onClick={() => setSelectedPillar(pillar.id)}
                         style={{ '--pillar-color': pillar.color }}
                     >
-                        <span className="pillar-icon">{pillar.icon}</span>
+                        {pillar.icon && <span className="pillar-icon">{pillar.icon}</span>}
                         <span className="pillar-name">{pillar.name}</span>
                     </button>
                 ))}
@@ -195,7 +195,7 @@ const BlogListNew = () => {
                         >
                             {/* Pillar Tag */}
                             <div className="pillar-tag" style={{ background: config.gradient }}>
-                                <span className="tag-icon">{article.icon}</span>
+                                {article.icon && <span className="tag-icon">{article.icon}</span>}
                                 <span className="tag-text">{article.category}</span>
                             </div>
 
