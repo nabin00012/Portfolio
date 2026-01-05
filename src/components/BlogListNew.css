@@ -25,15 +25,19 @@
 }
 
 .blog-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(1.75rem, 5vw, 4rem);
     font-weight: 700;
     margin-bottom: 20px;
-    line-height: 1.1;
+    line-height: 1.15;
+    text-wrap: balance;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .title-main {
     color: #fff;
-    display: block;
+    display: inline;
 }
 
 .title-accent {
@@ -41,7 +45,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    display: block;
+    display: inline;
 }
 
 .blog-subtitle {
@@ -136,23 +140,24 @@
 .articles-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 30px 20px;
+    gap: 20px;
+    padding: 30px clamp(12px, 4vw, 24px);
     max-width: 1300px;
     margin: 0 auto;
     width: 100%;
+    box-sizing: border-box;
 }
 
-/* 2 columns on tablets */
-@media (min-width: 640px) {
+/* 2 columns on tablets (768px+) */
+@media (min-width: 768px) {
     .articles-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 }
 
-/* 3 columns on large screens */
-@media (min-width: 1024px) {
+/* 3 columns on large screens (1100px+) */
+@media (min-width: 1100px) {
     .articles-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
@@ -163,7 +168,7 @@
     background: rgba(0, 0, 0, 0.7);
     border: 2px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;
-    padding: 20px;
+    padding: clamp(14px, 3vw, 20px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0;
     transform: translateY(20px);
@@ -174,8 +179,10 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    min-height: 280px;
-    height: auto;
+    min-height: 0;
+    height: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .article-card::before {
@@ -241,19 +248,21 @@
 }
 
 .article-title {
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-size: clamp(0.875rem, 2.2vw, 1rem);
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.35;
     margin-bottom: 10px;
     color: #fff;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     transition: color 0.3s ease;
     word-break: break-word;
+    overflow-wrap: break-word;
     hyphens: auto;
+    max-width: 100%;
 }
 
 .article-card:hover .article-title {
@@ -269,21 +278,24 @@
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: clamp(4px, 1vw, 6px);
     margin-bottom: 12px;
+    max-width: 100%;
 }
 
 .tech-tag {
     background: rgba(0, 0, 0, 0.8);
     color: rgba(255, 255, 255, 0.85);
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: clamp(0.6rem, 1.8vw, 0.7rem);
+    padding: clamp(3px, 0.8vw, 5px) clamp(6px, 1.5vw, 10px);
+    border-radius: 8px;
+    font-size: clamp(0.58rem, 1.5vw, 0.68rem);
     font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.15);
     font-family: 'JetBrains Mono', monospace;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .article-card:hover .tech-tag {
@@ -295,16 +307,17 @@
 .metrics-display {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 16px;
+    gap: clamp(4px, 1vw, 6px);
+    margin-bottom: 14px;
+    max-width: 100%;
 }
 
 .metric-item {
     background: rgba(0, 0, 0, 0.8);
     color: #00d4ff;
-    padding: 6px 10px;
-    border-radius: 12px;
-    font-size: clamp(0.6rem, 1.8vw, 0.72rem);
+    padding: clamp(4px, 0.8vw, 6px) clamp(6px, 1.5vw, 10px);
+    border-radius: 10px;
+    font-size: clamp(0.55rem, 1.4vw, 0.68rem);
     font-weight: 600;
     border: 1px solid rgba(0, 212, 255, 0.3);
     font-family: 'JetBrains Mono', monospace;
@@ -312,9 +325,7 @@
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     white-space: nowrap;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    flex-shrink: 0;
 }
 
 .article-card:hover .metric-item {
@@ -325,15 +336,15 @@
 
 /* READ MORE BUTTON */
 .read-more-button {
-    display: inline-flex !important;
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 10px 20px;
+    gap: 6px;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
     border-radius: 20px;
     color: #000 !important;
     font-weight: 700;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    font-size: clamp(0.75rem, 1.8vw, 0.88rem);
     text-decoration: none;
     transition: all 0.3s ease;
     border: none;
@@ -343,6 +354,9 @@
     visibility: visible !important;
     opacity: 1 !important;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .read-more-button:hover {
@@ -352,29 +366,59 @@
 }
 
 /* RESPONSIVE DESIGN */
+
+/* Laptop breakpoint (1024px - 1099px) */
+@media (min-width: 768px) and (max-width: 1099px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        padding: 28px clamp(16px, 3vw, 24px);
+    }
+    
+    .article-card {
+        padding: 18px;
+    }
+    
+    .article-title {
+        font-size: 0.92rem;
+    }
+    
+    .pillar-navigation {
+        gap: 10px;
+        padding: 24px 20px;
+    }
+    
+    .pillar-button {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+}
+
 @media (max-width: 768px) {
     .blog-header {
-        padding: 60px 16px 40px;
+        padding: 50px 16px 35px;
     }
     
     .blog-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        max-width: 95%;
     }
     
     .title-main,
     .title-accent {
-        display: block;
+        display: inline;
     }
     
     .blog-subtitle {
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        max-width: 90%;
     }
     
     .header-stats {
         flex-direction: row;
         justify-content: center;
-        gap: 24px;
+        gap: clamp(16px, 4vw, 32px);
     }
     
     .stat {
@@ -382,102 +426,15 @@
     }
     
     .stat-number {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
     }
     
     .stat-label {
-        font-size: 0.75rem;
+        font-size: clamp(0.65rem, 2vw, 0.75rem);
     }
     
     .articles-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 24px 16px;
-    }
-    
-    .article-card {
-        padding: 18px;
-        min-height: auto;
-    }
-    
-    .article-title {
-        font-size: 1rem;
-        -webkit-line-clamp: 3;
-    }
-    
-    .pillar-navigation {
-        padding: 20px 16px;
-        gap: 8px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-    }
-    
-    .pillar-button {
-        flex-shrink: 0;
-        padding: 10px 14px;
-        font-size: 0.8rem;
-    }
-    
-    .pillar-tag {
-        top: 14px;
-        right: 14px;
-        padding: 4px 8px;
-        font-size: 0.65rem;
-    }
-    
-    .tech-tags {
-        gap: 5px;
-    }
-    
-    .tech-tag {
-        padding: 4px 8px;
-        font-size: 0.65rem;
-    }
-    
-    .metrics-display {
-        gap: 5px;
-    }
-    
-    .metric-item {
-        padding: 5px 8px;
-        font-size: 0.62rem;
-    }
-    
-    .read-more-button {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .blog-header {
-        padding: 50px 12px 30px;
-    }
-    
-    .blog-title {
-        font-size: 1.6rem;
-    }
-    
-    .blog-subtitle {
-        font-size: 0.85rem;
-    }
-    
-    .header-stats {
-        gap: 16px;
-    }
-    
-    .stat-number {
-        font-size: 1.3rem;
-    }
-    
-    .stat-label {
-        font-size: 0.7rem;
-    }
-    
-    .articles-grid {
-        padding: 20px 12px;
         gap: 16px;
     }
     
@@ -487,117 +444,51 @@
     
     .article-title {
         font-size: 0.95rem;
-        line-height: 1.35;
         -webkit-line-clamp: 3;
-    }
-    
-    .tech-tag {
-        font-size: 0.6rem;
-        padding: 4px 7px;
-    }
-    
-    .metric-item {
-        font-size: 0.58rem;
-        padding: 4px 7px;
-    }
-    
-    .read-more-button {
-        padding: 10px 14px;
-        font-size: 0.8rem;
     }
     
     .pillar-navigation {
         padding: 16px 12px;
-        gap: 6px;
+        gap: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .pillar-navigation::-webkit-scrollbar {
+        display: none;
     }
     
     .pillar-button {
+        flex-shrink: 0;
         padding: 8px 12px;
-        font-size: 0.75rem;
+        font-size: 0.78rem;
     }
     
     .pillar-tag {
         top: 12px;
         right: 12px;
-        padding: 3px 6px;
+        padding: 3px 7px;
         font-size: 0.6rem;
     }
 }
-        font-size: 1.5rem;
-    }
-    
-    .stat-label {
-        font-size: 0.8rem;
-    }
-    
-    .articles-grid {
-        padding: 20px 12px;
-        gap: 20px;
-    }
-    
-    .article-card {
-        padding: 18px;
-    }
-    
-    .article-title {
-        font-size: 1.15rem;
-        line-height: 1.4;
-    }
-    
-    .article-excerpt {
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-    
-    .tech-tag {
-        font-size: 0.7rem;
-        padding: 5px 10px;
-    }
-    
-    .metric-item {
-        font-size: 0.7rem;
-        padding: 6px 10px;
-    }
-    
-    .read-more-button {
-        padding: 10px 18px;
-        font-size: 0.85rem;
-    }
-    
-    .pillar-navigation {
-        padding: 15px 12px;
-        gap: 8px;
-    }
-    
-    .pillar-button {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-    }
-    
-    .pillar-name {
-        font-size: 0.8rem;
-    }
-    
-    .pillar-tag {
-        top: 12px;
-        right: 12px;
-        padding: 4px 8px;
-        font-size: 0.7rem;
-    }
-    
-    .tag-icon {
-        font-size: 0.8rem;
-    }
-}
 
-/* EXTRA SMALL DEVICES (320px - 374px) */
-@media (max-width: 374px) {
+@media (max-width: 480px) {
+    .blog-header {
+        padding: 40px 12px 28px;
+    }
+    
     .blog-title {
-        font-size: 1.5rem;
+        font-size: clamp(1.35rem, 7vw, 1.6rem);
+        max-width: 100%;
     }
     
     .blog-subtitle {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
+        max-width: 100%;
     }
     
     .header-stats {
@@ -605,66 +496,106 @@
     }
     
     .stat-number {
-        font-size: 1.3rem;
+        font-size: 1.15rem;
     }
     
     .stat-label {
-        font-size: 0.75rem;
+        font-size: 0.62rem;
+    }
+    
+    .articles-grid {
+        padding: 16px 10px;
+        gap: 14px;
+    }
+    
+    .article-card {
+        padding: 14px;
+    }
+    
+    .article-title {
+        font-size: 0.9rem;
+        line-height: 1.35;
     }
     
     .pillar-navigation {
         padding: 12px 10px;
-    }
-    
-    .pillar-button {
-        padding: 7px 12px;
-        font-size: 0.75rem;
         gap: 6px;
     }
     
-    .pillar-icon {
-        font-size: 0.85rem;
-    }
-    
-    .pillar-name {
-        font-size: 0.75rem;
-    }
-    
-    .articles-grid {
-        padding: 15px 10px;
-        gap: 18px;
-    }
-    
-    .article-card {
-        padding: 15px;
-    }
-    
-    .article-title {
-        font-size: 1.05rem;
-    }
-    
-    .article-excerpt {
-        font-size: 0.85rem;
-    }
-    
-    .tech-tag {
-        font-size: 0.65rem;
-        padding: 4px 8px;
-    }
-    
-    .metric-item {
-        font-size: 0.65rem;
-        padding: 5px 8px;
-    }
-    
-    .read-more-button {
-        padding: 9px 16px;
-        font-size: 0.8rem;
+    .pillar-button {
+        padding: 7px 10px;
+        font-size: 0.72rem;
     }
     
     .pillar-tag {
+        top: 10px;
+        right: 10px;
         padding: 3px 6px;
-        font-size: 0.65rem;
+        font-size: 0.55rem;
+    }
+    
+    .read-more-button {
+        padding: 9px 12px;
+        font-size: 0.78rem;
+    }
+}
+
+/* EXTRA SMALL DEVICES (320px - 374px) */
+@media (max-width: 374px) {
+    .blog-title {
+        font-size: 1.25rem;
+    }
+    
+    .blog-subtitle {
+        font-size: 0.78rem;
+    }
+    
+    .header-stats {
+        gap: 10px;
+    }
+    
+    .stat-number {
+        font-size: 1.05rem;
+    }
+    
+    .stat-label {
+        font-size: 0.58rem;
+    }
+    
+    .pillar-navigation {
+        padding: 10px 8px;
+        gap: 5px;
+    }
+    
+    .pillar-button {
+        padding: 6px 9px;
+        font-size: 0.68rem;
+        gap: 4px;
+    }
+    
+    .articles-grid {
+        padding: 14px 8px;
+        gap: 12px;
+    }
+    
+    .article-card {
+        padding: 12px;
+    }
+    
+    .article-title {
+        font-size: 0.85rem;
+    }
+    
+    .pillar-tag {
+        top: 8px;
+        right: 8px;
+        padding: 2px 5px;
+        font-size: 0.5rem;
+    }
+    
+    .read-more-button {
+        padding: 8px 10px;
+        font-size: 0.72rem;
     }
 }
 
