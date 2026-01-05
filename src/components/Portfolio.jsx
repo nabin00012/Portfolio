@@ -180,6 +180,18 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
+      title: 'CodeCommons',
+      description: 'Real-time collaborative coding platform built with Next.js 14 and TypeScript. Server-side rendering for initial content, Socket.IO for live collaboration, Monaco Editor for code editing. TypeScript strict mode catches null/undefined errors at build time.',
+      image: '/images/codecommons.png',
+      tags: ['Next.js 14', 'TypeScript', 'SSR', 'Socket.IO', 'Monaco', 'Three.js'],
+      year: '2025',
+      github: 'https://github.com/nabin00012/codecommons',
+      live: 'https://codecommons-delta.vercel.app',
+      recognition: 'Recognized by Jain University',
+      blog: '/blog?project=codecommons',
+    },
+    {
+      id: 2,
       title: 'MERN-CI-CD-Kube',
       description: 'MERN chat application with Kubernetes orchestration and CI/CD automation. Features containerized deployments, GitHub Actions pipeline for Docker builds, rolling updates configured for zero downtime, and MongoDB StatefulSet for data persistence.',
       image: '/images/Mern-thumbnail.png?v=2',
@@ -190,7 +202,7 @@ const Portfolio = () => {
       blog: '/blog?project=mern-ci-cd-kube',
     },
     {
-      id: 2,
+      id: 3,
       title: 'SecureFinData',
       description: 'Fintech API implementing AES-256-GCM authenticated encryption for documents at rest. Features role-based access control, audit logging, and TDD workflow with Jest. Security module tested against intentional tampering.',
       image: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?w=1200&q=80',
@@ -199,18 +211,6 @@ const Portfolio = () => {
       github: 'https://github.com/nabin00012/secure-fin-data',
       live: '#',
       blog: '/blog?project=securefindata',
-    },
-    {
-      id: 3,
-      title: 'CodeCommons',
-      description: 'Real-time collaborative coding platform built with Next.js 14 and TypeScript. Server-side rendering for initial content, Socket.IO for live collaboration, Monaco Editor for code editing. TypeScript strict mode catches null/undefined errors at build time.',
-      image: '/images/codecommons.png',
-      tags: ['Next.js 14', 'TypeScript', 'SSR', 'Socket.IO', 'Monaco', 'Three.js'],
-      year: '2025',
-      github: 'https://github.com/nabin00012/codecommons',
-      live: 'https://codecommons-delta.vercel.app',
-      recognition: 'Recognized by Jain University',
-      blog: '/blog?project=codecommons',
     },
     {
       id: 4,
@@ -406,7 +406,13 @@ const Portfolio = () => {
       role: 'Full-Stack Development Intern',
       company: 'Octanet Services',
       period: 'Internship extended from 2 to 6 months',
-      description: 'Owned the user management system from database schema to deployed frontend. Was responsible for the authentication flow, including JWT issuance, refresh token rotation, and session invalidation. Designed MongoDB schemas for Users, Profiles, and Sessions, including index selection for query performance. Implemented validation on both client (Formik + Yup) and server (Express middleware) to enforce data integrity before writes. Maintained the system through production deployment; no critical regressions were reported during my ownership. Offer letter on file.',
+      bullets: [
+        'Owned user management system end-to-end: database schema → API → deployed frontend',
+        'Built authentication flow with JWT issuance, refresh token rotation, and session invalidation',
+        'Designed MongoDB schemas (Users, Profiles, Sessions) with indexes optimized for query performance',
+        'Implemented dual validation layer (Formik + Yup on client, Express middleware on server)',
+        'Maintained system through production deployment with zero critical regressions',
+      ],
       technologies: ['React 18', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Formik', 'Yup'],
       offerLetter: true,
       offerLetterPath: '/offer-letter-octanet.pdf',
@@ -416,7 +422,11 @@ const Portfolio = () => {
       role: 'MERN Stack Developer',
       company: 'Swostitech Solutions',
       period: 'Current',
-      description: 'Formally onboarded as a MERN Stack Developer (offer letter on file). Responsible for building and maintaining features across frontend and backend in production and near-production codebases. Work includes reading and extending existing systems, debugging failures, and delivering features under real project deadlines.',
+      bullets: [
+        'Building and maintaining features across frontend and backend in production codebases',
+        'Reading and extending existing systems under real project deadlines',
+        'Debugging production failures and delivering feature improvements',
+      ],
       technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
       offerLetter: true,
       offerLetterPath: '/offer.pdf',
@@ -1027,7 +1037,11 @@ const Portfolio = () => {
                   <span className="job-period">{job.period}</span>
                 </div>
                 <h4 className="job-company">{job.company}</h4>
-                <p className="job-description">{job.description}</p>
+                <ul className="job-bullets">
+                  {job.bullets.map((bullet, idx) => (
+                    <li key={idx}>{bullet}</li>
+                  ))}
+                </ul>
                 <div className="job-tech">
                   {job.technologies.map((tech, idx) => (
                     <span key={idx} className="tech-badge">{tech}</span>
@@ -1035,11 +1049,10 @@ const Portfolio = () => {
                 </div>
                 {job.offerLetter && (
                   <a href={job.offerLetterPath} target="_blank" rel="noopener noreferrer" className="offer-letter-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
-                      <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    View Offer Letter
+                    Offer letter on file
                   </a>
                 )}
               </div>

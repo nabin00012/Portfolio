@@ -274,10 +274,18 @@
   color: #ffd700;
 }
 
-/* Result Section */
+/* Result Section - Most prominent */
+.result-section {
+  background: rgba(0, 255, 136, 0.03);
+  margin: 0 -24px;
+  padding: 24px !important;
+  border-bottom: none !important;
+}
+
 .result-headline {
   color: #00ff88;
   font-weight: 600;
+  font-size: 1.1rem;
   margin: 0 0 20px 0;
   line-height: 1.5;
 }

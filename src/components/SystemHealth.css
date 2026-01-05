@@ -249,10 +249,24 @@
   color: #c9d1d9;
 }
 
-.metric-outcome .metric-value {
-  color: #00ff88;
+/* Outcome row - most prominent */
+.metric-outcome {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
+.metric-outcome .metric-label {
+  color: rgba(0, 255, 136, 0.6);
+  font-weight: 600;
+}
+
+.metric-outcome .metric-value {
+  color: #00ff88;
+  font-weight: 500;
+}
+
+/* Dependencies - quieter than outcome */
 .metric-deps {
   display: flex;
   flex-wrap: wrap;
@@ -261,11 +275,11 @@
 
 .dep-tag {
   padding: 2px 8px;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   font-size: 0.75rem;
-  color: #00d4ff;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .evidence-link {
