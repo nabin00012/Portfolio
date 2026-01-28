@@ -19,7 +19,7 @@ const Portfolio = () => {
   const downloadResume = async () => {
     try {
       // Use fetch to get the file and create a blob URL for download
-      const response = await fetch('/resume-nabin-chapagain.pdf');
+      const response = await fetch('/nabinchapagain_resume.pdf');
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
 
@@ -37,7 +37,7 @@ const Portfolio = () => {
     } catch (error) {
       console.error('Download failed:', error);
       // Fallback: open in new tab
-      window.open('/resume-nabin-chapagain.pdf', '_blank');
+      window.open('/nabinchapagain_resume.pdf', '_blank');
     }
   };
 
@@ -182,7 +182,7 @@ const Portfolio = () => {
       id: 1,
       title: 'CodeCommons',
       description: 'Real-time collaborative coding platform built with Next.js 14 and TypeScript. Server-side rendering for initial content, Socket.IO for live collaboration, Monaco Editor for code editing. TypeScript strict mode catches null/undefined errors at build time.',
-      image: '/images/codecommons.png',
+      image: '/images/nabinchapagain-codecommons.png',
       tags: ['Next.js 14', 'TypeScript', 'SSR', 'Socket.IO', 'Monaco', 'Three.js'],
       year: '2025',
       github: 'https://github.com/nabin00012/codecommons',
@@ -194,7 +194,7 @@ const Portfolio = () => {
       id: 2,
       title: 'MERN-CI-CD-Kube',
       description: 'MERN chat application with Kubernetes orchestration and CI/CD automation. Features containerized deployments, GitHub Actions pipeline for Docker builds, rolling updates configured for zero downtime, and MongoDB StatefulSet for data persistence.',
-      image: '/images/Mern-thumbnail.png?v=2',
+      image: '/images/nabinchapagain-Mern-thumbnail.png',
       tags: ['Kubernetes', 'Docker', 'GitHub Actions', 'Rolling Updates', 'StatefulSet', 'HA'],
       year: '2024',
       github: 'https://github.com/nabin00012/mern-ci-cd-kube',
@@ -216,7 +216,7 @@ const Portfolio = () => {
       id: 4,
       title: 'FluxTrade',
       description: 'Web3 trading platform with off-chain event indexing. Solidity smart contracts emit events captured by Node.js indexer and stored in MongoDB. Portfolio queries avoid direct blockchain reads, reducing load times from seconds to sub-second.',
-      image: '/images/fluxtrade.png?v=2',
+      image: '/images/nabinchapagain-fluxtrade.png',
       tags: ['Web3.js', 'Solidity', 'MongoDB', 'Event Indexing', 'Node.js'],
       year: '2025',
       github: 'https://github.com/nabin00012/fluxtrade',
@@ -415,7 +415,7 @@ const Portfolio = () => {
       ],
       technologies: ['React 18', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Formik', 'Yup'],
       offerLetter: true,
-      offerLetterPath: '/offer-letter-octanet.pdf',
+      offerLetterPath: '/nabinchapagain_offerletter_octanet.pdf',
     },
     {
       id: 2,
@@ -429,7 +429,7 @@ const Portfolio = () => {
       ],
       technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
       offerLetter: true,
-      offerLetterPath: '/offer.pdf',
+      offerLetterPath: '/nabinchapagain_swostitech_offerletter.pdf',
     },
   ];
 
@@ -443,7 +443,7 @@ const Portfolio = () => {
       color: '#0078D4',
       skills: 'AI API Integration, Azure Cognitive Services, OpenAI API, NLP, ML Models',
       pdfLink: '/certificates/azure-ai-essentials.pdf',
-      thumbnail: '/images/azure-ai-essentials-cert.png',
+      thumbnail: '/images/nabinchapagain-azure-ai-essentials-cert.png',
       isImage: true
     },
     {
@@ -454,7 +454,7 @@ const Portfolio = () => {
       color: '#0A66C2',
       skills: 'Azure AI Foundry, ML Deployment, Model Integration, REST APIs',
       pdfLink: '/certificates/azure-ml-workloads.pdf',
-      thumbnail: '/images/azure-ml-workloads-cert.png',
+      thumbnail: '/images/nabinchapagain-azure-ml-workloads-cert.png',
       isImage: true
     },
     {
@@ -465,7 +465,7 @@ const Portfolio = () => {
       color: '#2088FF',
       skills: 'GitHub, CI/CD',
       pdfLink: '/certificates/github-actions.pdf',
-      thumbnail: '/images/github-actions-cert.png',
+      thumbnail: '/images/nabinchapagain-github-actions-cert.png',
       isImage: true
     },
     {
@@ -476,7 +476,7 @@ const Portfolio = () => {
       color: '#2088FF',
       skills: 'GitHub',
       pdfLink: '/certificates/github-code-search.pdf',
-      thumbnail: '/images/github-code-search-cert.png',
+      thumbnail: '/images/nabinchapagain-github-code-search-cert.png',
       isImage: true
     },
     {
@@ -487,7 +487,7 @@ const Portfolio = () => {
       color: '#2088FF',
       skills: 'GitHub Copilot, AI Coding',
       pdfLink: '/certificates/github-copilot.pdf',
-      thumbnail: '/images/github-copilot-cert.png',
+      thumbnail: '/images/nabinchapagain-github-copilot-cert.png',
       isImage: true
     },
     {
@@ -498,7 +498,7 @@ const Portfolio = () => {
       color: '#0A66C2',
       skills: 'GitHub, Project Management',
       pdfLink: '/certificates/github-project-mgmt.pdf',
-      thumbnail: '/images/github-project-mgmt-cert.png',
+      thumbnail: '/images/nabinchapagain-github-project-mgmt-cert.png',
       isImage: true
     },
     {
@@ -509,7 +509,7 @@ const Portfolio = () => {
       color: '#0A66C2',
       skills: 'Technical SEO, Next.js Performance, Core Web Vitals, Structured Data',
       pdfLink: '/certificates/seo-foundations.pdf',
-      thumbnail: '/images/seo-foundations-cert.png',
+      thumbnail: '/images/nabinchapagain-seo-foundations-cert.png',
       isImage: true
     },
     {
@@ -519,8 +519,8 @@ const Portfolio = () => {
       icon: '🌐',
       color: '#76B900',
       skills: 'Networking Fundamentals',
-      pdfLink: '/images/nvidia-cert.png',
-      thumbnail: '/images/nvidia-cert.png',
+      pdfLink: '/images/nabinchapagain-nvidia-cert.png',
+      thumbnail: '/images/nabinchapagain-nvidia-cert.png',
       isImage: true
     },
     {
@@ -530,8 +530,8 @@ const Portfolio = () => {
       icon: '💻',
       color: '#FF6B35',
       skills: 'OS, Virtualization',
-      pdfLink: '/images/codio-cert.png',
-      thumbnail: '/images/codio-cert.png',
+      pdfLink: '/images/nabinchapagain-codio-cert.png',
+      thumbnail: '/images/nabinchapagain-codio-cert.png',
       isImage: true
     },
     {
@@ -542,7 +542,7 @@ const Portfolio = () => {
       color: '#339933',
       skills: 'Node.js, Server-side JavaScript',
       pdfLink: '/certificates/nodejs-essential-training.pdf',
-      thumbnail: '/images/nodejs-essential-training-cert.png',
+      thumbnail: '/images/nabinchapagain-nodejs-essential-training-cert.png',
       isImage: true
     },
   ];
@@ -695,7 +695,7 @@ const Portfolio = () => {
               <div className="nav-actions">
                 <button
                   className="resume-action-btn view-btn"
-                  onClick={() => window.open('/resume-nabin-chapagain.pdf', '_blank')}
+                  onClick={() => window.open('/nabinchapagain_resume.pdf', '_blank')}
                 >
                   👁️ View
                 </button>
@@ -933,9 +933,10 @@ const Portfolio = () => {
                 <div className="about-photo-glow-1"></div>
                 <div className="about-photo-glow-2"></div>
                 <img
-                  src="/images/nabin.png"
-                  alt="Nabin Chapagain"
+                  src="/images/nabinchapagain.jpeg"
+                  alt="Nabin Chapagain - Full Stack Developer and DevOps Engineer"
                   className="about-photo"
+                  loading="lazy"
                 />
                 <div className="photo-shine"></div>
               </div>

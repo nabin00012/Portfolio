@@ -11,7 +11,7 @@ const CertificatesPage = () => {
       color: '#0078D4',
       skills: 'AI API Integration, Azure Cognitive Services, OpenAI API, NLP, ML Models',
       pdfLink: '/certificates/azure-ai-essentials.pdf',
-      thumbnail: '/images/azure-ai-essentials-cert.png',
+      thumbnail: '/images/nabinchapagain-azure-ai-essentials-cert.png',
       isImage: true
     },
     {
@@ -22,7 +22,7 @@ const CertificatesPage = () => {
       color: '#0A66C2',
       skills: 'Azure AI Foundry, ML Deployment, Model Integration, REST APIs',
       pdfLink: '/certificates/azure-ml-workloads.pdf',
-      thumbnail: '/images/azure-ml-workloads-cert.png',
+      thumbnail: '/images/nabinchapagain-azure-ml-workloads-cert.png',
       isImage: true
     },
     {
@@ -33,7 +33,7 @@ const CertificatesPage = () => {
       color: '#2088FF',
       skills: 'GitHub, CI/CD',
       pdfLink: '/certificates/github-actions.pdf',
-      thumbnail: '/images/github-actions-cert.png',
+      thumbnail: '/images/nabinchapagain-github-actions-cert.png',
       isImage: true
     },
     {
@@ -44,7 +44,7 @@ const CertificatesPage = () => {
       color: '#2088FF',
       skills: 'GitHub',
       pdfLink: '/certificates/github-code-search.pdf',
-      thumbnail: '/images/github-code-search-cert.png',
+      thumbnail: '/images/nabinchapagain-github-code-search-cert.png',
       isImage: true
     },
     {
@@ -55,7 +55,7 @@ const CertificatesPage = () => {
       color: '#2088FF',
       skills: 'GitHub Copilot, AI Coding',
       pdfLink: '/certificates/github-copilot.pdf',
-      thumbnail: '/images/github-copilot-cert.png',
+      thumbnail: '/images/nabinchapagain-github-copilot-cert.png',
       isImage: true
     },
     {
@@ -66,7 +66,7 @@ const CertificatesPage = () => {
       color: '#0A66C2',
       skills: 'GitHub, Project Management',
       pdfLink: '/certificates/github-project-mgmt.pdf',
-      thumbnail: '/images/github-project-mgmt-cert.png',
+      thumbnail: '/images/nabinchapagain-github-project-mgmt-cert.png',
       isImage: true
     },
     {
@@ -77,7 +77,7 @@ const CertificatesPage = () => {
       color: '#0A66C2',
       skills: 'Technical SEO, Next.js Performance, Core Web Vitals, Structured Data',
       pdfLink: '/certificates/seo-foundations.pdf',
-      thumbnail: '/images/seo-foundations-cert.png',
+      thumbnail: '/images/nabinchapagain-seo-foundations-cert.png',
       isImage: true
     },
     {
@@ -87,8 +87,8 @@ const CertificatesPage = () => {
       icon: '🌐',
       color: '#76B900',
       skills: 'Networking Fundamentals',
-      pdfLink: '/images/nvidia-cert.png',
-      thumbnail: '/images/nvidia-cert.png',
+      pdfLink: '/images/nabinchapagain-nvidia-cert.png',
+      thumbnail: '/images/nabinchapagain-nvidia-cert.png',
       isImage: true
     },
     {
@@ -98,8 +98,8 @@ const CertificatesPage = () => {
       icon: '💻',
       color: '#FF6B35',
       skills: 'OS, Virtualization',
-      pdfLink: '/images/codio-cert.png',
-      thumbnail: '/images/codio-cert.png',
+      pdfLink: '/images/nabinchapagain-codio-cert.png',
+      thumbnail: '/images/nabinchapagain-codio-cert.png',
       isImage: true
     },
     {
@@ -110,7 +110,7 @@ const CertificatesPage = () => {
       color: '#339933',
       skills: 'Node.js, Server-side JavaScript',
       pdfLink: '/certificates/nodejs-essential-training.pdf',
-      thumbnail: '/images/nodejs-essential-training-cert.png',
+      thumbnail: '/images/nabinchapagain-nodejs-essential-training-cert.png',
       isImage: true
     },
   ];
@@ -137,12 +137,13 @@ const CertificatesPage = () => {
       <div className="certificates-grid">
         {/* Coding Ninjas Leaderboard Achievement Card */}
         <div className="cert-card">
-          <a href="/images/codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-thumbnail-wrapper" style={{ display: 'block', cursor: 'pointer' }}>
+          <a href="/images/nabinchapagain-codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-thumbnail-wrapper" style={{ display: 'block', cursor: 'pointer' }}>
             <img 
-              src="/images/codingninjas-leaderboard.png" 
-              alt="Coding Ninjas Leaderboard" 
+              src="/images/nabinchapagain-codingninjas-leaderboard.png" 
+              alt="Nabin Chapagain - Coding Ninjas Code360 Leaderboard Rank 1" 
               className="cert-thumbnail" 
-              style={{ objectFit: 'cover', background: '#fff' }} 
+              style={{ objectFit: 'cover', background: '#fff' }}
+              loading="lazy"
             />
             <div className="cert-thumbnail-overlay">
               <span className="view-full-text">View Leaderboard</span>
@@ -155,7 +156,7 @@ const CertificatesPage = () => {
             <h3 className="cert-title">Coding Ninjas Code360 Leaderboard</h3>
             <p className="cert-issuer">Ranked 1st • Code360 Weekly Challenge</p>
             <p className="cert-skills">Competitive Programming, Problem Solving, Consistency</p>
-            <a href="/images/codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-view-btn">
+            <a href="/images/nabinchapagain-codingninjas-leaderboard.png" target="_blank" rel="noopener noreferrer" className="cert-view-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" strokeWidth="2" />
                 <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" strokeWidth="2" />
@@ -169,7 +170,7 @@ const CertificatesPage = () => {
         {certifications.map((cert) => (
           <div key={cert.id} className="cert-card">
             <a href={cert.pdfLink} target="_blank" rel="noopener noreferrer" className="cert-thumbnail-wrapper" style={{ display: 'block', cursor: 'pointer' }}>
-              <img src={cert.thumbnail} alt={cert.title} className="cert-thumbnail" />
+              <img src={cert.thumbnail} alt={`Nabin Chapagain - ${cert.title} Certificate`} className="cert-thumbnail" loading="lazy" />
               <div className="cert-thumbnail-overlay">
                 <span className="view-full-text">Click to view full certificate</span>
               </div>

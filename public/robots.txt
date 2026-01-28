@@ -1,0 +1,13 @@
+# Robots.txt for nabinchapagain.in
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://nabinchapagain.in/sitemap.xml
+
+# Crawl delay (optional - be nice to servers)
+Crawl-delay: 1
+
+# Disallow admin/private areas (add if needed)
+# Disallow: /admin/
+# Disallow: /private/
