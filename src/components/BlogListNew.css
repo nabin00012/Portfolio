@@ -140,176 +140,69 @@
     font-weight: 600;
 }
 
-/* CLEAN ARTICLE GRID */
+/* CLEAN ARTICLE GRID - Single column like mobile */
 .articles-grid {
-    display: grid;
-    /* Auto-fit columns with minimum 280px width - prevents forced narrow cards */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    padding: 30px clamp(12px, 4vw, 24px);
-    max-width: 1300px;
+    padding: 24px 16px;
+    max-width: 600px;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
 }
 
-/* Force 2 columns max on tablets to prevent cramped cards */
-@media (min-width: 640px) and (max-width: 959px) {
+/* Tablet and Desktop - same layout, just centered */
+@media (min-width: 768px) {
     .articles-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-}
-
-/* 3 columns only on wide screens (960px+) */
-@media (min-width: 960px) {
-    .articles-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-}
-
-/* Back to 2 columns if viewport is narrow but wide enough */
-@media (min-width: 960px) and (max-width: 1099px) {
-    .articles-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* 3 columns only when truly wide */
-@media (min-width: 1100px) {
-    .articles-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        padding: 32px 24px;
     }
 }
 
 /* ===========================================
-   DESKTOP OPTIMIZATION (1100px+)
-   Goal: Readable at 100% zoom, denser cards,
-   visible CTA, horizontal content flow
+   DESKTOP - Same layout as mobile, just centered
    =========================================== */
-@media (min-width: 1100px) {
-    /* Denser card padding on desktop */
+@media (min-width: 1024px) {
     .article-card {
-        padding: 20px;
-    }
-    
-    /* Larger, more readable title on desktop */
-    .article-title {
-        font-size: 1.1rem;
-        line-height: 1.35;
-        margin-bottom: 10px;
-        /* Limit to ~2-3 lines max */
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    
-    /* Tighter article content spacing */
-    .article-content {
-        margin-top: 8px;
-        gap: 0;
-    }
-    
-    /* Horizontal tech tags - single row when possible */
-    .tech-tags {
-        margin-bottom: 8px;
-        gap: 4px;
-    }
-    
-    .tech-tag {
-        font-size: 0.65rem;
-        padding: 2px 6px;
-    }
-    
-    /* Compact metrics row */
-    .metrics-display {
-        margin-bottom: 10px;
-        margin-top: 6px;
-        padding-top: 6px;
-        gap: 4px;
-    }
-    
-    .metric-item {
-        font-size: 0.62rem;
-        padding: 3px 6px;
-    }
-    
-    /* CTA VISIBILITY - Always visible, properly spaced */
-    .read-more-button {
-        margin-top: 10px;
-        padding: 10px 16px;
-        font-size: 0.78rem;
-        font-weight: 600;
-    }
-    
-    /* Smaller pillar tag to not compete with title */
-    .pillar-tag {
-        padding: 4px 8px;
-        font-size: 0.65rem;
-        top: 14px;
-        right: 14px;
-    }
-}
-
-/* ===========================================
-   LARGE DESKTOP (1400px+)
-   More breathing room, even better readability
-   =========================================== */
-@media (min-width: 1400px) {
-    .articles-grid {
-        gap: 28px;
-        max-width: 1400px;
-    }
-    
-    .article-card {
-        padding: 22px;
+        padding: 24px;
     }
     
     .article-title {
         font-size: 1.15rem;
-        line-height: 1.4;
     }
     
-    .tech-tag {
-        font-size: 0.68rem;
-        padding: 3px 8px;
+    .pillar-tag {
+        top: 18px;
+        right: 18px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .article-card {
+        padding: 28px;
     }
     
-    .metric-item {
-        font-size: 0.65rem;
-        padding: 4px 8px;
-    }
-    
-    .read-more-button {
-        padding: 11px 18px;
-        font-size: 0.8rem;
+    .article-title {
+        font-size: 1.2rem;
     }
 }
 
 .article-card {
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    padding: clamp(16px, 3vw, 22px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(10, 10, 15, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
     animation: card-appear 0.6s ease-out forwards;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     backdrop-filter: blur(20px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    /* Ensure CTA stays visible - constrain card height */
-    height: 100%;
-    min-height: fit-content;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: block !important;
     box-sizing: border-box;
-    max-width: 100%;
-    min-width: 0;
+    width: 100%;
 }
 
 .article-card::before {
@@ -335,9 +228,9 @@
 
 .article-card:hover {
     border-color: var(--card-border);
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px var(--card-glow);
-    background: rgba(0, 0, 0, 0.85);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--card-glow);
+    background: rgba(15, 15, 20, 0.9);
 }
 
 @keyframes card-appear {
@@ -350,45 +243,37 @@
 /* PILLAR TAG */
 .pillar-tag {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 0.7rem;
+    top: 14px;
+    right: 14px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 0.68rem;
     font-weight: 600;
     color: #000;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
 }
 
 .tag-icon {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 /* ARTICLE CONTENT */
 .article-content {
-    margin-top: 12px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
+    margin-top: 32px;
+    display: block !important;
 }
 
 .article-title {
-    font-size: clamp(0.92rem, 2vw, 1.05rem);
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 600;
     line-height: 1.4;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: color 0.3s ease;
-    /* CRITICAL: Prevent mid-word breaks */
-    word-break: normal;
-    overflow-wrap: normal;
-    hyphens: none;
-    white-space: normal;
-    max-width: 100%;
+    display: block;
+    width: 100%;
 }
 
 .article-card:hover .article-title {
@@ -404,24 +289,21 @@
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 10px;
-    max-width: 100%;
+    gap: 8px;
+    margin-bottom: 14px;
+    width: 100%;
 }
 
 .tech-tag {
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.68rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.78rem;
     font-weight: 500;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     font-family: 'JetBrains Mono', monospace;
-    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
 }
 
 .article-card:hover .tech-tag {
@@ -433,26 +315,24 @@
 .metrics-display {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 12px;
-    margin-top: auto;
-    padding-top: 8px;
-    max-width: 100%;
+    gap: 8px;
+    margin-bottom: 16px;
+    margin-top: 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
 }
 
 .metric-item {
-    background: rgba(0, 0, 0, 0.6);
-    color: rgba(0, 212, 255, 0.85);
-    padding: 4px 8px;
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    padding: 6px 14px;
     border-radius: 6px;
-    font-size: 0.65rem;
-    font-weight: 500;
+    font-size: 0.75rem;
+    font-weight: 600;
     border: 1px solid rgba(0, 212, 255, 0.2);
     font-family: 'JetBrains Mono', monospace;
-    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
 }
 
 .article-card:hover .metric-item {
@@ -461,94 +341,33 @@
     transform: scale(1.05);
 }
 
-/* READ MORE BUTTON - Always visible CTA */
+/* READ MORE BUTTON */
 .read-more-button {
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    padding: 10px 18px;
+    gap: 8px;
+    padding: 12px 24px;
     border-radius: 8px;
-    color: #000 !important;
+    color: #000;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    margin-top: auto;
-    background: linear-gradient(135deg, #00ff88, #00d4ff) !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    box-shadow: 0 3px 15px rgba(0, 255, 136, 0.3);
+    margin-top: 6px;
+    background: linear-gradient(135deg, #00ff88, #00d4ff);
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    flex-shrink: 0;
-    /* Ensure minimum height for visibility */
-    min-height: 40px;
 }
 
 .read-more-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--card-glow);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
     filter: brightness(1.1);
 }
 
-/* RESPONSIVE DESIGN */
-
-/* Tablet/small laptop - ensure 2 columns with adequate width */
-@media (min-width: 640px) and (max-width: 1099px) {
-    .articles-grid {
-        grid-template-columns: repeat(2, minmax(280px, 1fr));
-        gap: 20px;
-        padding: 28px clamp(16px, 3vw, 24px);
-    }
-    
-    .article-card {
-        padding: 18px;
-    }
-    
-    .article-title {
-        font-size: 0.95rem;
-        line-height: 1.45;
-        /* Ensure no mid-word breaks */
-        word-break: normal;
-        overflow-wrap: normal;
-        hyphens: none;
-    }
-    
-    .pillar-navigation {
-        gap: 8px;
-        padding: 24px 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .pillar-button {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-    }
-    
-    .header-stats {
-        gap: 24px;
-    }
-    
-    /* Allow tech tags to wrap instead of forcing column width */
-    .tech-tags {
-        flex-wrap: wrap;
-    }
-    
-    .tech-tag {
-        flex-shrink: 1;
-        white-space: normal;
-        max-width: 100%;
-    }
-    
-    .metric-item {
-        flex-shrink: 1;
-        white-space: normal;
-    }
-}
+/* RESPONSIVE DESIGN - Keep mobile layout everywhere */
 
 @media (max-width: 639px) {
     .blog-header {

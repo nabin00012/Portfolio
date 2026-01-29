@@ -112,13 +112,13 @@
 
 @media (max-width: 768px) {
   .article-header {
-    padding: 80px 16px 40px;
+    padding: 80px 16px 20px;
   }
 }
 
 @media (max-width: 480px) {
   .article-header {
-    padding: 70px 14px 32px;
+    padding: 70px 14px 16px;
   }
 }
 
@@ -224,6 +224,21 @@
   margin-right: auto;
 }
 
+@media (max-width: 768px) {
+  .article-excerpt {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-excerpt {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+}
+
 .article-technologies {
   display: flex;
   flex-wrap: wrap;
@@ -266,16 +281,37 @@
 
 @media (max-width: 1024px) {
   .article-content {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 20px;
   }
   
   .article-sidebar {
-    position: static;
+    position: static !important;
     order: -1;
     max-width: 100%;
     width: 100%;
+    flex-shrink: 0;
+  }
+  
+  .article-body {
+    order: 1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-content {
+    gap: 20px;
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-content {
+    gap: 16px;
+    padding: 16px 12px;
   }
 }
 
@@ -611,17 +647,19 @@
 
 @media (max-width: 768px) {
   .article-header {
-    padding: 100px 16px 50px;
+    padding: 80px 16px 20px;
   }
   
   .article-breadcrumb {
-    justify-content: flex-start;
+    justify-content: center;
     font-size: 0.8rem;
+    margin-bottom: 16px;
   }
   
   .article-pillar-badge {
     padding: 5px 12px;
     font-size: 0.75rem;
+    margin-bottom: 12px;
   }
   
   .pillar-icon {
@@ -632,19 +670,20 @@
     gap: 12px;
     flex-wrap: wrap;
     font-size: 0.8rem;
+    margin-bottom: 16px;
   }
   
   .article-title {
     font-size: 1.4rem;
     line-height: 1.35;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     max-width: 100%;
   }
   
   .article-excerpt {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   
   .article-technologies {
@@ -659,34 +698,42 @@
   }
   
   .article-content {
-    padding: 30px 12px;
-    gap: 30px;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 16px;
+    gap: 20px;
     max-width: 100%;
   }
   
+  .article-sidebar {
+    position: static !important;
+    order: -1;
+    width: 100%;
+  }
+  
   .article-body {
+    order: 1;
     max-width: 100% !important;
     width: 100%;
   }
   
   .article-section {
-    margin-bottom: 36px;
+    margin-bottom: 28px;
     width: 100%;
   }
   
   .section-title {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     gap: 10px;
     flex-wrap: wrap;
   }
   
   .section-icon {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   
   .section-content {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.75;
     width: 100%;
   }
@@ -757,18 +804,18 @@
 
 @media (max-width: 480px) {
   .article-header {
-    padding: 90px 16px 40px;
+    padding: 70px 14px 16px;
   }
   
   .article-breadcrumb {
     font-size: 0.75rem;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   
   .article-pillar-badge {
     padding: 5px 10px;
     font-size: 0.72rem;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
   
   .pillar-icon {
@@ -781,19 +828,20 @@
     font-size: 0.7rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 12px;
   }
   
   .article-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     line-height: 1.35;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     max-width: 100%;
   }
   
   .article-excerpt {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    margin-bottom: 16px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
   }
   
   .article-technologies {
@@ -813,40 +861,49 @@
   }
   
   .article-content {
-    padding: 20px 8px;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 12px;
+    gap: 16px;
+  }
+  
+  .article-sidebar {
+    position: static !important;
+    order: -1;
+    width: 100%;
   }
   
   .article-body {
+    order: 1;
     max-width: 100% !important;
     width: 100%;
   }
   
   .article-section {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     width: 100%;
   }
   
   .section-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   
   .section-icon {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .section-content {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     line-height: 1.75;
     width: 100%;
   }
   
   .section-content p {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     width: 100%;
   }
   

@@ -6,9 +6,9 @@
   border-radius: 16px;
   padding: 24px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.3s ease;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -304,11 +304,12 @@
 @media (max-width: 768px) {
   .project-context-widget {
     padding: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
     overflow: visible;
+    position: relative !important;
   }
   
   .widget-header {
